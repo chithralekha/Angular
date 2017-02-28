@@ -13,12 +13,12 @@
         'ngResource'
     ])
         .constant('Config', {
-          baseURL : 'http://localhost:3706/api/',
-          authURL : 'http://development.pyinagztvy.us-west-2.elasticbeanstalk.com/oauth/token',
-          oldMagpieBaseURL : 'http://magpie-sandbox.azurewebsites.net/Landing/index?n='
+            baseURL : 'http://localhost:3706/api/',
+            authURL : 'http://development.pyinagztvy.us-west-2.elasticbeanstalk.com/oauth/token',
+            oldMagpieBaseURL : 'http://magpie-sandbox.azurewebsites.net/Landing/index?n='
         })
         .constant("baseURL", "http://localhost:3706/api/")
-        .service('filterService', ['$resource', 'baseURL','Config', function ($resource, baseURL, Config) {
+        .service('filterService', ['$resource', 'baseURL', 'Config', function ($resource, baseURL, Config) {
             var filterList = $resource(Config.baseURL + 'Filters').query(),
                 count = 0,
                 addFilter = function (newObj) {
@@ -102,7 +102,7 @@
                             // $http returns a promise, which has a then function, which also returns a promise
                             promise = $http.get('test.json').then(function (response) {
                             // The then function here is an opportunity to modify the response
-                                console.log(response);
+//                                console.log(response);
                                 // The return value gets picked up by the then in the controller.
                                 return response.data;
                             });

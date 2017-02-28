@@ -1,0 +1,71 @@
+<!--
+<div class="modal-body">
+    <div class="row">
+        <div class="col-sm-6 b-r"><h3 class="m-t-none m-b">Hello {{ username }}</h3>
+
+            <p>Sign in today for more expirience.</p>
+
+            <form role="form">
+                <div class="form-group"><label>Email</label> <input type="email" placeholder="Enter email" class="form-control"></div>
+                <div class="form-group"><label>Password</label> <input type="password" placeholder="Password" class="form-control"></div>
+                <div>
+                    <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit" ng-click="ok()"><strong>Log in</strong></button>
+                    <label> <input icheck type="checkbox" ng-model="main.unCheck"> Remember me </label>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-6"><h4>Not a member?</h4>
+
+            <p>You can create an account:</p>
+
+            <p class="text-center">
+                <a href=""><i class="fa fa-sign-in big-icon"></i></a>
+            </p>
+        </div>
+    </div>
+</div>
+-->
+<div class="inmodal">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()">X</button>
+        <h4 class="modal-title">RACI Team</h4>
+        <small class="font-bold"></small>
+    </div>
+    <div class="modal-body">
+<div class="wrapper wrapper-content  animated fadeInRight" ng-controller="raciTeam">
+    <input type="text" class="form-control" placeholder="RACI Team Name">
+<div class="input-group col-lg-12">     
+<div class="col-lg-6">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <h3>RACI Team</h3>   
+                    <div class="well" style="border:2px">    
+                   <ul ui-sortable="sortableOptions" class="sortable-list connectList" ng-model="RACITeam">
+                        <ol ng-class="" ng-repeat="user in RACITeam">                                                                                   
+                         <a href="#"><img alt="member" class="img-circle" src="{{user.img}}"></a>                                                       
+                        </ol>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-6">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <h3>Available Users</h3>
+                    <p class="small"><i class="fa fa-hand-o-up"></i> Drag between list</p>
+                    <ul ui-sortable="sortableOptions" class="sortable-list connectList" ng-model="AvailableUsers">                        
+                        <li style="display: inline-block;" ng-class="" ng-repeat="user in AvailableUsers">                                               
+                           <a href="#"><img alt="member" class="img-circle" src="{{user.img}}"></a>                                                    
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+         <div class="modal-footer">        
+        <button type="button" class="btn btn-primary" ng-click="save()">Save changes</button>
+    </div>
+    </div>

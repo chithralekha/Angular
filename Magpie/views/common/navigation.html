@@ -1,0 +1,90 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul side-navigation class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+
+                <div class="profile-element" uib-dropdown ng-controller="userProfile">
+                    <img alt="image" class="img-circle" src="img/RobProfile_TaskBoard.png"/>
+                    <a uib-dropdown-toggle href>
+                            <span class="clear">
+                                <span class="block m-t-xs">
+                                    <strong class="font-bold">{{userName}}</strong>
+                             </span>
+                                <span class="text-muted text-xs block">Director Of Product Development <b class="caret"></b></span>
+                            </span>
+                    </a>
+                    <ul uib-dropdown-menu class="animated fadeInRight m-t-xs">
+                        <li><a ui-sref="app.profile">Profile</a></li>
+                        <li class="divider"></li>
+                        <li><a ui-sref="login">Logout</a></li>
+                    </ul>
+                </div>
+                <div class="logo-element">
+                    Altius+
+                </div>
+            </li>
+            <li ng-class="{active: $state.includes('dashboards')}">
+                <a href="index.html"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">{{ 'DASHBOARD' | translate }}</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('dashboards')}">                    
+                    <li ui-sref-active="active"><a ui-sref="dashboards.dashboard_2">{{ 'Compliance Trend' | translate }}</a></li>
+                    <li ui-sref-active="active"><a ui-sref="dashboards.dashboard_1">{{ 'RACI Performance' | translate }}</a></li>
+                    <li ui-sref-active="active"><a ui-sref="dashboards.dashboard_3">{{ 'Workload Balancing' | translate }}</a></li>
+                    <li ui-sref-active="active"><a ui-sref="dashboards.dashboard_4_1">{{ 'Cyber Security Performance' | translate }}</a></li>
+                    <li ng-controller="oldMagpieApp" ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=Operations&c=Dashboard">{{ 'Operations' | translate }}<span class="label label-primary pull-right">NEW</span></a></li>
+                </ul>
+            </li>
+            <li ng-class="{active: $state.includes('miscellaneous')}">
+                <a href="#"><i class="fa fa-tasks"></i> <span class="nav-label">{{ 'Task Board' | translate }}</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('miscellaneous')}" ng-controller="businessControlProfile">
+                    <li ng-class="navClass(item)" ng-repeat="item in BusinessControlProfileList"><a ui-sref="miscellaneous.task_board({filterText: 1, bcp: item.WorkingSetId})">{{item.Name}}</a></li>              
+                </ul>
+                <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('miscellaneous')}" ng-controller="sideBar">
+                    <li><a href="#">Filters
+                        <span class="fa arrow"></a></span>
+                                 <ul class="nav nav-third-level collapse" ng-model = "FiltersList1">
+                                     <li ng-class="navClass(filter)" ng-repeat="filter in FiltersList1"><a ui-sref="{filterText: filter.FilterId}">{{filter.FilterName}}
+                                         <span class="badge" style="margin-left:2em; float:right">{{numberOfTasksByFilterName(filter)}}</span>
+                                         </a></li>                                    
+                                </ul>                                   
+                            </li>
+                        </ul>
+            </li><li ng-controller="oldMagpieApp">
+                <a href=""><i class="fa fa-sitemap"></i> <span class="nav-label">{{ 'Operations' | translate }}</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li >
+                        <a href=""><i class="fa fa-gear"></i><span class="nav-label">{{ 'Operations' | translate }}</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                           <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=UserTasks&c=TaskList">{{ 'TaskList' | translate }}</a></li>
+                            <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=CrisisManagement&c=Index">{{ 'Crisis Management' | translate }}</a></li>
+                            <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=DocumentRepository&c=Index">{{ 'Document Repository' | translate }}</a></li>
+                             <li ui-sref-active="active"><a ui-sref="design.teams_board">RACI Team</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                <a href=""><i class="fa fa-th-large"></i> <span class="nav-label">{{ 'Design' | translate }}</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">                    
+                    <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=WorkingSetTemplates&c=Index">{{ 'Group Control Profiles' | translate }}</a></li>
+                    <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=WorkingSets&c=Index">{{ 'Business Control Profiles' | translate }}</a></li>
+                     <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=ControlSets&c=Index">{{ 'Control Catalogs' | translate }}</a></li>
+                     <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=NistControls&c=Index">{{ 'Nist Controls' | translate }}</a></li>
+                     <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=TaskDefinitions&c=Index">{{ 'Customise Task Definitions' | translate }}</a></li>
+                     <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=Processes&c=Index">{{ 'Business Processes' | translate }}</a></li>
+                     <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=Assets&c=Index">{{ 'Assets' | translate }}</a></li>
+                     <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=SupportSystems&c=Index">{{ 'Business Support Systems' | translate }}</a></li>
+                </ul>
+                </li>
+                    <li>
+                <a href=""><i class="fa fa-wrench"></i> <span class="nav-label">{{ 'Admin' | translate }}</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">                    
+                    <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=Home&c=Contact">{{ 'Contact' | translate }}</a></li>
+                    <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=Log&c=Logs">{{ 'Logs' | translate }}</a></li>
+                     <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=UserManagement&c=Index">{{ 'Manage Users' | translate }}</a></li>
+                     <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=Notifications&c=DisplayNotifications">{{ 'Notifications' | translate }}</a></li>
+                     <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=Raciteams&c=Index">{{ 'RACI Teams' | translate }}</a></li>          
+                </ul>
+                </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>

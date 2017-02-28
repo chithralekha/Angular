@@ -12,9 +12,14 @@
         'ngSanitize',                    // ngSanitize
         'ngResource'
     ])
+        .constant('Config', {
+          baseURL : 'http://localhost:3706/api/',
+          authURL : 'http://development.pyinagztvy.us-west-2.elasticbeanstalk.com/oauth/token',
+          oldMagpieBaseURL : 'http://magpie-sandbox.azurewebsites.net/Landing/index?n='
+        })
         .constant("baseURL", "http://localhost:3706/api/")
-        .service('filterService', ['$resource', 'baseURL', function ($resource, baseURL) {
-            var filterList = $resource(baseURL + 'Filters').query(),
+        .service('filterService', ['$resource', 'baseURL','Config', function ($resource, baseURL, Config) {
+            var filterList = $resource(Config.baseURL + 'Filters').query(),
                 count = 0,
                 addFilter = function (newObj) {
                     filterList.push(newObj);
@@ -72,8 +77,8 @@
 //            
 //     };
 //    })
-        .service('responsibleUserService', ['$resource', 'baseURL', function ($resource, baseURL) {
-            var userList = $resource(baseURL + 'Users', null, {
+        .service('responsibleUserService', ['$resource', 'baseURL', 'Config', function ($resource, baseURL, Config) {
+            var userList = $resource(Config.baseURL + 'Users', null, {
                 query: {
                     method: 'GET',
                     transformResponse: function (data) {
@@ -150,9 +155,9 @@
                 }
             };
         }])
-        .service('dataService', ['$http', '$interpolate', 'baseURL', function ($http, $interpolate, baseURL) {
+        .service('dataService', ['$http', '$interpolate', 'baseURL', 'Config', function ($http, $interpolate, baseURL, Config) {
             this.getData = function (workingSetId, filterId) {
-                var exp = $interpolate(baseURL + 'WorkingSets/{{WorkingSetId}}/Tasks?filterId={{FilterId}}', false, null, true),
+                var exp = $interpolate(Config.baseURL + 'WorkingSets/{{WorkingSetId}}/Tasks?filterId={{FilterId}}', false, null, true),
                     url = exp({ WorkingSetId: workingSetId, FilterId : filterId}),
                     promise;
                 promise = $http.get(url);
@@ -163,10 +168,10 @@
             };
         }])
         
-        .service('filterWebAPIService', ['$http', 'baseURL', function ($http, baseURL) {
+        .service('filterWebAPIService', ['$http', 'baseURL', 'Config', function ($http, baseURL, Config) {
             this.getData = function () {
                 var  promise;
-                promise = $http.get(baseURL + 'Filters');
+                promise = $http.get(Config.baseURL + 'Filters');
                 return promise.then(function (data) {
                     //  alert(data);
                     return data;
@@ -176,10 +181,10 @@
             
         }])
         
-        .service('workingSetWebAPIService', ['$http', '$interpolate', 'baseURL', function ($http, $interpolate, baseURL) {
+        .service('workingSetWebAPIService', ['$http', '$interpolate', 'baseURL', 'Config', function ($http, $interpolate, baseURL, Config) {
             this.getData = function () {
                 var  promise;
-                promise = $http.get(baseURL + 'WorkingSets');
+                promise = $http.get(Config.baseURL + 'WorkingSets');
                 return promise.then(function (data) {
                     //  alert(data);
                     return data;
@@ -209,7 +214,7 @@
             
         }])
     
-        .service('tasksService', ['$resource', 'baseURL', function ($resource, baseURL) {
+        .service('tasksService', ['$resource', 'baseURL', 'Config', function ($resource, baseURL, Config) {
             var tasksList = [{
                 TaskCategory: 'CompletedUserTasks',
                 Tasks : [
@@ -614,7 +619,7 @@
                 return value + (tail || ' …');
             };
         })
-        .service('userService', ['$http', function ($http) {
+        .service('userService', ['$http', 'Config', function ($http, Config) {
   
             function NoAuthenticationException(message) {
                 this.name = 'AuthenticationRequired';
@@ -735,7 +740,7 @@
                     }         
   
                 // http://localhost:50443
-                $http.post('http://development.pyinagztvy.us-west-2.elasticbeanstalk.com/oauth/token', data, config)
+                $http.post(Config.authURL, data, config)
                     .then(function(data) {
                         if (data != null) {
                             userReturnData = data.data;              

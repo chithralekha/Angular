@@ -2627,7 +2627,7 @@ function userProfile($scope,userService) {
 /**
  * oldMagpieApp - Controller for Old Magpie App
  */
-function oldMagpieApp($scope) {
+function oldMagpieApp($scope,Config) {
     var userName;
     
     if (!angular.isUndefined($scope.userName))
@@ -2645,7 +2645,7 @@ function oldMagpieApp($scope) {
             }
         }    
     }        
-    $scope.oldMagpieBaseLink ="http://magpie-sandbox.azurewebsites.net/Landing/index?n=" + userName + "&id=B1AB60A1-BB56-4CC3-B4A2-85833C278C08";
+    $scope.oldMagpieBaseLink = Config.oldMagpieBaseURL + userName + "&id=B1AB60A1-BB56-4CC3-B4A2-85833C278C08";
 }
 
 
@@ -2843,7 +2843,7 @@ function raciTeam($scope, $http,$uibModal,$stateParams,filterService,$filter,tas
 /**
  * agileBoard - Controller for agile Board view
  */
-function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter,filterWebAPIService,plotterSrv,$interpolate,responsibleUserService,baseURL) {
+function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter,filterWebAPIService,plotterSrv,$interpolate,responsibleUserService,baseURL, Config) {
     $scope.onSelected = function (selectedItem) {
         //do selectedItem.PropertyName like selectedItem.Name or selectedItem.Key
         //whatever property your list has.
@@ -2879,7 +2879,7 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
     };
     $scope.ok = function(){
         //alert($scope.DialogTask.Id);
-        var exp = $interpolate(baseURL + 'Tasks/{{Id}}', false, null, true),
+        var exp = $interpolate(Config.baseURL + 'Tasks/{{Id}}', false, null, true),
             url = exp({Id: $scope.DialogTask.Id});
         $scope.DialogTask.RaciTeam.ResponsibleUser.Id =  $scope.Id;
         // alert($scope.DialogTask.RaciTeam.ResponsibleUser.Id);
@@ -3011,7 +3011,7 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
 /**
  * taskBoard - Controller for task_board view
  */
-function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filter, tasksService, dataService, workingSetWebAPIService, $interpolate, responsibleUserService,baseURL) {
+function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filter, tasksService, dataService, workingSetWebAPIService, $interpolate, responsibleUserService,baseURL, Config) {
     
     this.daterange = { startDate : null, endDate : null };
     $scope.Filters=filterService.getFilters();
@@ -3071,7 +3071,7 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
     
     $scope.openTaskDetailsDialog = function (task) {
         
-        var exp = $interpolate(baseURL + 'Tasks/{{Id}}', false, null, true),
+        var exp = $interpolate(Config.baseURL + 'Tasks/{{Id}}', false, null, true),
             url = exp({Id: task.Id});
         $http.get(url).then (function(response) {
             $scope.DialogTask = response.data;
@@ -3146,7 +3146,7 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
             "WorkingSetId": null
         };
         //filterService.addFilter(dataObj);
-        var res = $http.post(baseURL + 'Filters', dataObj);
+        var res = $http.post(Config.baseURL + 'Filters', dataObj);
         console.log('result...',res);
         res.then(function(data) {
             $scope.message = data;
@@ -3245,7 +3245,7 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
                     itemdata = $scope.completedList[toIndex];
                     //alert(itemdata.Id);
                 }
-                var exp = $interpolate(baseURL + 'Tasks/{{Id}}', false, null, true),
+                var exp = $interpolate(Config.baseURL + 'Tasks/{{Id}}', false, null, true),
                     url = exp({Id: itemdata.Id});
                 $http.get(url).then (function(response) {
                     itemdata = response.data;

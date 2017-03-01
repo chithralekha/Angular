@@ -13,7 +13,7 @@
         'ngResource'
     ])
         .constant('Config', {
-            baseURL : 'http://localhost:3706/api/',
+            baseURL : 'http://magpie-sandbox-api.us-west-2.elasticbeanstalk.com/api/',
             authURL : 'http://development.pyinagztvy.us-west-2.elasticbeanstalk.com/oauth/token',
             oldMagpieBaseURL : 'http://magpie-sandbox.azurewebsites.net/Landing/index?n='
         })
@@ -737,7 +737,7 @@
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                         }
-                    }         
+                    };         
   
                 // http://localhost:50443
                 $http.post(Config.authURL, data, config)

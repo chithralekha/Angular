@@ -3279,13 +3279,18 @@ function loginCtrl($scope, $http, $state, userService) {
     $scope.persist = true;
     $scope.errors = [];
     
-
    var userData = {
       isAuthenticated: false,
       username: '',
       bearerToken: '',
       expirationDate: null,
     };
+    
+    if ($state.$current.url.source == "/logout")
+    {
+        sessionStorage.userData = null;
+        userService.removeAuthentication();        
+    }        
     
     $scope.login = function() {         
         disableLoginButton();         

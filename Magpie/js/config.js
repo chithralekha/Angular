@@ -726,6 +726,11 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
             templateUrl: "views/login.html",
             data: { pageTitle: 'Login', specialClass: 'login-bg' }
         })
+       .state('logout', {
+            url: "/logout",
+            templateUrl: "views/login.html",
+            data: { pageTitle: 'Login', specialClass: 'login-bg' }
+        })
         .state('login_two_columns', {
             url: "/login_two_columns",
             templateUrl: "views/login_two_columns.html",

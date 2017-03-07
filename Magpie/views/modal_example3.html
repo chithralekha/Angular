@@ -1,27 +1,16 @@
 <div class="inmodal">
     <div class="modal-header">
-        <button type="button" class="close" ng-click="cancel()">X</button>       
-         <input type="text" class="form-control" name="FilterName" placeholder="Enter Filter Name" ng-model="filterTextFilterName" required />
+        <button type="button" class="close" ng-click="cancel()">X</button>
+        <input type="text" class="form-control" name="FilterName" placeholder="Enter Filter Name" ng-model="filterTextFilterName" required />
+    </div> <div class="modal-body">
+    <div class="form-group">
+        <button type="button" class="btn btn-sm btn-info" ng-click="ok()">Save <i class="fa fa-save"></i></button>
+        <button type="button" class="btn btn-sm btn-info hidden" data-toggle="collapse" data-target="#filterDetail">Manage Filter  <i class="fa fa-wrench"></i></button>
     </div>
-<!--
-    <div class="modal-body">
-        <label for="Name">Title</label> <input type="text" class="form-control" name="Name" placeholder="Title" ng-model="filterTextName" required /> <br>
-        <label for="Due Status">Due Status</label> <input type="text" class="form-control" name="DueStatus" placeholder="Due Status" ng-model="filterTextDueStatus" required /> <br>
-        <label for="Assigned To">Assigned To</label> <input type="text" class="form-control" name="AsignTo" placeholder="Asign To" ng-model="filterTextAssignedTo" required /> <br>
-        <label for="Working Set">Working Set </label><input type="text" class="form-control" name="WorkingSet" placeholder="Working Set" ng-model="filterTextWorkingSet" required /> <br>
-        <label for="Nist Control Family">Nist Control Family</label><input type="text" class="form-control" name="NistCF" placeholder="NistCF" ng-model="filterTextNistCF" required /> <br>
-        <label for="Nist Baseline">Nist Baseline</label><input type="text" class="form-control" name="NistBaseline" placeholder="NistBaseline" ng-model="filterTextNistBaseline" required /><br>           
-       <br>
-    </div>    
--->
-    <div class="modal-body">
-        <div class="form-group">
-                    <button type="button" class="btn btn-sm btn-info" ng-click="ok()">Save <i class="fa fa-save"></i></button>
-                    <button type="button" class="btn btn-sm btn-info hidden" data-toggle="collapse" data-target="#filterDetail">Manage Filter  <i class="fa fa-wrench"></i></button>
-        </div>         
     </div>
-    <div class="modal-footer hidden">        
+    <div class="modal-footer hidden">
     </div>
+    
 </div>
   
 <div class="wrapper wrapper-content animated fadeInRight ecommerce hidden">

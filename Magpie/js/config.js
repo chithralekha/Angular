@@ -57,7 +57,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                         {
                             files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
                         },
-                        {
+                        {                                  
                             name: 'oitozero.ngSweetAlert',
                             files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
                         }
@@ -135,7 +135,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
             url: "/dashboards_top",
             templateUrl: "views/common/content_top_navigation.html",
         })
-        .state('dashboards_top.dashboard_4', {
+        .state('dashboards.dashboard_4', {
             url: "/dashboard_4",
             templateUrl: "views/dashboard_4.html",
             data: { pageTitle: 'Cyber Security Performance' },

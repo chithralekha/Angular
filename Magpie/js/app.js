@@ -13,7 +13,7 @@
         'ngResource'
     ])
         .constant('Config', {
-            baseURL : 'http://magpie-sandbox-api.us-west-2.elasticbeanstalk.com/api/',
+            baseURL : 'http://52.39.50.39/MagpieAPI/api/',
             authURL : 'http://development.pyinagztvy.us-west-2.elasticbeanstalk.com/oauth/token',
             oldMagpieBaseURL : 'http://magpie-sandbox.azurewebsites.net/Landing/index?n='
         })

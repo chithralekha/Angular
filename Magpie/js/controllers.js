@@ -1633,18 +1633,20 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
         //alert(filterService.getFilters());
         $uibModalInstance.close();
     };
-    $scope.ok = function(){
+    $scope.ok = function() {
         //alert($scope.DialogTask.Id);
         var exp = $interpolate(Config.baseURL + 'Tasks/{{Id}}', false, null, true),
             url = exp({Id: $scope.DialogTask.Id});
-        if(angular.isUndefined($scope.DialogTask.RaciTeam.ResponsibleUser) || $scope.DialogTask.RaciTeam.ResponsibleUser == null)
-                 $scope.DialogTask.RaciTeam.ResponsibleUser = {
-                     Id : $scope.Id
-                 }; 
-            else { 
-                $scope.DialogTask.RaciTeam.ResponsibleUser.Id = $scope.Id;
+        if(angular.isUndefined($scope.DialogTask.RaciTeam.ResponsibleUser) || $scope.DialogTask.RaciTeam.ResponsibleUser == null) {
+            if ($scope.Id != 0) {
+                $scope.DialogTask.RaciTeam.ResponsibleUser = {
+                    Id : $scope.Id
+                };
             }
-       // $scope.DialogTask.RaciTeam.ResponsibleUser.Id =  $scope.Id;
+        } else {
+            $scope.DialogTask.RaciTeam.ResponsibleUser.Id = $scope.Id;
+        }
+        // $scope.DialogTask.RaciTeam.ResponsibleUser.Id =  $scope.Id;
         // alert($scope.DialogTask.RaciTeam.ResponsibleUser.Id);
         // alert($scope.Id);
         if($scope.SelectedStateId == 2) {
@@ -1660,6 +1662,7 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
 //        alert($scope.DialogTask.TaskState.Id);
 //        alert($scope.DialogTask.RaciTeam.ResponsibleUser.Id);
 //        alert( $scope.ResponsibleUserListDialog.selected.Id);
+        
         var res = $http.put(url,$scope.DialogTask);
         console.log('result...',res);
 		res.then(function(data) {
@@ -1669,16 +1672,17 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
                 if (item.Id == $scope.DialogTask.Id) {
                     item.Title = $scope.DialogTask.Title;
                     if(angular.isUndefined(item.ResponsibleUser) || item.ResponsibleUser == null)
-                item.ResponsibleUser = {
-                     Id : $scope.DialogTask.RaciTeam.ResponsibleUser.Id
-                 }; 
-            else { 
-                item.ResponsibleUser.Id = $scope.DialogTask.RaciTeam.ResponsibleUser.Id;
-            }
-//                    item.ResponsibleUser.Id = $scope.DialogTask.RaciTeam.ResponsibleUser.Id;
-                    item.ResponsibleUser.FirstName = $scope.FirstName;
-                    //alert(item.ResponsibleUser.FirstName); //alert($scope.DialogTask.RaciTeam.ResponsibleUser.FirstName); //alert($scope.DialogTask.RaciTeam.ResponsibleUser.Id);
-                    item.ResponsibleUser = $scope.SelectedUser;
+                        if ($scope.Id != 0) { 
+                            item.ResponsibleUser = {
+                                Id : $scope.DialogTask.RaciTeam.ResponsibleUser.Id
+                            };
+                            item.ResponsibleUser.FirstName = $scope.FirstName;
+                            item.ResponsibleUser = $scope.SelectedUser;
+                        } else {
+                            item.ResponsibleUser.Id = $scope.DialogTask.RaciTeam.ResponsibleUser.Id;
+                        }
+                    //item.ResponsibleUser.Id = $scope.DialogTask.RaciTeam.ResponsibleUser.Id;                    
+                    //alert(item.ResponsibleUser.FirstName); //alert($scope.DialogTask.RaciTeam.ResponsibleUser.FirstName); //alert($scope.DialogTask.RaciTeam.ResponsibleUser.Id);                    
                     item.TaskState.Id = $scope.DialogTask.TaskState.Id;
                     if(item.TaskState.Id == 2) {
                         $scope.inProgressList.push(item);
@@ -1699,12 +1703,15 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
                      item.Title = $scope.DialogTask.Title;
                    //  item.ResponsibleUser.Id = $scope.DialogTask.RaciTeam.ResponsibleUser.Id;
                      if(angular.isUndefined(item.ResponsibleUser) || item.ResponsibleUser == null)
-                item.ResponsibleUser = {
-                     Id : $scope.DialogTask.RaciTeam.ResponsibleUser.Id
-                 }; 
-            else { 
-                item.ResponsibleUser.Id = $scope.DialogTask.RaciTeam.ResponsibleUser.Id;
-            }
+                        if ($scope.Id != 0) { 
+                            item.ResponsibleUser = {
+                                Id : $scope.DialogTask.RaciTeam.ResponsibleUser.Id
+                            };
+                            item.ResponsibleUser.FirstName = $scope.FirstName;
+                            item.ResponsibleUser = $scope.SelectedUser;
+                        } else {
+                            item.ResponsibleUser.Id = $scope.DialogTask.RaciTeam.ResponsibleUser.Id;
+                        }
                      item.ResponsibleUser.FirstName = $scope.FirstName;
                      item.ResponsibleUser = $scope.SelectedUser;
                      item.TaskState.Id = $scope.DialogTask.TaskState.Id;
@@ -1726,12 +1733,15 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
                  if (item.Id == $scope.DialogTask.Id) {
                      item.Title = $scope.DialogTask.Title;
                      if(angular.isUndefined(item.ResponsibleUser) || item.ResponsibleUser == null)
-                item.ResponsibleUser = {
-                     Id : $scope.DialogTask.RaciTeam.ResponsibleUser.Id
-                 }; 
-            else { 
-                item.ResponsibleUser.Id = $scope.DialogTask.RaciTeam.ResponsibleUser.Id;
-            }
+                        if ($scope.Id != 0) { 
+                            item.ResponsibleUser = {
+                                Id : $scope.DialogTask.RaciTeam.ResponsibleUser.Id
+                            };
+                            item.ResponsibleUser.FirstName = $scope.FirstName;
+                            item.ResponsibleUser = $scope.SelectedUser;
+                        } else {
+                            item.ResponsibleUser.Id = $scope.DialogTask.RaciTeam.ResponsibleUser.Id;
+                        }
                    //  item.ResponsibleUser.Id = $scope.DialogTask.RaciTeam.ResponsibleUser.Id;
                      item.ResponsibleUser.FirstName = $scope.FirstName;
                      item.ResponsibleUser = $scope.SelectedUser;

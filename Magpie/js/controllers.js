@@ -1869,8 +1869,8 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
             url = exp({Id: task.Id});
         $http.get(url).then (function(response) {
             $scope.DialogTask = response.data;
-            alert($scope.DialogTask.RaciTeam.ResponsibleUser);
-            alert($scope.DialogTask.TaskState.Id);
+//            alert($scope.DialogTask.RaciTeam.ResponsibleUser);
+//            alert($scope.DialogTask.TaskState.Id);
            // console.log('dialogTask',$scope.DialogTask.RaciTeam.ResponsibleUser.FirstName);
             $scope.Filters = filterService.getFilters();
             console.log($scope.Filters);

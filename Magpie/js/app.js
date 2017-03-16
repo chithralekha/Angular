@@ -23,12 +23,12 @@
         'http://magpie-sandbox.azurewebsites.net/Landing/index?n='
         })
         .constant('USER_ROLES', {
-          all: '*',
-          admin: 'admin',
-          editor: 'editor',
-          guest: 'guest',
-        QlikDashboardUser: 'QlikDashboardUser',
-        OldTroutUser: 'OldTroutUser'
+            all : '*',
+            admin : 'admin',
+            editor : 'editor',
+            guest : 'guest',
+            QlikDashboardUser : 'QlikDashboardUser',
+            OldTroutUser : 'OldTroutUser'
         })
         .constant("baseURL", "http://localhost:3706/api/")
         .service('filterService', ['$resource', 'baseURL', 'Config', function ($resource, baseURL, Config) {
@@ -76,43 +76,30 @@
             };
 
         }])
-    .service('userService',['$resource', 'baseURL', 'Config', '$interpolate', function ($resource, baseURL, Config, $interpolate){
-         this.getUserData = function (bearerToken,userId) {
+        .service('userService', ['$resource', 'baseURL', 'Config', '$interpolate', function ($resource, baseURL, Config, $interpolate) {
+            this.getUserData = function (bearerToken, userId) {
                 var exp = $interpolate(Config.baseURL + 'CurrentUser/{{BearerToken}}}', false, null, true),
                     url = exp({ BearerToken: bearerToken}),
-                    promise;
-//                promise = $http.get(url);
-//                return promise.then(function (data) {
-//                    //  alert(data);
-//                    return data;
-//                });
-             var userRole;
-             if (userId === 'Rob')
-                 userRole = 'QlikDashboardUser';
-             else if (userId === 'Ed')
-                 userRole = 'OldTroutUser';
-             else
-                 userRole = 'admin';
-             var userData = {
-                 userRole : userRole 
-             }
-             return userData;
+                    promise,
+                //  promise = $http.get(url);
+                //  return promise.then(function (data) {
+                //  //  alert(data);
+                //  return data;
+                //   });
+                    userRole;
+                if (userId === 'Rob') {
+                    userRole = 'QlikDashboardUser';
+                } else if (userId === 'Ed') {
+                    userRole = 'OldTroutUser';
+                } else {
+                    userRole = 'admin';
+                }
+                var userData = {
+                    userRole : userRole
+                }
+                return userData;
             };
-    }])
-//        .service ('myhttpserv', function ($http) {
-//      var data = {};
-//      var url = "http://localhost:3706/api/Tasks";
-//      var promise = $http.get(url, { cache: true }).then(function (response) {
-//                data = response.data;
-//            });
-//      return data;
-//    })
-//    .service('dataService', function($http) {
-//      this.getData = function() {
-//      return  $http.get('http://localhost:3706/api/Tasks');
-//            
-//     };
-//    })
+        }])
         .service('responsibleUserService', ['$resource', 'baseURL', 'Config', function ($resource, baseURL, Config) {
             var userList = $resource(Config.baseURL + 'Users', null, {
                 query: {

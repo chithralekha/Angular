@@ -27,7 +27,8 @@
           admin: 'admin',
           editor: 'editor',
           guest: 'guest',
-        QlikDashboardUser: 'QlikDashboardUser'
+        QlikDashboardUser: 'QlikDashboardUser',
+        OldTroutUser: 'OldTroutUser'
         })
         .constant("baseURL", "http://localhost:3706/api/")
         .service('filterService', ['$resource', 'baseURL', 'Config', function ($resource, baseURL, Config) {
@@ -770,6 +771,8 @@
                             userData.expirationDate = new Date(userReturnData['.expires']);
                            if(username === 'Rob')
                                 userData.userRole = 'QlikDashboardUser';
+                            else if (username === 'Ed')
+                                userData.userRole = 'OldTroutUser';
                             else
                                 userData.userRole = 'admin';
                             if (persistData === true) {

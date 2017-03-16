@@ -34,7 +34,7 @@
                     <li ng-show= "isAuthorized(userRoles.QlikDashboardUser)" ui-sref-active="active"><a ui-sref="dashboards.dashboard_4">{{ 'RACI' | translate }}</a></li>
                     <li ng-show= "isAuthorized(userRoles.QlikDashboardUser)" ui-sref-active="active"><a ui-sref="dashboards.dashboard_3">{{ 'Due Date' | translate }}</a></li>
                     <li ng-show= "isAuthorized(userRoles.QlikDashboardUser)" ui-sref-active="active"><a ui-sref="dashboards.dashboard_4_1">{{ 'Performance' | translate }}</a></li>
-                    <li ng-controller="oldMagpieApp" ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=Operations&c=Dashboard">{{ 'Operations' | translate }}<span class="label label-primary pull-right">NEW</span></a></li>
+                    <li ng-show= "isAuthorized(userRoles.OldTroutUser)" ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=Operations&c=Dashboard">{{ 'Operations' | translate }}<span class="label label-primary pull-right">NEW</span></a></li>
                 </ul>
 <!--                <div ng-if="isAuthorized(userRoles.admin)">You're admin.</div>-->
             </li>
@@ -57,7 +57,7 @@
             </li>
             
             <!-- Links from Angular app to OldMagpie -->
-            <li ng-controller="oldMagpieApp">
+            <li ng-controller="userProfile" ng-show = "isAuthorized(userRoles.OldTroutUser)">
                 <a href=""><i class="fa fa-sitemap"></i> <span class="nav-label">{{ 'Operations' | translate }}</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
                     <!-- Operations -->

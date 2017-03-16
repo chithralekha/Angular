@@ -1362,7 +1362,7 @@ function chartJsCtrl() {
 /**
  * userProfile - Controller for User Profile
  */
-function userProfile($scope,userService,USER_ROLES) {
+function userProfile($scope,userService,USER_ROLES,Config) {
     var userData = null;
     if (sessionStorage.userData != null) {
         userData = JSON.parse(sessionStorage.userData);    
@@ -1390,6 +1390,7 @@ function userProfile($scope,userService,USER_ROLES) {
 //        alert(val);
                 return(userData.isAuthenticated && authorizedRoles.indexOf(userData.userRole) !== -1)
               };
+     $scope.oldMagpieBaseLink = Config.oldMagpieBaseURL + $scope.userName + "&id=B1AB60A1-BB56-4CC3-B4A2-85833C278C08";
 }
 
 /**
@@ -1413,7 +1414,7 @@ function oldMagpieApp($scope,Config) {
             }
         }    
     }        
-    $scope.oldMagpieBaseLink = Config.oldMagpieBaseURL + userName + "&id=B1AB60A1-BB56-4CC3-B4A2-85833C278C08";
+   
 }
 
 

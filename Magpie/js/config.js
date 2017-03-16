@@ -6,7 +6,7 @@
  * Initial there are written state for all view in theme.
  *
  */
-function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdleProvider, KeepaliveProvider) {
+function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdleProvider, KeepaliveProvider,USER_ROLES) {
 //    $httpProvider.defaults.headers.common = {};
 //    $httpProvider.defaults.headers.post = {};
 //    $httpProvider.defaults.headers.put = {};
@@ -28,6 +28,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
             abstract: true,
             url: "/dashboards",
             templateUrl: "views/common/content.html",
+            authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
         })
         .state('dashboards.dashboard_1', {
             url: "/dashboard_1",
@@ -63,7 +64,8 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                         }
                     ]);
                 }
-            }
+            },
+        authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
         })
         .state('dashboards.dashboard_2', {
             url: "/dashboard_2",

@@ -1379,13 +1379,16 @@ function userProfile($scope,userService,USER_ROLES) {
     }
     $scope.userName = userData.username; 
     $scope.userRoles = USER_ROLES;
-    sessionStorage.userData.userRole = 'admin';
+    $scope.userRole = userData.userRole;
+//    alert(sessionStorage.userData);
     $scope.isAuthorized = function (authorizedRoles) {
                 if (!angular.isArray(authorizedRoles)) {
                   authorizedRoles = [authorizedRoles];
                 }
-        alert(sessionStorage.userData.userRole);
-                return(userData.isAuthenticated)
+//        alert(userData.userRole);
+//        var val = userData.isAuthenticated && authorizedRoles.indexOf(userData.userRole) !== -1 ;
+//        alert(val);
+                return(userData.isAuthenticated && authorizedRoles.indexOf(userData.userRole) !== -1)
               };
 }
 
@@ -1481,7 +1484,7 @@ function businessControlProfile($scope, $http,$uibModal,$stateParams,filterServi
     $scope.WorkingSetList = workingSetWebAPIService.getData();
     $scope.WorkingSetList.then (function (response) {
         $scope.BusinessControlProfileList  = response.data;
-        alert($scope.BusinessControlProfileList);
+       // alert($scope.BusinessControlProfileList);
         console.log($scope.BusinessControlProfileList);
         $scope.navClass = function (bcp) {
         return bcp.WorkingSetId ==  $stateParams.bcp ? 'active' : '';

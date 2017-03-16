@@ -15,8 +15,8 @@
         .constant('Config', {
             baseURL : 
         //'http://magpie-sandbox-api.us-west-2.elasticbeanstalk.com/api/',
-        'http://magpie-qa-api.us-west-2.elasticbeanstalk.com/api/',
-       // 'http://52.39.50.39/MagpieAPI/api/',
+        //'http://magpie-qa-api.us-west-2.elasticbeanstalk.com/api/',
+         'http://52.39.50.39/MagpieAPI/api/',
             authURL : 'http://development.pyinagztvy.us-west-2.elasticbeanstalk.com/oauth/token',
             oldMagpieBaseURL : 
 //        'http://magpie-qa.azurewebsites.net/Landing/index?n='
@@ -658,7 +658,7 @@
                 username: '',
                 bearerToken: '',
                 expirationDate: null,
-                userRole: ''
+                userRole: 'admin'
             };
 
 //            var nextState = {
@@ -767,7 +767,11 @@
                             userData.isAuthenticated = true;
                             userData.username = username; //userReturnData.userName;
                             userData.bearerToken = userReturnData.access_token;
-                            userData.expirationDate = new Date(userReturnData['.expires']);                        
+                            userData.expirationDate = new Date(userReturnData['.expires']);
+                           if(username === 'Rob')
+                                userData.userRole = 'QlikDashboardUser';
+                            else
+                                userData.userRole = 'admin';
                             if (persistData === true) {
                                 saveData();
                             }

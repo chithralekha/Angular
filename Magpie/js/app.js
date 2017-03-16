@@ -76,6 +76,29 @@
             };
 
         }])
+    .service('userService',['$resource', 'baseURL', 'Config', '$interpolate', function ($resource, baseURL, Config, $interpolate){
+         this.getUserData = function (bearerToken,userId) {
+                var exp = $interpolate(Config.baseURL + 'CurrentUser/{{BearerToken}}}', false, null, true),
+                    url = exp({ BearerToken: bearerToken}),
+                    promise;
+//                promise = $http.get(url);
+//                return promise.then(function (data) {
+//                    //  alert(data);
+//                    return data;
+//                });
+             var userRole;
+             if (userId === 'Rob')
+                 userRole = 'QlikDashboardUser';
+             else if (userId === 'Ed')
+                 userRole = 'OldTroutUser';
+             else
+                 userRole = 'admin';
+             var userData = {
+                 userRole : userRole 
+             }
+             return userData;
+            };
+    }])
 //        .service ('myhttpserv', function ($http) {
 //      var data = {};
 //      var url = "http://localhost:3706/api/Tasks";
@@ -632,7 +655,7 @@
                 return value + (tail || ' …');
             };
         })
-        .service('userService', ['$http', 'Config',function ($http, Config) {
+        .service('authenticationService', ['$http', 'Config',function ($http, Config) {
   
             function NoAuthenticationException(message) {
                 this.name = 'AuthenticationRequired';

@@ -1362,7 +1362,7 @@ function chartJsCtrl() {
 /**
  * userProfile - Controller for User Profile
  */
-function userProfile($scope,userService,USER_ROLES,Config) {
+function userProfile($scope,authenticationService,USER_ROLES,Config,userService) {
     var userData = null;
     if (sessionStorage.userData != null) {
         userData = JSON.parse(sessionStorage.userData);    
@@ -1374,12 +1374,14 @@ function userProfile($scope,userService,USER_ROLES,Config) {
     }
     
     if (userData == null) {
-            userData = userService.getUserData();
+            userData = authenticationService.getUserData();
             sessionStorage.userData = JSON.stringify(userData);
     }
     $scope.userName = userData.username; 
     $scope.userRoles = USER_ROLES;
     $scope.userRole = userData.userRole;
+    $scope.currentUser = userService.getUserData(userData.bearerToken,userData.username);
+//    alert($scope.currentUser.userRole);
 //    alert(sessionStorage.userData);
     $scope.isAuthorized = function (authorizedRoles) {
                 if (!angular.isArray(authorizedRoles)) {
@@ -1388,7 +1390,7 @@ function userProfile($scope,userService,USER_ROLES,Config) {
 //        alert(userData.userRole);
 //        var val = userData.isAuthenticated && authorizedRoles.indexOf(userData.userRole) !== -1 ;
 //        alert(val);
-                return(userData.isAuthenticated && authorizedRoles.indexOf(userData.userRole) !== -1)
+                return(userData.isAuthenticated && authorizedRoles.indexOf($scope.currentUser.userRole) !== -1)
               };
      $scope.oldMagpieBaseLink = Config.oldMagpieBaseURL + $scope.userName + "&id=B1AB60A1-BB56-4CC3-B4A2-85833C278C08";
 }
@@ -2089,7 +2091,7 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
 }
 
 /* login Controller */
-function loginCtrl($scope, $http, $state, userService) {
+function loginCtrl($scope, $http, $state, authenticationService) {
     $scope.username = '';
     $scope.password = '';
     $scope.persist = true;
@@ -2106,7 +2108,7 @@ function loginCtrl($scope, $http, $state, userService) {
     if ($state.$current.url.source == "/logout")
     {
         sessionStorage.userData = null;
-        userService.removeAuthentication();        
+        authenticationService.removeAuthentication();        
     }        
     
     $scope.login = function() {         
@@ -2115,12 +2117,12 @@ function loginCtrl($scope, $http, $state, userService) {
         
        // goToMain();
         
-        userService.authenticate($scope.username, $scope.password, goToMain, loginError, false);          
+        authenticationService.authenticate($scope.username, $scope.password, goToMain, loginError, false);          
     }
         
     $scope.logout = function() {
         sessionStorage.userData = null;
-        userService.removeAuthentication();
+        authenticationService.removeAuthentication();
     }
         
     function goToMain() {

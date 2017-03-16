@@ -1362,7 +1362,7 @@ function chartJsCtrl() {
 /**
  * userProfile - Controller for User Profile
  */
-function userProfile($scope,userService) {
+function userProfile($scope,userService,USER_ROLES) {
     var userData = null;
     if (sessionStorage.userData != null) {
         userData = JSON.parse(sessionStorage.userData);    
@@ -1377,7 +1377,16 @@ function userProfile($scope,userService) {
             userData = userService.getUserData();
             sessionStorage.userData = JSON.stringify(userData);
     }
-    $scope.userName = userData.username;      
+    $scope.userName = userData.username; 
+    $scope.userRoles = USER_ROLES;
+    sessionStorage.userData.userRole = 'admin';
+    $scope.isAuthorized = function (authorizedRoles) {
+                if (!angular.isArray(authorizedRoles)) {
+                  authorizedRoles = [authorizedRoles];
+                }
+        alert(sessionStorage.userData.userRole);
+                return(userData.isAuthenticated)
+              };
 }
 
 /**
@@ -1472,6 +1481,7 @@ function businessControlProfile($scope, $http,$uibModal,$stateParams,filterServi
     $scope.WorkingSetList = workingSetWebAPIService.getData();
     $scope.WorkingSetList.then (function (response) {
         $scope.BusinessControlProfileList  = response.data;
+        alert($scope.BusinessControlProfileList);
         console.log($scope.BusinessControlProfileList);
         $scope.navClass = function (bcp) {
         return bcp.WorkingSetId ==  $stateParams.bcp ? 'active' : '';
@@ -2086,6 +2096,7 @@ function loginCtrl($scope, $http, $state, userService) {
       username: '',
       bearerToken: '',
       expirationDate: null,
+       userRole: ''
     };
     
     if ($state.$current.url.source == "/logout")

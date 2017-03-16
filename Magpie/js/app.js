@@ -13,9 +13,21 @@
         'ngResource'
     ])
         .constant('Config', {
-            baseURL : 'http://52.39.50.39/MagpieAPI/api/',
+            baseURL : 
+        //'http://magpie-sandbox-api.us-west-2.elasticbeanstalk.com/api/',
+        'http://magpie-qa-api.us-west-2.elasticbeanstalk.com/api/',
+       // 'http://52.39.50.39/MagpieAPI/api/',
             authURL : 'http://development.pyinagztvy.us-west-2.elasticbeanstalk.com/oauth/token',
-            oldMagpieBaseURL : 'http://magpie-sandbox.azurewebsites.net/Landing/index?n='
+            oldMagpieBaseURL : 
+//        'http://magpie-qa.azurewebsites.net/Landing/index?n='
+        'http://magpie-sandbox.azurewebsites.net/Landing/index?n='
+        })
+        .constant('USER_ROLES', {
+          all: '*',
+          admin: 'admin',
+          editor: 'editor',
+          guest: 'guest',
+        QlikDashboardUser: 'QlikDashboardUser'
         })
         .constant("baseURL", "http://localhost:3706/api/")
         .service('filterService', ['$resource', 'baseURL', 'Config', function ($resource, baseURL, Config) {
@@ -619,7 +631,7 @@
                 return value + (tail || ' …');
             };
         })
-        .service('userService', ['$http', 'Config', function ($http, Config) {
+        .service('userService', ['$http', 'Config',function ($http, Config) {
   
             function NoAuthenticationException(message) {
                 this.name = 'AuthenticationRequired';
@@ -645,7 +657,8 @@
                 isAuthenticated: false,
                 username: '',
                 bearerToken: '',
-                expirationDate: null
+                expirationDate: null,
+                userRole: ''
             };
 
 //            var nextState = {
@@ -685,7 +698,13 @@
                     setHttpAuthHeader();
                 }
             }       
-
+            isAuthorized = function (authorizedRoles) {
+                if (!angular.isArray(authorizedRoles)) {
+                  authorizedRoles = [authorizedRoles];
+                }
+                
+                return true;
+              };
             isAuthenticated = function () {
                 if (userData.isAuthenticated && !isAuthenticationExpired(userData.expirationDate)) {
                     return true;
@@ -703,6 +722,7 @@
                 userData.username = '';
                 userData.bearerToken = '';
                 userData.expirationDate = null;
+                userData.userRole = '';
             }
 
 //            getNextState = function () {

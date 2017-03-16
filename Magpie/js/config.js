@@ -202,6 +202,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 }
             }
         })
+       
         .state('login', {
             url: "/login",
             templateUrl: "views/login.html",
@@ -232,11 +233,37 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
             templateUrl: "views/forgot_password.html",
             data: { pageTitle: 'Forgot password', specialClass: 'gray-bg' }
         })
-        .state('ui', {
+        
+        .state('miscellaneous', {
             abstract: true,
-            url: "/ui",
+            url: "/miscellaneous",
             templateUrl: "views/common/content.html",
         })
+        .state('miscellaneous.google_maps', {
+            url: "/google_maps",
+            templateUrl: "views/google_maps.html",
+            data: { pageTitle: 'Google maps' },
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            name: 'ui.event',
+                            files: ['js/plugins/uievents/event.js']
+                        },
+                        {
+                            name: 'ui.map',
+                            files: ['js/plugins/uimaps/ui-map.js']
+                        },
+                    ]);
+                }
+            }
+        })
+        .state('design', {
+            abstract: true,
+            url: "/design",
+            templateUrl: "views/common/content.html",
+        })
+        
          .state('design.teams_board', {
             url: "/teams_board",
             templateUrl: "views/teams_board.html",

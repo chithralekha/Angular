@@ -1617,38 +1617,13 @@ function raciTeam($scope, $http,$uibModal,$stateParams,filterService,$filter,tas
  */
 function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter,filterWebAPIService,plotterSrv,$interpolate,responsibleUserService,baseURL, Config) {
     $scope.onSelected = function (selectedItem) {
-        //do selectedItem.PropertyName like selectedItem.Name or selectedItem.Key
-        //whatever property your list has.
-        //alert(selectedItem.FirstName);
         $scope.SelectedUser = selectedItem;
         $scope.Id = selectedItem.Id;
         $scope.FirstName = selectedItem.FirstName;
     }
     $scope.update = function (item) {
         $scope.SelectedStateId = item;
-        //alert($scope.SelectedStateId);
     }
-    $scope.ok1 = function () {
-        //alert('Modal Close');
-        var found = $filter('findFilterByName')($scope.Filters, $scope.filterTextFilterName);
-        var item = {
-            FilterName : $scope.filterTextFilterName,
-            Params : {
-                Name : $scope.filterTextName,
-                DueStatus : $scope.filterTextDueStatus,
-                AssignedTo : $scope.filterTextAssignedTo,
-                WorkingSet : $scope.filterTextWorkingSet,
-                NistControlFamily : $scope.filterTextNistCF,
-                NistBaseline : $scope.filterTextNistBaseline
-            }
-        };
-        //alert(item.Params.DueStatus);
-        if(angular.isUndefined(found) || found === null || found === 'NoFilter')
-            filterService.addFilter(item);
-        else filterService.editFilter(item);
-        //alert(filterService.getFilters());
-        $uibModalInstance.close();
-    };
     $scope.ok = function() {
         //alert($scope.DialogTask.Id);
         var exp = $interpolate(Config.baseURL + 'Tasks/{{Id}}', false, null, true),
@@ -1659,12 +1634,8 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
                     Id : $scope.Id
                 };
             }
-        } else {
-            $scope.DialogTask.RaciTeam.ResponsibleUser.Id = $scope.Id;
-        }
-        // $scope.DialogTask.RaciTeam.ResponsibleUser.Id =  $scope.Id;
-        // alert($scope.DialogTask.RaciTeam.ResponsibleUser.Id);
-        // alert($scope.Id);
+        } else { $scope.DialogTask.RaciTeam.ResponsibleUser.Id = $scope.Id;
+               }
         if($scope.SelectedStateId == 2) {
             $scope.DialogTask.TaskState.Id = 2;
         }
@@ -1674,21 +1645,16 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
         else if($scope.SelectedStateId == 3) {
             $scope.DialogTask.TaskState.Id = 3;
         }
-//        alert($scope.SelectedStateId);
-//        alert($scope.DialogTask.TaskState.Id);
-//        alert($scope.DialogTask.RaciTeam.ResponsibleUser.Id);
-//        alert( $scope.ResponsibleUserListDialog.selected.Id);
-        
         var res = $http.put(url,$scope.DialogTask);
         console.log('result...',res);
-		res.then(function(data) {
+        res.then(function(data) {
             console.log('data...',data.data);
             //alert(data.data);
             angular.forEach($scope.todoList, function (item) {
                 if (item.Id == $scope.DialogTask.Id) {
                     item.Title = $scope.DialogTask.Title;
                     if(angular.isUndefined(item.ResponsibleUser) || item.ResponsibleUser == null)
-                        if ($scope.Id != 0) { 
+                        if ($scope.Id != 0) {
                             item.ResponsibleUser = {
                                 Id : $scope.DialogTask.RaciTeam.ResponsibleUser.Id
                             };

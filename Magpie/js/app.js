@@ -13,14 +13,9 @@
         'ngResource'
     ])
         .constant('Config', {
-            baseURL : 
-        //'http://magpie-sandbox-api.us-west-2.elasticbeanstalk.com/api/',
-        //'http://magpie-qa-api.us-west-2.elasticbeanstalk.com/api/',
-         'http://52.39.50.39/MagpieAPI/api/',
+            baseURL : 'http://52.39.50.39/MagpieAPI/api/',
             authURL : 'http://development.pyinagztvy.us-west-2.elasticbeanstalk.com/oauth/token',
-            oldMagpieBaseURL : 
-//        'http://magpie-qa.azurewebsites.net/Landing/index?n='
-        'http://magpie-sandbox.azurewebsites.net/Landing/index?n='
+            oldMagpieBaseURL : 'http://magpie-sandbox.azurewebsites.net/Landing/index?n='
         })
         .constant('USER_ROLES', {
             all : '*',

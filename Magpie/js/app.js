@@ -23,7 +23,8 @@
             editor : 'editor',
             guest : 'guest',
             QlikDashboardUser : 'QlikDashboardUser',
-            OldTroutUser : 'OldTroutUser'
+            OldTroutUser : 'OldTroutUser',
+            MagpieLiteTaskBoardUser : 'MagpieLiteTaskBoardUser'
         })
         .constant("baseURL", "http://localhost:3706/api/")
         .service('filterService', ['$resource', 'baseURL', 'Config', function ($resource, baseURL, Config) {
@@ -90,6 +91,7 @@
                     userRoles.push('OldTroutUser');
                 } else {
                     userRoles.push('admin');
+                    userRoles.push('MagpieLiteTaskBoardUser');
                 }
                 var userData = {
                     userRoles : userRoles

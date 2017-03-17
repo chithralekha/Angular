@@ -1399,7 +1399,7 @@ function userProfile($scope,authenticationService,USER_ROLES,Config,userService)
                 }
             });
         }
-        alert(isAuthorizedUser);
+        //alert(isAuthorizedUser);
         return(isAuthorizedUser)
     };
     $scope.oldMagpieBaseLink = Config.oldMagpieBaseURL + $scope.userName + "&id=B1AB60A1-BB56-4CC3-B4A2-85833C278C08";

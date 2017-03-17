@@ -1377,6 +1377,7 @@ function userProfile($scope,authenticationService,USER_ROLES,Config,userService)
             userData = authenticationService.getUserData();
             sessionStorage.userData = JSON.stringify(userData);
     }
+    
     $scope.userName = userData.username; 
     $scope.userRoles = USER_ROLES;    
     $scope.currentUser = userService.getUserData(userData.bearerToken,userData.username);
@@ -1856,19 +1857,23 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
     }
     
     $scope.openTaskDetailsDialog = function (task) {
-        
-        var exp = $interpolate(Config.baseURL + 'Tasks/{{Id}}', false, null, true),
-            url = exp({Id: task.Id});
-        $http.get(url).then (function(response) {
-            $scope.DialogTask = response.data;
-//            alert($scope.DialogTask.RaciTeam.ResponsibleUser);
-//            alert($scope.DialogTask.TaskState.Id);
-           // console.log('dialogTask',$scope.DialogTask.RaciTeam.ResponsibleUser.FirstName);
-            $scope.Filters = filterService.getFilters();
-            console.log($scope.Filters);
-            $scope.TaskStates = {};
-            $scope.TaskStates.Value = $scope.DialogTask.TaskState.Id;
-            $scope.TaskStates.Values = [
+        var defaultUser = {
+                Id : 0,
+                Email : ' ',
+                FirstName : 'Responsible User',
+                LastName : ' ',
+                UserName : ' '
+            };
+         $scope.ResponsibleUserListDialog = [];
+         responsibleUserService.getUsers().$promise.then(function (data) {
+                console.log('data...', data.length);
+                angular.forEach(data, function (item) {
+                    $scope.ResponsibleUserListDialog.push(item);
+                });
+            });            
+        $scope.ResponsibleUserListDialog.push(defaultUser);
+        $scope.TaskStates = {};
+        $scope.TaskStates.Values = [
                 {
                     Name : 'In Progress',
                     Value : 2
@@ -1881,21 +1886,37 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
                     Name : 'Completed',
                     Value : 3
                 }];
-            $scope.ResponsibleUserListDialog = [];
-            responsibleUserService.getUsers().$promise.then(function (data) {
-                console.log('data...', data.length);
-                angular.forEach(data, function (item) {
-                    $scope.ResponsibleUserListDialog.push(item);
-                });
-            });
-            var defaultUser = {
-                Id : 0,
-                Email : ' ',
-                FirstName : 'Responsible User',
-                LastName : ' ',
-                UserName : ' '
-            };
-            $scope.ResponsibleUserListDialog.push(defaultUser);
+           
+        if(angular.isUndefined(task) || task === null )
+            {
+                $scope.DialogTask = { 
+                    Id : 0,
+                    Code : 'AC-1.1',
+                    Title : '',
+                    ControlSet : null,
+                    DueStatus : {
+                        Id : 1,
+                        Status : 'On Time'
+                    }
+                    }
+                $scope.ResponsibleUserListDialog.selected = defaultUser;
+                $scope.TaskStates.Value = 1;
+            }
+        else {            
+        var exp = $interpolate(Config.baseURL + 'Tasks/{{Id}}', false, null, true),
+            url = exp({Id: task.Id});
+        $http.get(url).then (function(response) {
+            $scope.DialogTask = response.data;
+        
+//            alert($scope.DialogTask.RaciTeam.ResponsibleUser);
+//            alert($scope.DialogTask.TaskState.Id);
+           // console.log('dialogTask',$scope.DialogTask.RaciTeam.ResponsibleUser.FirstName);
+            $scope.Filters = filterService.getFilters();
+            console.log($scope.Filters);
+            
+            $scope.TaskStates.Value = $scope.DialogTask.TaskState.Id;
+            
+            
              if(angular.isUndefined($scope.DialogTask.RaciTeam.ResponsibleUser) || $scope.DialogTask.RaciTeam.ResponsibleUser == null)
                  $scope.ResponsibleUserListDialog.selected = defaultUser;
             else
@@ -1904,6 +1925,7 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
             $scope.ResponsibleUserListDialog.selected = $scope.DialogTask.RaciTeam.ResponsibleUser;
                 }
         });
+        }
         var modalInstance = $uibModal.open( {
             templateUrl : 'views/taskDetailAndEdit.html',
             size : 'lg',

@@ -1363,7 +1363,7 @@ function chartJsCtrl() {
  * userProfile - Controller for User Profile
  */
 function userProfile($scope,authenticationService,USER_ROLES,Config,userService) {
-    var userData = null;
+    var userData = null, isAuthorizedUser = false;
     if (sessionStorage.userData != null) {
         userData = JSON.parse(sessionStorage.userData);    
         if (userData != null) {
@@ -1378,21 +1378,31 @@ function userProfile($scope,authenticationService,USER_ROLES,Config,userService)
             sessionStorage.userData = JSON.stringify(userData);
     }
     $scope.userName = userData.username; 
-    $scope.userRoles = USER_ROLES;
-    $scope.userRole = userData.userRole;
+    $scope.userRoles = USER_ROLES;    
     $scope.currentUser = userService.getUserData(userData.bearerToken,userData.username);
+    $scope.currentUserRoles = $scope.currentUser.userRoles.join();
 //    alert($scope.currentUser.userRole);
 //    alert(sessionStorage.userData);
     $scope.isAuthorized = function (authorizedRoles) {
+        isAuthorizedUser = false;
                 if (!angular.isArray(authorizedRoles)) {
                   authorizedRoles = [authorizedRoles];
                 }
 //        alert(userData.userRole);
 //        var val = userData.isAuthenticated && authorizedRoles.indexOf(userData.userRole) !== -1 ;
 //        alert(val);
-                return(userData.isAuthenticated && authorizedRoles.indexOf($scope.currentUser.userRole) !== -1)
-              };
-     $scope.oldMagpieBaseLink = Config.oldMagpieBaseURL + $scope.userName + "&id=B1AB60A1-BB56-4CC3-B4A2-85833C278C08";
+  //      alert(authorizedRoles);
+        if(userData.isAuthenticated) {
+            angular.forEach($scope.currentUser.userRoles, function (item) {
+                if(authorizedRoles.indexOf(item) !== -1) {
+                    isAuthorizedUser = true;
+                }
+            });
+        }
+        alert(isAuthorizedUser);
+        return(isAuthorizedUser)
+    };
+    $scope.oldMagpieBaseLink = Config.oldMagpieBaseURL + $scope.userName + "&id=B1AB60A1-BB56-4CC3-B4A2-85833C278C08";
 }
 
 /**

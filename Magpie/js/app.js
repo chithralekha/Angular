@@ -81,16 +81,18 @@
                 //  //  alert(data);
                 //  return data;
                 //   });
-                    userRole;
+                    userRoles = [];
                 if (userId === 'Rob') {
-                    userRole = 'QlikDashboardUser';
+                    userRoles.push('QlikDashboardUser');
+                    userRoles.push('admin');
                 } else if (userId === 'Ed') {
-                    userRole = 'OldTroutUser';
+                    userRoles.push('admin');
+                    userRoles.push('OldTroutUser');
                 } else {
-                    userRole = 'admin';
+                    userRoles.push('admin');
                 }
                 var userData = {
-                    userRole : userRole
+                    userRoles : userRoles
                 }
                 return userData;
             };

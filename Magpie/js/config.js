@@ -27,8 +27,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
         .state('dashboards', {
             abstract: true,
             url: "/dashboards",
-            templateUrl: "views/common/content.html",
-            authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
+            templateUrl: "views/common/content.html"
         })
         .state('dashboards.dashboard_1', {
             url: "/dashboard_1",
@@ -64,8 +63,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                         }
                     ]);
                 }
-            },
-        authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
+            }
         })
         .state('dashboards.dashboard_2', {
             url: "/dashboard_2",

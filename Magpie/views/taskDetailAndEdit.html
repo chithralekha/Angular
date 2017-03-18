@@ -60,18 +60,7 @@
                                         <input type="text" class="form-control no-border" name="TaskDue" ng-model="DialogTask.Due"  placeholder="Task Due" formatted-date format="medium"/>
                                     </div>
                                 </div>
-                                <div class = "form-group hidden">
-                                    <label class = "col-md-4 control-label">Completed</label>
-                                    <div class = "col-md-6">
-                                        <input type="text" class="form-control no-border" name="Completed" ng-model="Task.Completed|date"  placeholder="Completed"/>
-                                    </div>
-                                </div>
-                                <div class = "form-group hidden">
-                                    <label class = "col-md-2 control-label">Created</label>
-                                    <div class = "col-md-10">
-                                        <input type="text" class="form-control no-border" name="Created" ng-model="Task.Created|date"  placeholder="Created" />
-                                    </div>
-                                </div>
+                                
                                 <div class = "form-group hidden">
                                     <label class = "col-md-2 control-label">Created By</label>
                                     <div class = "col-md-10">
@@ -84,12 +73,7 @@
                                         <input type="text" class="form-control no-border" name="Link" ng-model="DialogTask.Link"  placeholder="Link" />
                                     </div>
                                 </div>
-                                <div class = "form-group hidden">
-                                    <label class = "col-md-2 control-label" style="padding-top : 10px">Description</label>
-                                    <div class = "col-md-10">
-                                        <input type="text" class="form-control no-border" name="Decsription" ng-model="DialogTask.Description | cut:true:80:'   more...'"  placeholder="Description"/>
-                                    </div>
-                                </div>
+                                
                                 <div class = "form-group">
                                     <uib-accordion close-others="true">                                        
                                         <uib-accordion-group heading="Description" is-open="true">

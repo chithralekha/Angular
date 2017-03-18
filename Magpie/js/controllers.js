@@ -1837,9 +1837,13 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
     };
     
     $scope.taskDueStatus = function(task) {
-        switch(task.DueStatus.Status)
-        {
-            case 'Overdue' :
+        if(angular.isUndefined(task) || task === null)
+            {
+                return {'border-left': '10px solid #ed5565'};
+            } else {
+                switch(task.DueStatus.Status)
+                {
+                    case 'Overdue' :
                 return {'border-left': '10px solid #ed5565'};
                 break;
             case 'On Time' :
@@ -1849,6 +1853,7 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
                 return {'border-left': '10px solid #f8ac59'};
                 break;
         }
+            }
     };
     
     $scope.open=function(val)

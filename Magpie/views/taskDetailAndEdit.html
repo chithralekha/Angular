@@ -22,10 +22,9 @@
                 </ui-select>
             </div>
             <div class = "col-lg-2 pull-right">
-            <button type="button" class="btn btn-info pull-right" ng-click="ok()"><i class="fa fa-save"></i> Save</button></div>    
+            <button type="button" class="btn btn-info pull-right" ng-click="ok()"><i class="fa fa-save"></i> Save</button></div> 
         </div>
-        
-    </div>
+</div>
 </div>
 <div class="modal-body">
     <div class="row">
@@ -36,6 +35,7 @@
                         <uib-tab-heading>
                             <i class="fa fa-pencil"></i>
                         </uib-tab-heading>
+                        
                         <div class = "col-lg-6">   
                             <br>
                             <div class = "form-horizontal">                                
@@ -60,7 +60,6 @@
                                         <input type="text" class="form-control no-border" name="TaskDue" ng-model="DialogTask.Due"  placeholder="Task Due" formatted-date format="medium"/>
                                     </div>
                                 </div>
-                                
                                 <div class = "form-group hidden">
                                     <label class = "col-md-2 control-label">Created By</label>
                                     <div class = "col-md-10">
@@ -73,7 +72,6 @@
                                         <input type="text" class="form-control no-border" name="Link" ng-model="DialogTask.Link"  placeholder="Link" />
                                     </div>
                                 </div>
-                                
                                 <div class = "form-group">
                                     <uib-accordion close-others="true">                                        
                                         <uib-accordion-group heading="Description" is-open="true">
@@ -83,7 +81,8 @@
                                 </div>
                             </div>
                         </div>
-                         <div class="col-lg-6">
+                        
+                        <div class="col-lg-6">
                              <br>
                             <uib-accordion close-others="true">
                                         <uib-accordion-group heading="Business Control Profile" is-open="true">
@@ -116,8 +115,6 @@
                                         </uib-accordion-group>   
                                     </uib-accordion>
                         </div>
-        
-                        
                     </uib-tab>
                     
                     <uib-tab>

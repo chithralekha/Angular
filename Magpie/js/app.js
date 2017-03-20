@@ -217,7 +217,7 @@
                 var data = '';
                 angular.forEach(workingSet, function (item) {
                     if (item.workingSetId == id) {
-                        data = item.Name;
+                        data = item.name;
                     }
                 });
                 return data;

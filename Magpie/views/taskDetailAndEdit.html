@@ -1,9 +1,9 @@
 <div class="modal-body" ng-style="taskDueStatus(DialogTask)">
     <div class = "row">
         <div class = "row">
-            <div class = "col-lg-1" style="font-size : 12px; padding-top : 8px">{{DialogTask.Code}}</div>
+            <div class = "col-lg-1" style="font-size : 12px; padding-top : 8px">{{dialogTask.code}}</div>
             <div class = "col-lg-10" style="font-weight:bold;">
-                <input type="text" style="font-size:25px" class="form-control no-border" name="TaskTitle" ng-model="DialogTask.Title"  placeholder="Task Title" required />
+                <input type="text" style="font-size:25px" class="form-control no-border" name="TaskTitle" ng-model="dialogTask.title"  placeholder="Task Title" required />
             </div>
             <div class="col-lg-1 pull-right">
                 <button type="button" class="close" ng-click="cancel()">X</button>
@@ -13,11 +13,11 @@
         <br
         <div class="row">
             <div class="col-lg-4">
-                <ui-select ng-model="ResponsibleUserListDialog.selected" theme="bootstrap" on-select="onSelected($item)">
-                    <ui-select-match placeholder="Users">{{$select.selected.FirstName}}</ui-select-match>
-                    <ui-select-choices  repeat="item in ResponsibleUserListDialog | filter: $select.search">
-                        <div ng-bind-html="item.FirstName | highlight: $select.search"></div>
-                        <small ng-bind-html="item.UserName | highlight: $select.search"></small>
+                <ui-select ng-model="responsibleUserListDialog.selected" theme="bootstrap" on-select="onSelected($item)">
+                    <ui-select-match placeholder="Users">{{$select.selected.firstName}}</ui-select-match>
+                    <ui-select-choices  repeat="item in responsibleUserListDialog | filter: $select.search">
+                        <div ng-bind-html="item.firstName | highlight: $select.search"></div>
+                        <small ng-bind-html="item.userName | highlight: $select.search"></small>
                     </ui-select-choices>
                 </ui-select>
             </div>
@@ -42,40 +42,40 @@
                                 <div class = "form-group">
                                     <label class = "col-md-4 control-label" style="padding-top : 10px">Task State</label>
                                     <div class = "col-md-6">
-                                        <input type="text" class="form-control no-border hidden" name="TaskState" ng-model="DialogTask.TaskState.Name"  placeholder="Task State"/>
+                                        <input type="text" class="form-control no-border hidden" name="TaskState" ng-model="dialogTask.taskState.name"  placeholder="Task State"/>
                                          <div class="btn-group hidden" role="group" aria-label="...">
                                             <button type="button" class="btn btn-sm btn-primary">New</button>
                                               <button type="button" class="btn btn-sm btn-primary">In Progress</button>
                                               <button type="button" class="btn btn-sm btn-primary">Completed</button>
                                         </div>
-                                          <select class="form-control m-b" ng-model="TaskStates.Value" ng-options="TaskState.Value as TaskState.Name for TaskState in TaskStates.Values" ng-change="update(TaskStates.Value)"></select>
-                                        <select class="form-control m-b hidden" name="Name" ng-model="DialogTask.TaskState.Name" placeholder="Task State">
-                                            <option ng-repeat="item in TaskStates" value="{{item.Value}}">{{item.Name}}</option>
+                                          <select class="form-control m-b" ng-model="taskStates.Value" ng-options="taskState.Value as taskState.Name for taskState in taskStates.Values" ng-change="update(taskStates.Value)"></select>
+                                        <select class="form-control m-b hidden" name="Name" ng-model="dialogTask.taskState.name" placeholder="Task State">
+                                            <option ng-repeat="item in taskStates" value="{{item.Value}}">{{item.Name}}</option>
                                     </select>   
                                     </div>
                                 </div>
                                 <div class = "form-group">
                                     <label class = "col-md-4 control-label" style="padding-top : 10px">Due</label>
                                     <div class = "col-md-6">
-                                        <input type="text" class="form-control no-border" name="TaskDue" ng-model="DialogTask.Due"  placeholder="Task Due" formatted-date format="medium"/>
+                                        <input type="text" class="form-control no-border" name="taskDue" ng-model="dialogTask.due"  placeholder="Task Due" formatted-date format="medium"/>
                                     </div>
                                 </div>
                                 <div class = "form-group hidden">
                                     <label class = "col-md-2 control-label">Created By</label>
                                     <div class = "col-md-10">
-                                        <input type="text" class="form-control no-border" name="CreatedBy" ng-model="DialogTask.CreatedByUserId"  placeholder="Created By" required />
+                                        <input type="text" class="form-control no-border" name="CreatedBy" ng-model="dialogTask.createdByUserId"  placeholder="Created By" required />
                                     </div>
                                 </div>
                                 <div class = "form-group">
                                     <label class = "col-md-4 control-label" style="padding-top : 10px">Link</label>
                                     <div class = "col-md-6">
-                                        <input type="text" class="form-control no-border" name="Link" ng-model="DialogTask.Link"  placeholder="Link" />
+                                        <input type="text" class="form-control no-border" name="Link" ng-model="dialogTask.link"  placeholder="Link" />
                                     </div>
                                 </div>
                                 <div class = "form-group">
                                     <uib-accordion close-others="true">                                        
                                         <uib-accordion-group heading="Description" is-open="true">
-                                           <textarea class="form-control no-border" rows="4" name="Decsription" ng-model="DialogTask.Description" ></textarea>
+                                           <textarea class="form-control no-border" rows="4" name="Decsription" ng-model="dialogTask.description" ></textarea>
                                         </uib-accordion-group>
                                     </uib-accordion>
                                 </div>
@@ -87,31 +87,31 @@
                             <uib-accordion close-others="true">
                                         <uib-accordion-group heading="Business Control Profile" is-open="true">
                                             <br>
-                                            Working Set : {{DialogTask.WorkingSet.Name}} <br><br>
-                                            Code : {{DialogTask.Control.Code}} <br><br>
-                                            Sorce : {{DialogTask.Control.DefinitionSource.Source}} <br><br>
-                                            Control Set : {{DialogTask.ControlSetTitle}}<br>
+                                            Working Set : {{DialogTask.workingSet.name}} <br><br>
+                                            Code : {{DialogTask.control.code}} <br><br>
+                                            Sorce : {{DialogTask.control.cefinitionSource.source}} <br><br>
+                                            Control Set : {{DialogTask.controlSetTitle}}<br>
                                         </uib-accordion-group>
                                         <uib-accordion-group heading="Control Catalog">
                                             <br>
-                                            Working Set : {{DialogTask.WorkingSet.Name}} <br><br>
-                                            Code : {{DialogTask.Control.Code}} <br><br>
-                                            Sorce : {{DialogTask.Control.DefinitionSource.Source}} <br><br>
-                                            Control Set : {{DialogTask.ControlSetTitle}} <br>
+                                            Working Set : {{DialogTask.workingSet.name}} <br><br>
+                                            Code : {{DialogTask.control.code}} <br><br>
+                                            Sorce : {{DialogTask.control.definitionSource.source}} <br><br>
+                                            Control Set : {{DialogTask.controlSetTitle}} <br>
                                         </uib-accordion-group>
                                         <uib-accordion-group heading="Control">
                                             <br>
-                                            Working Set : {{DialogTask.WorkingSet.Name}} <br><br>
-                                            Code : {{DialogTask.Control.Code}} <br><br>
-                                            Sorce : {{DialogTask.Control.DefinitionSource.Source}} <br><br>
-                                            Control Set : {{DialogTask.ControlSetTitle}} <br>
+                                            Working Set : {{DialogTask.workingSet.name}} <br><br>
+                                            Code : {{DialogTask.control.code}} <br><br>
+                                            Sorce : {{DialogTask.control.definitionSource.source}} <br><br>
+                                            Control Set : {{DialogTask.controlSetTitle}} <br>
                                         </uib-accordion-group>
                                         <uib-accordion-group heading="Task Definition">
                                             <br>
-                                            Working Set : {{DialogTask.WorkingSet.Name}} <br><br>
-                                            Code : {{DialogTask.Control.Code}} <br><br>
-                                            Sorce : {{DialogTask.Control.DefinitionSource.Source}} <br><br>
-                                            Control Set : {{DialogTask.ControlSetTitle}}<br>
+                                            Working Set : {{DialogTask.workingSet.name}} <br><br>
+                                            Code : {{DialogTask.control.code}} <br><br>
+                                            Sorce : {{DialogTask.control.definitionSource.source}} <br><br>
+                                            Control Set : {{DialogTask.controlSetTitle}}<br>
                                         </uib-accordion-group>   
                                     </uib-accordion>
                         </div>

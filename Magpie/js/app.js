@@ -13,7 +13,8 @@
         'ngResource'
     ])
         .constant('Config', {
-            baseURL : 'http://52.39.50.39/MagpieAPI/api/',
+            baseURL : 'http://localhost:3706/api/',
+        //'http://magpie-qa-api.us-west-2.elasticbeanstalk/api/',
             authURL : 'http://development.pyinagztvy.us-west-2.elasticbeanstalk.com/oauth/token',
             oldMagpieBaseURL : 'http://magpie-sandbox.azurewebsites.net/Landing/index?n='
         })
@@ -215,7 +216,7 @@
             this.getWorkingsetNamebyId = function (id, workingSet) {
                 var data = '';
                 angular.forEach(workingSet, function (item) {
-                    if (item.WorkingSetId == id) {
+                    if (item.workingSetId == id) {
                         data = item.Name;
                     }
                 });
@@ -224,8 +225,8 @@
             this.getControlCatalgueByWorkingSetId = function (id, workingSet) {
                 var catalogue = [];
                 angular.forEach(workingSet, function (item) {
-                    if (item.WorkingSetId == id) {
-                        angular.forEach(item.WorkingSetTemplate.ControlSets, function (controlSet) {
+                    if (item.workingSetId == id) {
+                        angular.forEach(item.workingSetTemplate.controlSets, function (controlSet) {
                             catalogue.push(controlSet);
 //                           alert(catalogue);
                         });
@@ -446,7 +447,7 @@
                 getTasksByTaskState = function (category, taskList1) {
                     var data = [];
                     angular.forEach(taskList1, function (item) {
-                        if (item.TaskState.Id == category) {
+                        if (item.taskState.id == category) {
                             data.push(item);
                         }
                     });

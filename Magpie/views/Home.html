@@ -425,7 +425,7 @@
                             <chart-column column-id="Data 1" column-color="#1ab394"
                                           column-values="80"
                                           column-type="gauge"/>
-                            <chart-gauge min="50"
+                            <chart-gauge min="0"
                                          max="100"
                                          units="Score"
                                          width="39"/>
@@ -448,7 +448,7 @@
                             <chart-column column-id="Data 2" column-color="#1ab394"
                                           column-values="70"
                                           column-type="gauge"/>
-                            <chart-gauge min="50"
+                            <chart-gauge min="0"
                                          max="100"
                                          units="Score"
                                          width="39"/>
@@ -469,7 +469,7 @@
                             <chart-column column-id="Data 3" column-color="#1ab394"
                                           column-values="60"
                                           column-type="gauge"/>
-                            <chart-gauge min="50"
+                            <chart-gauge min="0"
                                          max="100"
                                          units="Score"
                                          width="39"/>
@@ -490,7 +490,7 @@
                             <chart-column column-id="Data 4" column-color="#1ab394"
                                           column-values="90"
                                           column-type="gauge" onClkick = "function() {alert('hi)}"/>
-                            <chart-gauge min="50"
+                            <chart-gauge min="0"
                                          max="100"
                                          units="Score"
                                          width="39"/>
@@ -511,7 +511,7 @@
                             <chart-column column-id="Data 5" column-color="#1ab394"
                                           column-values="90"
                                           column-type="gauge"/>
-                            <chart-gauge min="50"
+                            <chart-gauge min="0"
                                          max="100"
                                          units="Score"
                                          width="39"/>
@@ -535,7 +535,7 @@
                     </div>
                 </div>
             </div>
-            <div class="ibox-content">
+            <div class="ibox-content hidden">
                 <div class="row">
                     <div class="col-lg-9">
                         <div class="flot-chart" ng-controller="dashboardFlotTwo as chart">
@@ -589,7 +589,7 @@
             <small><i class="fa fa-tim"></i> Top 10 High Priority Tasks.</small>
         </div>
 
-        <div class="ibox-content">
+        <div class="ibox-content hidden">
             <div class="feed-activity-list">
 
                 <div class="feed-element">
@@ -657,7 +657,7 @@
                 <h5>Notification</h5>
                 <div ibox-tools></div>
             </div>
-            <div class="ibox-content" ng-controller="dashboardComplianceTrend">
+            <div class="ibox-content hidden" ng-controller="dashboardComplianceTrend">
                 <ol ng-model="Notifications">
                         <li ng-repeat="item in Notifications">
                            <div class="agile-detail">                               
@@ -677,7 +677,7 @@
                 <h5>Unassigned Tasks</h5>
                 <div ibox-tools></div>
             </div>
-            <div class="ibox-content">
+            <div class="ibox-content hidden">
                 <ul class="todo-list m-t small-list">
                     <li>
                         <checkbox ng-model="main.checkOne"></checkbox>
@@ -717,7 +717,7 @@
                 <h5>Location : Percentage Of Compliance</h5>
                 <div ibox-tools></div>
             </div>
-            <div class="ibox-content">
+            <div class="ibox-content hidden">
 
                 <div class="row">
                     <div class="col-lg-6">

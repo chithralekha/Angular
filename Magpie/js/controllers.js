@@ -465,7 +465,14 @@ function dashboardFlotOne() {
     this.flotData = dataset;
     this.flotOptions = options;
 }
-
+function homeController($scope,$stateParams,$state) {
+    $scope.clicked = {};
+    $scope.showClick = function(data) {
+    $scope.clicked = data;
+        alert(data);
+        $state.go('dashboards.dashboard_1', {filterText: 1, bcp: 1});
+  }
+}
 /**
  * dashboardRACIPerformance - simple controller for data
  * for RACI performance in Dashboards
@@ -2130,6 +2137,7 @@ function loginCtrl($scope, $http, $state, authenticationService) {
 angular
     .module('inspinia')
     .controller('MainCtrl', MainCtrl)
+    .controller('homeController', homeController)
     .controller('dashboardFlotOne', dashboardFlotOne)
     .controller('dashboardFlotTwo', dashboardFlotTwo)
     .controller('dashboardFive', dashboardFive)

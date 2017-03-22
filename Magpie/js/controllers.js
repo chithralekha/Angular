@@ -1630,47 +1630,52 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
     $scope.ok = function() {
         //alert($scope.DialogTask.Id);
         var exp = $interpolate(Config.baseURL + 'Tasks/{{id}}', false, null, true),
-            url = exp({id: $scope.dialogTask.id});
-        if(angular.isUndefined($scope.dialogTask.raciTeam.responsibleUser) || $scope.dialogTask.raciTeam.responsibleUser == null) {
+            url = exp({id: $scope.DialogTask.id});
+        if(angular.isUndefined($scope.DialogTask.raciTeam.responsibleUser) || $scope.DialogTask.raciTeam.responsibleUser == null) {
             if ($scope.id != 0) {
-                $scope.dialogTask.raciTeam.responsibleUser = {
+                $scope.DialogTask.raciTeam.responsibleUser = {
                     id : $scope.id
                 };
             }
-        } else { $scope.dialogTask.raciTeam.responsibleUser.id = $scope.id;
+        } else { $scope.DialogTask.raciTeam.responsibleUser.id = $scope.id;
                }
         if($scope.selectedStateId == 2) {
-            $scope.dialogTask.taskState.id = 2;
+            $scope.DialogTask.taskState.id = 2;
         }
         else if($scope.selectedStateId == 1) {
-            $scope.dialogTask.taskState.id = 1;
+            $scope.DialogTask.taskState.id = 1;
         }
         else if($scope.selectedStateId == 3) {
-            $scope.dialogTask.taskState.id = 3;
+            $scope.DialogTask.taskState.id = 3;
         }
-        var res = $http.put(url,$scope.dialogTask);
-        console.log('result...',res);
-        
+        $scope.DialogTask.Title = $scope.taskTitle;
+        var res;
+          if($scope.DialogTask.Id == null || $scope.DialogTask.Id == 0){
+              res = $http.post(Config.baseURL + 'Tasks/',$scope.DialogTask);
+          }
+          else{
+              res = $http.put(url,$scope.DialogTask);
+          }
         res.then(function(data) {
             console.log('data...',data.data);
             //alert(data.data);
             //Client side update
             angular.forEach($scope.todoList, function (item) {
-                if (item.id == $scope.dialogTask.id) {
-                    item.title = $scope.dialogTask.title;
+                if (item.id == $scope.DialogTask.id) {
+                    item.title = $scope.DialogTask.title;
                     if(angular.isUndefined(item.responsibleUser) || item.responsibleUser == null)
                         if ($scope.id != 0) {
                             item.responsibleUser = {
-                                id : $scope.dialogTask.raciTeam.responsibleUser.id
+                                id : $scope.DialogTask.raciTeam.responsibleUser.id
                             };
                             item.responsibleUser.firstName = $scope.firstName;
                             item.responsibleUser = $scope.selectedUser;
                         } else {
-                            item.responsibleUser.id = $scope.dialogTask.raciTeam.responsibleUser.id;
+                            item.responsibleUser.id = $scope.DialogTask.raciTeam.responsibleUser.id;
                         }
                     //item.ResponsibleUser.Id = $scope.DialogTask.RaciTeam.ResponsibleUser.Id;                    
                     //alert(item.ResponsibleUser.FirstName); //alert($scope.DialogTask.RaciTeam.ResponsibleUser.FirstName); //alert($scope.DialogTask.RaciTeam.ResponsibleUser.Id);                    
-                    item.taskState.id = $scope.dialogTask.taskState.id;
+                    item.taskState.id = $scope.DialogTask.taskState.id;
                     if(item.taskState.id == 2) {
                         $scope.inProgressList.push(item);
                         //alert(item.TaskState.Id);
@@ -1686,22 +1691,22 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
                 }
             });
              angular.forEach($scope.inProgressList, function (item) {
-                 if (item.id == $scope.dialogTask.id) {
-                     item.title = $scope.dialogTask.title;
+                 if (item.id == $scope.DialogTask.id) {
+                     item.title = $scope.DialogTask.title;
                    //  item.ResponsibleUser.Id = $scope.DialogTask.RaciTeam.ResponsibleUser.Id;
                      if(angular.isUndefined(item.responsibleUser) || item.responsibleUser == null)
                         if ($scope.id != 0) { 
                             item.responsibleUser = {
-                                id : $scope.dialogTask.raciTeam.responsibleUser.id
+                                id : $scope.DialogTask.raciTeam.responsibleUser.id
                             };
                             item.responsibleUser.firstName = $scope.firstName;
                             item.responsibleUser = $scope.selectedUser;
                         } else {
-                            item.responsibleUser.id = $scope.dialogTask.raciTeam.responsibleUser.id;
+                            item.responsibleUser.id = $scope.DialogTask.raciTeam.responsibleUser.id;
                         }
                      item.responsibleUser.firstName = $scope.firstName;
                      item.responsibleUser = $scope.selectedUser;
-                     item.taskState.id = $scope.dialogTask.taskState.id;
+                     item.taskState.id = $scope.DialogTask.taskState.id;
                      if(item.taskState.id == 1) {
                          $scope.todoList.push(item);
                          //alert(item.TaskState.Id);
@@ -1717,22 +1722,22 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
                  }
              });
              angular.forEach($scope.completedList, function (item) {
-                 if (item.id == $scope.dialogTask.id) {
-                     item.title = $scope.dialogTask.title;
+                 if (item.id == $scope.DialogTask.id) {
+                     item.title = $scope.DialogTask.title;
                      if(angular.isUndefined(item.responsibleUser) || item.responsibleUser == null)
                         if ($scope.id != 0) { 
                             item.responsibleUser = {
-                                id : $scope.dialogTask.raciTeam.responsibleUser.id
+                                id : $scope.DialogTask.raciTeam.responsibleUser.id
                             };
                             item.responsibleUser.firstName = $scope.firstName;
                             item.responsibleUser = $scope.selectedUser;
                         } else {
-                            item.responsibleUser.id = $scope.dialogTask.raciTeam.responsibleUser.id;
+                            item.responsibleUser.id = $scope.DialogTask.raciTeam.responsibleUser.id;
                         }
                    //  item.ResponsibleUser.Id = $scope.DialogTask.RaciTeam.ResponsibleUser.Id;
                      item.responsibleUser.firstName = $scope.firstName;
                      item.responsibleUser = $scope.selectedUser;
-                     item.taskState.id = $scope.dialogTask.taskState.id;
+                     item.taskState.id = $scope.DialogTask.taskState.id;
                      if(item.taskState.id == 2) {
                          $scope.inProgressList.push(item);
                          //alert(item.TaskState.Id);
@@ -1883,12 +1888,42 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
            
         if(angular.isUndefined(task) || task === null )
             {
+                $scope.taskTitle = '';
                 $scope.DialogTask = { 
-                    id : 0,
-                    code : 'AC-1.1',
-                    title : '',
-                    controlSet : null,
-                    dueStatus : { id : 1, status : 'On Time' }
+                    Id : 0,
+                    Code : 'TBD',
+                    Title : 'something',
+                    ControlSet : null,
+                    ControlSetTitle:'TBD',
+                    ControlId: 13,
+                    ControlSetId: 7,
+                    WorkingSetId: 1,
+                    dueStatus : {
+                        id : 1,
+                        status : 'On Time'
+                    },
+                    WorkingSet:{
+                        Name:'Default'
+                    },
+                    Control:{
+                        Id:13,
+                        Code:'TBD',
+                        DefinitionSource:{
+                            Source:'Custom'
+                        }
+                    },
+                    raciTeam:{},
+                    TaskState:{
+                        Id:1
+                    },
+                    CreatedByUserId: 'FDB29009-3B60-4520-9F56-B1D071E97543',
+                    TaskState:{
+                      id:1  
+                    },
+                    Descripion:'',
+                    Due:'',
+                    Completed:null,
+                    Link:null,
                 }
                 $scope.responsibleUserListDialog.selected = defaultUser;
                 $scope.taskStates.Value = 1;
@@ -1902,13 +1937,13 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
                 //alert($scope.DialogTask.RaciTeam.ResponsibleUser);
                 //alert($scope.DialogTask.TaskState.Id);
                 // console.log('dialogTask',$scope.DialogTask.RaciTeam.ResponsibleUser.FirstName);
-                $scope.taskStates.Value = $scope.dialogTask.taskState.id;
-                if(angular.isUndefined($scope.dialogTask.raciTeam.responsibleUser) 
-                   || $scope.dialogTask.raciTeam.responsibleUser == null)
+                $scope.taskStates.Value = $scope.DialogTask.taskState.id;
+                if(angular.isUndefined($scope.DialogTask.raciTeam.responsibleUser) 
+                   || $scope.DialogTask.raciTeam.responsibleUser == null)
                     $scope.responsibleUserListDialog.selected = defaultUser;
                 else {
-                    console.log($scope.dialogTask.raciTeam.responsibleUser);
-                    $scope.responsibleUserListDialog.selected = $scope.dialogTask.raciTeam.responsibleUser;
+                    console.log($scope.DialogTask.raciTeam.responsibleUser);
+                    $scope.responsibleUserListDialog.selected = $scope.DialogTask.raciTeam.responsibleUser;
                 }
             });
         }

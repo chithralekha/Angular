@@ -465,13 +465,48 @@ function dashboardFlotOne() {
     this.flotData = dataset;
     this.flotOptions = options;
 }
-function homeController($scope,$stateParams,$state) {
-    $scope.clicked = {};
-    $scope.showClick = function(data) {
-    $scope.clicked = data;
-        alert(data);
-        $state.go('dashboards.dashboard_1', {filterText: 1, bcp: 1});
-  }
+function homeController($scope,$stateParams,$state,$http,filterService,workingSetWebAPIService) {
+    $scope.workingSetList = workingSetWebAPIService.getData();
+    $scope.workingSetList.then (function (response) {
+        $scope.businessControlProfileList  = response.data;
+        $scope.businessControlProfileList[0].color = "#1ab394";
+        $scope.businessControlProfileList[0].score = 50;
+        
+        $scope.businessControlProfileList[1].color = "#0e6037";
+        $scope.businessControlProfileList[1].score = 60;
+        
+        $scope.businessControlProfileList[2].color  = "#02512a";
+        $scope.businessControlProfileList[2].score = 70;
+        
+        $scope.businessControlProfileList[3].color = "#dda33e";
+        $scope.businessControlProfileList[3].score = 30;
+        
+        $scope.businessControlProfileList[4].color = "#682c25";
+        $scope.businessControlProfileList[4].score = 20;
+        
+        $scope.businessControlProfileList[5].color = "#dda33e";
+        $scope.businessControlProfileList[5].score = 45;
+       // alert($scope.BusinessControlProfileList);
+        $scope.determineColor = function(color)
+        {
+           // alert(color);
+            return color;
+        }
+        $scope.color = '#1ab394';
+        console.log($scope.businessControlProfileList[0]);
+        $scope.clicked = {};
+        $scope.showClick = function(bcp) {
+            //$scope.clicked = data;
+           // alert(bcp.name);
+            $state.go('dashboards.dashboard_1', {obj: bcp});
+        }
+    });
+}
+
+function dashBoardController($scope,$stateParams,$state,$http,filterService,workingSetWebAPIService) {
+    $scope.businessControlProfile = $stateParams.obj.name;
+    $scope.businessControlProfileId = $stateParams.obj.workingSetId;
+   // alert($stateParams.obj);
 }
 /**
  * dashboardRACIPerformance - simple controller for data
@@ -2138,6 +2173,7 @@ angular
     .module('inspinia')
     .controller('MainCtrl', MainCtrl)
     .controller('homeController', homeController)
+    .controller('dashBoardController',dashBoardController)
     .controller('dashboardFlotOne', dashboardFlotOne)
     .controller('dashboardFlotTwo', dashboardFlotTwo)
     .controller('dashboardFive', dashboardFive)

@@ -411,31 +411,31 @@
     </a>
 </div>-->
 <!-- New York, Chiago, Seattle, Dallas,  -->
-<div class="wrapper wrapper-content">
+<div class="wrapper wrapper-content" ng-controller= "homeController">
 <div class="row">
-    <div class="col-lg-2" ng-controller= "homeController">
+    <div class="col-lg-2"  ng-repeat="item in businessControlProfileList">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
                 <span class="label label-primary pull-right">On Time</span>
-                <h5>Boston Division</h5>                
+                <h5>{{item.name}}</h5>                
             </div>
             <div class="ibox-content">
                 <div>
-                        <c3chart bindto-id="gauge-plot1-chart">
-                            <chart-column column-id="Data 1" column-color="#1ab394"
-                                          column-values="80"
+                        <c3chart bindto-id="gauge-plot{{item.workingSetId}}-chart">
+                            <chart-column column-id="Data 1" column-color="{{item.color}}"
+                                          column-values="{{item.score}}"
                                           column-type="gauge"/>
                             <chart-gauge min="0"
                                          max="100"
-                                         units="Score"
-                                         width="39"/>
-                             <chart-events on-click-data="showClick(data)"/>
+                                         units="Score"/>
+                             <chart-events on-click-data="showClick(item)"/>
                         </c3chart>
                     </div>
                 
             </div>
         </div>
     </div>
+<!--
     <div class="col-lg-2">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
@@ -520,6 +520,7 @@
             </div>
         </div>
     </div>
+-->
 </div>
 <div class="row">
     <div class="col-lg-12">

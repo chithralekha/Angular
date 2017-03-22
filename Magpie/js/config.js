@@ -78,6 +78,9 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
             url: "/dashboard_1",
             templateUrl: "views/dashboard_1.html",
             data: { pageTitle: 'RACI Performance' },
+            params: {
+                obj: null
+            },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([

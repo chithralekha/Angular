@@ -1351,7 +1351,7 @@ function chartJsCtrl() {
      * Data for Radar chart
      */
     this.radarData = {
-        labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+        labels: ["On Time", "OverDue", "InProgress", "UnAssigned"],
         datasets: [
             {
                 label: "My First dataset",
@@ -1361,7 +1361,7 @@ function chartJsCtrl() {
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [65, 59, 90, 81, 56, 55, 40]
+                data: [65, 59, 90, 81]
             },
             {
                 label: "My Second dataset",
@@ -1371,7 +1371,7 @@ function chartJsCtrl() {
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(151,187,205,1)",
-                data: [28, 48, 40, 19, 96, 27, 100]
+                data: [28, 48, 40, 19]
             }
         ]
     };
@@ -2174,6 +2174,7 @@ angular
     .controller('MainCtrl', MainCtrl)
     .controller('homeController', homeController)
     .controller('dashBoardController',dashBoardController)
+    .controller('chartJsCtrl',chartJsCtrl)
     .controller('dashboardFlotOne', dashboardFlotOne)
     .controller('dashboardFlotTwo', dashboardFlotTwo)
     .controller('dashboardFive', dashboardFive)

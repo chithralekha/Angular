@@ -14,8 +14,8 @@
     ])
         .constant('Config', {
             baseURL : 
-         'http://localhost:3706/api/',
-         // 'http://magpie-qa-api.us-west-2.elasticbeanstalk/api/',
+          'http://localhost:3706/api/',
+         // 'http://magpie-qa-api.us-west-2.elasticbeanstalk.com/api/',
             authURL : 'http://development.pyinagztvy.us-west-2.elasticbeanstalk.com/oauth/token',
             oldMagpieBaseURL : 'http://magpie-sandbox.azurewebsites.net/Landing/index?n='
         })

@@ -2255,7 +2255,7 @@ function loginCtrl($scope, $http, $state, authenticationService) {
     }
         
     function goToMain() {
-        $state.go('dashboards.dashboard_1');
+        $state.go('dashboards.Home');
     }
     
     function loginError(errorMsg) {     

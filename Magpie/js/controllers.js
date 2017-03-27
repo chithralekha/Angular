@@ -465,7 +465,7 @@ function dashboardFlotOne() {
     this.flotData = dataset;
     this.flotOptions = options;
 }
-function homeController($scope,$stateParams,$state,$http,filterService,workingSetWebAPIService) {
+function homeController($scope,$stateParams,$state,$http,filterService,workingSetWebAPIService,$uibModal) {
     $scope.workingSetList = workingSetWebAPIService.getData();
     $scope.workingSetList.then (function (response) {
         $scope.businessControlProfileList  = response.data;
@@ -501,8 +501,20 @@ function homeController($scope,$stateParams,$state,$http,filterService,workingSe
             $state.go('dashboards.dashboard_1', {obj: bcp});
         }
     });
+    $scope.complianceScore = function(workingSet){
+        $scope.workingSetName = workingSet.name;
+        var modalInstance = $uibModal.open( {
+            templateUrl : 'views/complianceScore.html',
+            size : 'sm',
+            scope : $scope,
+            controller : complianceScoreCtrl
+        });
+    };
 }
-
+function complianceScoreCtrl($scope,$http,$uibModalInstance,filterService,$filter,filterWebAPIService,plotterSrv,$interpolate,responsibleUserService,baseURL, Config) {
+    
+    //alert($scope.workingSetName);
+}
 function dashBoardController($scope,$stateParams,$state,$http,filterService,workingSetWebAPIService) {
     $scope.businessControlProfile = $stateParams.obj.name;
     $scope.businessControlProfileId = $stateParams.obj.workingSetId;

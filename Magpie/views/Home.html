@@ -6,7 +6,7 @@
         <div class="ibox float-e-margins">
             <div class="ibox-title">
                 <span class="label label-primary pull-right">On Time</span>
-                <h5>{{item.name}}</h5>                
+                <h5>{{item.name | cut:true:20:' ...'}}</h5>                
             </div>
             <div class="ibox-content">
                 <div>

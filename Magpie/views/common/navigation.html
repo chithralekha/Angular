@@ -29,7 +29,7 @@
                 
                 <a href="index.html"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">{{ 'DASHBOARD' | translate }}</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('dashboards')}">                    
-                    <li ng-show= "isAuthorized(userRoles.QlikDashboardUser)" ui-sref-active="active"><a ui-sref="dashboards.dashboard_1">{{ 'Compliance Trend' | translate }}</a></li>
+                    <li ui-sref-active="active"><a ui-sref="dashboards.Home">{{ 'Home' | translate }}</a></li>
                     <li ng-show= "isAuthorized(userRoles.QlikDashboardUser)" ui-sref-active="active"><a ui-sref="dashboards.dashboard_2">{{ 'Home' | translate }}</a></li>
                     <li ng-show= "isAuthorized(userRoles.QlikDashboardUser)" ui-sref-active="active"><a ui-sref="dashboards.dashboard_4">{{ 'RACI' | translate }}</a></li>
                     <li ng-show= "isAuthorized(userRoles.QlikDashboardUser)" ui-sref-active="active"><a ui-sref="dashboards.dashboard_3">{{ 'Due Date' | translate }}</a></li>

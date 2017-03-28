@@ -465,7 +465,61 @@ function dashboardFlotOne() {
     this.flotData = dataset;
     this.flotOptions = options;
 }
-
+function homeController($scope,$stateParams,$state,$http,filterService,workingSetWebAPIService,$uibModal) {
+    $scope.workingSetList = workingSetWebAPIService.getData();
+    $scope.workingSetList.then (function (response) {
+        $scope.businessControlProfileList  = response.data;
+        $scope.businessControlProfileList[0].color = "#1ab394";
+        $scope.businessControlProfileList[0].score = 50;
+        
+        $scope.businessControlProfileList[1].color = "#0e6037";
+        $scope.businessControlProfileList[1].score = 60;
+        
+        $scope.businessControlProfileList[2].color  = "#02512a";
+        $scope.businessControlProfileList[2].score = 70;
+        
+        $scope.businessControlProfileList[3].color = "#dda33e";
+        $scope.businessControlProfileList[3].score = 30;
+        
+        $scope.businessControlProfileList[4].color = "#682c25";
+        $scope.businessControlProfileList[4].score = 20;
+        
+        $scope.businessControlProfileList[5].color = "#dda33e";
+        $scope.businessControlProfileList[5].score = 45;
+       // alert($scope.BusinessControlProfileList);
+        $scope.determineColor = function(color)
+        {
+           // alert(color);
+            return color;
+        }
+        $scope.color = '#1ab394';
+        console.log($scope.businessControlProfileList[0]);
+        $scope.clicked = {};
+        $scope.showClick = function(bcp) {
+            //$scope.clicked = data;
+           // alert(bcp.name);
+            $state.go('dashboards.dashboard_1', {obj: bcp});
+        }
+    });
+    $scope.complianceScore = function(workingSet){
+        $scope.workingSetName = workingSet.name;
+        var modalInstance = $uibModal.open( {
+            templateUrl : 'views/complianceScore.html',
+            size : 'sm',
+            scope : $scope,
+            controller : complianceScoreCtrl
+        });
+    };
+}
+function complianceScoreCtrl($scope,$http,$uibModalInstance,filterService,$filter,filterWebAPIService,plotterSrv,$interpolate,responsibleUserService,baseURL, Config) {
+    
+    //alert($scope.workingSetName);
+}
+function dashBoardController($scope,$stateParams,$state,$http,filterService,workingSetWebAPIService) {
+    $scope.businessControlProfile = $stateParams.obj.name;
+    $scope.businessControlProfileId = $stateParams.obj.workingSetId;
+   // alert($stateParams.obj);
+}
 /**
  * dashboardRACIPerformance - simple controller for data
  * for RACI performance in Dashboards
@@ -1309,7 +1363,7 @@ function chartJsCtrl() {
      * Data for Radar chart
      */
     this.radarData = {
-        labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+        labels: ["On Time", "OverDue", "InProgress", "UnAssigned"],
         datasets: [
             {
                 label: "My First dataset",
@@ -1319,7 +1373,7 @@ function chartJsCtrl() {
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [65, 59, 90, 81, 56, 55, 40]
+                data: [65, 59, 90, 81]
             },
             {
                 label: "My Second dataset",
@@ -1329,7 +1383,7 @@ function chartJsCtrl() {
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(151,187,205,1)",
-                data: [28, 48, 40, 19, 96, 27, 100]
+                data: [28, 48, 40, 19]
             }
         ]
     };
@@ -1358,8 +1412,122 @@ function chartJsCtrl() {
     };
 
 
-};
+}
 
+/**
+ * chartistCtrl - Controller for Chartist library
+ */
+function chartistCtrl() {
+
+ 
+    this.lineData = {
+        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        series: [
+            [12, 9, 7, 8, 5],
+            [2, 1, 3.5, 7, 3],
+            [1, 3, 4, 5, 6]
+        ]
+    }
+
+    this.lineOptions = {
+        fullWidth: true,
+        chartPadding: {
+            right: 40
+        }
+    }
+
+    var times = function (n) {
+        return Array.apply(null, new Array(n));
+    };
+
+    var prepareData = times(26).map(Math.random).reduce(function (data, rnd, index) {
+        data.labels.push(index + 1);
+        data.series.forEach(function (series) {
+            series.push(Math.random() * 100)
+        });
+
+        return data;
+    }, {
+        labels: [],
+        series: times(4).map(function () {
+            return new Array()
+        })
+    });
+
+    this.scatterData = prepareData;
+
+    this.scatterOptions = {
+        showLine: false,
+        axisX: {
+            labelInterpolationFnc: function (value, index) {
+                return index % 13 === 0 ? 'W' + value : null;
+            }
+        }
+    }
+
+    this.stackedData = {
+        labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+        series: [
+            [800000, 1200000, 1400000, 1300000],
+            [200000, 400000, 500000, 300000],
+            [100000, 200000, 400000, 600000]
+        ]
+    }
+    this.stackedOptions = {
+        stackBars: true,
+        axisY: {
+            labelInterpolationFnc: function (value) {
+                return (value / 1000) + 'k';
+            }
+        }
+    }
+
+    this.horizontalData = {
+        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        series: [
+            [5, 4, 3, 7, 5, 10, 3],
+            [3, 2, 9, 5, 4, 6, 4]
+        ]
+    }
+
+    this.horizontalOptions = {
+        seriesBarDistance: 10,
+        reverseData: true,
+        horizontalBars: true,
+        axisY: {
+            offset: 70
+        }
+    }
+
+    var prepareData = {
+        series: [5, 3, 4]
+    }
+
+    this.pieData = prepareData
+
+    var sum = function (a, b) {
+        return a + b
+    };
+
+    this.pieOptions = {
+        labelInterpolationFnc: function (value) {
+            return Math.round(value / prepareData.series.reduce(sum) * 100) + '%';
+        }
+    }
+
+    this.gaugeData = {
+        series: [20, 10, 30, 40]
+    }
+
+    this.gaugeOptions = {
+        donut: true,
+        donutWidth: 60,
+        startAngle: 270,
+        total: 200,
+        showLabel: false
+    }
+
+}
 /**
  * userProfile - Controller for User Profile
  */
@@ -2134,7 +2302,7 @@ function loginCtrl($scope, $http, $state, authenticationService) {
     }
         
     function goToMain() {
-        $state.go('dashboards.dashboard_1');
+        $state.go('dashboards.Home');
     }
     
     function loginError(errorMsg) {     
@@ -2165,6 +2333,10 @@ function loginCtrl($scope, $http, $state, authenticationService) {
 angular
     .module('inspinia')
     .controller('MainCtrl', MainCtrl)
+    .controller('homeController', homeController)
+    .controller('dashBoardController',dashBoardController)
+    .controller('chartJsCtrl',chartJsCtrl)
+    .controller('chartistCtrl',chartistCtrl)
     .controller('dashboardFlotOne', dashboardFlotOne)
     .controller('dashboardFlotTwo', dashboardFlotTwo)
     .controller('dashboardFive', dashboardFive)

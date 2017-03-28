@@ -1,0 +1,27 @@
+
+<!-- New York, Chiago, Seattle, Dallas,  -->
+<div class="wrapper wrapper-content" ng-controller= "homeController">
+<div class="row">
+    <div class="col-lg-2"  ng-repeat="item in businessControlProfileList">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <span class="label label-primary pull-right" ng-click="complianceScore(item)">%</span>
+                <h5>{{item.name | cut:true:20:' ...'}}</h5>                
+            </div>
+            <div class="ibox-content">
+                <div>
+                        <c3chart bindto-id="gauge-plot{{item.workingSetId}}-chart">
+                            <chart-column column-id="Data 1" column-color="{{item.color}}"
+                                          column-values="{{item.score}}"
+                                          column-type="gauge"/>
+                            <chart-gauge min="0"
+                                         max="100"
+                                         units="Score"/>
+                             <chart-events on-click-data="showClick(item)"/>
+                        </c3chart>
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

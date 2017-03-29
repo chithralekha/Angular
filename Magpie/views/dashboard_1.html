@@ -355,7 +355,7 @@
         </div>
     </div>
 <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-6" ng-controller = "dashBoardController">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>Task completion by User</h5>
@@ -364,10 +364,10 @@
                     <div>
                         <c3chart bindto-id="chart1">
                             <chart-column column-id="data 1"
-                                          column-values="30, 200, 100, 400, 150, 250,100"
+                                          column-values="{{data1}}"
                                           column-type="line" column-color="#1ab394"/>
                             <chart-column column-id="data 2"
-                                          column-values="50, 20, 10, 40, 15, 25,30"
+                                          column-values="{{data2}}"
                                           column-type="line" column-color="#BABABA" />
                         </c3chart>
                     </div>
@@ -388,7 +388,7 @@
             </div>
         </div>    
     </div>
-<div class="row">
+<div class="row" ng-controller = "dashBoardController">
     <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>Task Due by Date</h5>
@@ -397,6 +397,13 @@
                 <div class="ibox-content">
                     <div>
                         <c3chart bindto-id="stacked-bar-plot1-chart">
+<!--
+                           <chart-axis>
+                                <chart-axis-x axis-id="x" axis-type="timeseries">
+                                    <chart-axis-x-tick tick-format="%Y-%m-%d"/>
+                                </chart-axis-x>
+                            </chart-axis>
+-->
                             <chart-column column-id="data 1"
                                           column-name="Data 1"
                                           column-values="30,200,100,400,150,250,300,400,500,100"

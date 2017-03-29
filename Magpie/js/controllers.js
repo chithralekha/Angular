@@ -519,6 +519,18 @@ function dashBoardController($scope,$stateParams,$state,$http,filterService,work
     $scope.businessControlProfile = $stateParams.obj.name;
     $scope.businessControlProfileId = $stateParams.obj.workingSetId;
    // alert($stateParams.obj);
+    $scope.data1 = [0, 30, 200, 100, 400, 150, 250, 100, 0];
+    $scope.data2 = [0, 50, 20, 10, 40, 15, 25, 30, 0];
+    $scope.datapoints = [
+        {"x": "one", "top-1": 10, "top-2": 12},
+        {"x": "two", "top-1": 11, "top-2": 13},
+        {"x": "three", "top-1": 12, "top-2": 14},
+        {"x": "four", "top-1": 13, "top-2": 15},
+        {"x": "five", "top-1": 14, "top-2": 16}
+    ];
+    $scope.datacolumns = [{"id": "top-1", "type": "bar", "name": "Top one"},
+        {"id": "top-2", "type": "bar", "name": "Top two"}];
+    $scope.datax = {"id": "x"};
 }
 /**
  * dashboardRACIPerformance - simple controller for data

@@ -355,7 +355,7 @@
         </div>
     </div>
 <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-6">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>Task completion by User</h5>
@@ -373,8 +373,20 @@
                     </div>
                 </div>
             </div>
-        </div>  
-    
+        </div>
+    <div class="col-lg-6" ng-controller="chartJsCtrl as chart">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Tasks in Period</h5>
+                    <div ibox-tools></div>
+                </div>
+                <div class="ibox-content">
+                    <div>
+                        <canvas radarchart options="chart.radarOptions" data="chart.radarData" responsive=true></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>    
     </div>
 <div class="row">
     <div class="ibox float-e-margins">
@@ -399,18 +411,3 @@
                 </div>
             </div>
         </div>
-<div class="row" ng-controller="chartJsCtrl as chart">
-        <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Tasks in Period</h5>
-                    <div ibox-tools></div>
-                </div>
-                <div class="ibox-content">
-                    <div>
-                        <canvas radarchart options="chart.radarOptions" data="chart.radarData" responsive=true></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>

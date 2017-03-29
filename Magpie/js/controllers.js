@@ -1419,7 +1419,6 @@ function chartJsCtrl() {
  */
 function chartistCtrl() {
 
- 
     this.lineData = {
         labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
         series: [

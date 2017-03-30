@@ -519,19 +519,17 @@ function dashBoardController($scope,$stateParams,$state,$http,filterService,work
     $scope.businessControlProfile = $stateParams.obj.name;
     $scope.businessControlProfileId = $stateParams.obj.workingSetId;
    // alert($stateParams.obj);
+    $scope.datapointsTaskCompletionByUser = [{"x" : 10, "User1" : 10, "User2" : 15, "User3" : 100},
+                                             {"x" : 20, "User1" : 100, "User2" : 35, "User3" : 40},
+                                             {"x" : 30, "User1" : 15, "User2" : 75, "User3" : 70},
+                                             {"x" : 40, "User1" : 50, "User2" : 45, "User3" : 90}];
+    $scope.datacolumnsTaskCompletionByUser = [{"id" : "User1", "type" : "line", "name" : "User 1", "color" : "#1ab394"},
+                                              {"id" : "User2", "type" : "spline", "name" : "User 2", "color" : "#BABABA"},
+                                             {"id": "User3", "type" : "line", "name" : "User 3", "color" : "#1ab394"}];
+    $scope.datax={"id":"x"};
     $scope.data1 = [0, 30, 200, 100, 400, 150, 250, 100, 0];
     $scope.data2 = [0, 50, 20, 10, 40, 15, 25, 30, 0];
     $scope.data3 = [0, 200, 30, 400, 10, 250, 30, 25, 0];
-    $scope.datapoints = [
-        {"x": "one", "top-1": 10, "top-2": 12},
-        {"x": "two", "top-1": 11, "top-2": 13},
-        {"x": "three", "top-1": 12, "top-2": 14},
-        {"x": "four", "top-1": 13, "top-2": 15},
-        {"x": "five", "top-1": 14, "top-2": 16}
-    ];
-    $scope.datacolumns = [{"id": "top-1", "type": "bar", "name": "Top one"},
-        {"id": "top-2", "type": "bar", "name": "Top two"}];
-    $scope.datax = {"id": "x"};
     $scope.dataX = ["20150601", '2015-06-02 12:00:00:00', "2015-06-03 12:00:00:00", "2015-06-04 12:00:00:00", "2015-06-05 12:00:00:00", "2015-06-06 12:00:00:00","2015-06-07 12:00:00:00","2015-06-08 12:00:00:00","2015-06-09 12:00:00:00","2015-06-10 12:00:00:00"]
 }
 /**

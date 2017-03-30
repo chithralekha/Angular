@@ -521,6 +521,7 @@ function dashBoardController($scope,$stateParams,$state,$http,filterService,work
    // alert($stateParams.obj);
     $scope.data1 = [0, 30, 200, 100, 400, 150, 250, 100, 0];
     $scope.data2 = [0, 50, 20, 10, 40, 15, 25, 30, 0];
+    $scope.data3 = [0, 200, 30, 400, 10, 250, 30, 25, 0];
     $scope.datapoints = [
         {"x": "one", "top-1": 10, "top-2": 12},
         {"x": "two", "top-1": 11, "top-2": 13},

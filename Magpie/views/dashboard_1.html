@@ -403,13 +403,13 @@
                 <c3chart bindto-id="stacked-bar-plot1-chart" show-labels="true" data-xFormat = "%Y-%m-%d %H:%M:%S">
                     <chart-column column-id="x" column-values="2010-01-01,2010-01-02,2010-01-03,2010-01-04,2010-01-05,2010-01-06,2010-01-07,2010-01-08,2010-01-09,2010-01-10"/>
                     <chart-column column-id="data 1"
-                                  column-name="Data 1"
-                                  column-values="30,200,100,400,150,250,300,400,500,100"
+                                  column-name="Tasks Completed"
+                                  column-values="500,200,100,40,15,250,300,50,45,100"
                                   column-type="bar" column-color="#1ab394"/>
                     <chart-column column-id="data 2"
-                                  column-name="Data 2"
-                                  column-values="50,20,10,40,15,25,30,50,45,10"
-                                  column-type="bar" column-color="#BABABA"/>
+                                  column-name="Tasks Due"
+                                  column-values="30,20,10,400,150,25,30,400,500,10"
+                                  column-type="bar" column-color="#682c25"/>                    
                     <chart-group group-values="data 1,data 2"/>
                     <chart-bar ratio="0.1"/>
                     <chart-axes values-x="x"/>
@@ -417,6 +417,7 @@
                         <chart-axis-x axis-position="outer-center" axis-label="Due Dates" axis-type="timeseries">
                             <chart-axis-x-tick tick-format="%Y-%m-%d" tick-rotate="50"/>
                         </chart-axis-x>
+                        <chart-axis-y axis-label = "Tasks Due"></chart-axis-y>
                     </chart-axis>
                 </c3chart>
             </div>

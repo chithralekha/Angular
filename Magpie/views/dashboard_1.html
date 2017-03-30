@@ -13,24 +13,25 @@
     </div>
     <div class="col-lg-2"></div>
 </div>
+
 <div class="wrapper wrapper-content" ng-controller = "dashBoardController">
-<div class="row hidden">
-    <div class="col-lg-3">
-        <div class="ibox float-e-margins">
-            <div class="ibox-title">
-                <span class="label label-primary pull-right">On Time</span>
-                <h5>Total Tasks</h5>
+    
+    <div class="row hidden">
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-primary pull-right">On Time</span>
+                    <h5>Total Tasks</h5>
             </div>
             <div class="ibox-content">
                 <h1 class="no-margins">408</h1>
-
                 <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>
                 <small>Total Tasks OnTime</small>
             </div>
         </div>
     </div>
-    <div class="col-lg-3">
-        <div class="ibox float-e-margins">
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
             <div class="ibox-title">
                 <span class="label label-warning pull-right">In Jeopardy</span>
                 <h5>Total Tasks</h5>
@@ -43,7 +44,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-3">
+        <div class="col-lg-3">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
                 <span class="label label-danger pull-right">OverDue</span>
@@ -57,7 +58,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-3">
+        <div class="col-lg-3">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
                 <span class="label label-danger pull-right">Low value</span>
@@ -76,64 +77,8 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-lg-12">
-        <div class="ibox float-e-margins">
-            <div class="ibox-title">
-                <h5>Cyber Security Program Compliance Trend</h5>
-
-                <div class="pull-right">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-xs btn-white active">Today</button>
-                        <button type="button" class="btn btn-xs btn-white">Monthly</button>
-                        <button type="button" class="btn btn-xs btn-white">Annual</button>
-                    </div>
-                </div>
-            </div>
-            <div class="ibox-content">
-                <div class="row">
-                    <div class="col-lg-9">
-                        <div class="flot-chart" ng-controller="dashboardFlotTwo as chart">
-                            <div flot class="flot-chart-content" dataset="chart.flotData" options="chart.flotOptions"></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <ul class="stat-list">
-                            <li>
-                                <h2 class="no-margins">4,356</h2>
-                                <small>Total number of tasks in period</small>
-                                <div class="stat-percent">48% <i class="fa fa-level-up text-navy"></i></div>
-                                <div class="progress progress-mini progress-striped active m-b-sm">
-                                    <div style="width: 48%;" class="progress-bar"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <h2 class="no-margins ">2,483</h2>
-                                <small>Total number of tasks completed in period</small>
-                                <div class="stat-percent">60% <i class="fa fa-level-down text-navy"></i></div>
-                                <div class="progress progress-mini progress-striped active m-b-sm">
-                                    <div style="width: 60%;" class="progress-bar"></div>
-                                </div>
-                            </li>
-                            <li>
-                                <h2 class="no-margins ">57%</h2>
-                                <small>Average Historical Compliance Percentage</small>
-                                <div class="stat-percent">57% <i class="fa fa-bolt text-navy"></i></div>
-                                <div class="progress progress-mini progress-striped active m-b-sm">
-                                    <div style="width: 57%;" class="progress-bar"></div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-
-<div class="row hidden">
+    
+    <div class="row hidden">
 <div class="col-lg-4">
     <div class="ibox float-e-margins">
         <div class="ibox-title">
@@ -328,11 +273,10 @@
         </div>
     </div>
 </div>
-
-</div>
-</div>
-</div>
-<div class="row hidden" ng-controller="chartistCtrl">
+    </div>
+    </div>
+    
+    <div class="row hidden" ng-controller="chartistCtrl">
         <div class="col-lg-6">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
@@ -353,81 +297,131 @@
                 </div>
             </div>
         </div>
-    </div>
+</div>
+
+</div>
+
+
+
 <div class="row">
-        <div class="col-lg-6" ng-controller = "dashBoardController">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Task completion by User</h5>
-                </div>
-                <div class="ibox-content">
-                    <div>
-                        <c3chart bindto-id="chart1">
-                            <chart-column column-id="data 1"
-                                          column-values="{{data1}}"
-                                          column-name = "User1"
-                                          column-type="line" column-color="#1ab394"/>
-                            <chart-column column-id="data 2"
-                                          column-values="{{data2}}"
-                                          column-name = "User2"
-                                          column-type="line" column-color="#BABABA" />
-                        </c3chart>
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Cyber Security Program Compliance Trend</h5>
+
+                <div class="pull-right">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-xs btn-white active">Today</button>
+                        <button type="button" class="btn btn-xs btn-white">Monthly</button>
+                        <button type="button" class="btn btn-xs btn-white">Annual</button>
                     </div>
+                </div>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="flot-chart" ng-controller="dashboardFlotTwo as chart">
+                            <div flot class="flot-chart-content" dataset="chart.flotData" options="chart.flotOptions"></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <ul class="stat-list">
+                            <li>
+                                <h2 class="no-margins">4,356</h2>
+                                <small>Total number of tasks in period</small>
+                                <div class="stat-percent">48% <i class="fa fa-level-up text-navy"></i></div>
+                                <div class="progress progress-mini progress-striped active m-b-sm">
+                                    <div style="width: 48%;" class="progress-bar"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <h2 class="no-margins ">2,483</h2>
+                                <small>Total number of tasks completed in period</small>
+                                <div class="stat-percent">60% <i class="fa fa-level-down text-navy"></i></div>
+                                <div class="progress progress-mini progress-striped active m-b-sm">
+                                    <div style="width: 60%;" class="progress-bar"></div>
+                                </div>
+                            </li>
+                            <li>
+                                <h2 class="no-margins ">57%</h2>
+                                <small>Average Historical Compliance Percentage</small>
+                                <div class="stat-percent">57% <i class="fa fa-bolt text-navy"></i></div>
+                                <div class="progress progress-mini progress-striped active m-b-sm">
+                                    <div style="width: 57%;" class="progress-bar"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6" ng-controller = "dashBoardController">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Task completion by User</h5>
+            </div>
+            <div class="ibox-content">
+                <div>
+                    <c3chart bindto-id="chart1">
+                        <chart-column column-id="data 1"
+                                      column-values="{{data1}}"
+                                      column-name = "User1"
+                                      column-type="line" column-color="#1ab394"/>
+                        <chart-column column-id="data 2"
+                                      column-values="{{data2}}"
+                                      column-name = "User2"
+                                      column-type="line" column-color="#BABABA" />
+                    </c3chart>
                 </div>
             </div>
         </div>
-    <div class="col-lg-6" ng-controller="chartJsCtrl as chart">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Tasks in Period</h5>
-                    <div ibox-tools></div>
-                </div>
-                <div class="ibox-content">
-                    <div>
-                        <canvas radarchart options="chart.radarOptions" data="chart.radarData" responsive=true></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>    
     </div>
+    <div class="col-lg-6" ng-controller="chartJsCtrl as chart">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Tasks in Period</h5>
+                <div ibox-tools></div>
+            </div>
+            <div class="ibox-content">
+                <div>
+                    <canvas radarchart options="chart.radarOptions" data="chart.radarData" responsive=true></canvas></div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="row" ng-controller = "dashBoardController">
     <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Task Due by Date</h5>
-
-                </div>
-                <div class="ibox-content">
-                    <div>
-                        <c3chart bindto-id="stacked-bar-plot1-chart" show-labels="true" data-xFormat = "%Y-%m-%d %H:%M:%S">
-<!--
-                           <chart-axis>
-                                <chart-axis-x axis-id="x" axis-type="timeseries">
-                                    <chart-axis-x-tick tick-format="%Y-%m-%d"/>
-                                </chart-axis-x>
-                            </chart-axis>
--->
-                            <chart-column column-id="x"
-                  column-values="2010-01-02,2010-01-02,2010-01-03,2010-01-04,2010-01-05,2010-01-06,2010-01-07,2010-01-08,2010-01-09,2010-01-10"/>
-                            <chart-column column-id="data 1"
-                                          column-name="Data 1"
-                                          column-values="30,200,100,400,150,250,300,400,500,100"
-                                          column-type="bar" column-color="#1ab394"/>
-                            <chart-column column-id="data 2"
-                                          column-name="Data 2"
-                                          column-values="50,20,10,40,15,25,30,50,45,10"
-                                          column-type="bar" column-color="#BABABA"/>
-                            <chart-group group-values="data 1,data 2"/>
-                            <chart-bar ratio="0.1"/>
-    <chart-axes values-x="x"/>
-    <chart-axis>
-        <chart-axis-x axis-position="outer-center"
-                      axis-label="The dueDate"
-                      axis-type="timeseries">
-        <chart-axis-x-tick tick-format="%Y-%m-%d" tick-rotate="50"/>
-        </chart-axis-x>
-    </chart-axis>
-                        </c3chart>
-                    </div>
-                </div>
+        <div class="ibox-title">
+            <h5>Task Due by Date</h5>
+        </div>
+        <div class="ibox-content">
+            <div>
+                <c3chart bindto-id="stacked-bar-plot1-chart" show-labels="true" data-xFormat = "%Y-%m-%d %H:%M:%S">
+                    <chart-column column-id="x" column-values="2010-01-02,2010-01-02,2010-01-03,2010-01-04,2010-01-05,2010-01-06,2010-01-07,2010-01-08,2010-01-09,2010-01-10"/>
+                    <chart-column column-id="data 1"
+                                  column-name="Data 1"
+                                  column-values="30,200,100,400,150,250,300,400,500,100"
+                                  column-type="bar" column-color="#1ab394"/>
+                    <chart-column column-id="data 2"
+                                  column-name="Data 2"
+                                  column-values="50,20,10,40,15,25,30,50,45,10"
+                                  column-type="bar" column-color="#BABABA"/>
+                    <chart-group group-values="data 1,data 2"/>
+                    <chart-bar ratio="0.1"/>
+                    <chart-axes values-x="x"/>
+                    <chart-axis>
+                        <chart-axis-x axis-position="outer-center" axis-label="Due Dates" axis-type="timeseries">
+                            <chart-axis-x-tick tick-format="%Y-%m-%d" tick-rotate="50"/>
+                        </chart-axis-x>
+                    </chart-axis>
+                </c3chart>
             </div>
         </div>
+    </div>
+</div>

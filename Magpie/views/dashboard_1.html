@@ -396,7 +396,7 @@
                 </div>
                 <div class="ibox-content">
                     <div>
-                        <c3chart bindto-id="stacked-bar-plot1-chart">
+                        <c3chart bindto-id="stacked-bar-plot1-chart" show-labels="true" data-xFormat = "%Y-%m-%d %H:%M:%S">
 <!--
                            <chart-axis>
                                 <chart-axis-x axis-id="x" axis-type="timeseries">
@@ -404,6 +404,8 @@
                                 </chart-axis-x>
                             </chart-axis>
 -->
+                            <chart-column column-id="x"
+                  column-values="2010-01-02,2011-06-03,2012-01-04,2013-06-05,2014-01-06,2015-06-07,2014-02-06,2015-03-07,2014-03-06,2015-07-07"/>
                             <chart-column column-id="data 1"
                                           column-name="Data 1"
                                           column-values="30,200,100,400,150,250,300,400,500,100"
@@ -413,6 +415,15 @@
                                           column-values="50,20,10,40,15,25,30,50,45,10"
                                           column-type="bar" column-color="#BABABA"/>
                             <chart-group group-values="data 1,data 2"/>
+                            <chart-bar ratio="0.1"/>
+    <chart-axes values-x="x"/>
+    <chart-axis>
+        <chart-axis-x axis-position="outer-center"
+                      axis-label="The dueDate"
+                      axis-type="timeseries">
+        <chart-axis-x-tick tick-format="%Y-%m-%d" tick-rotate="50"/>
+        </chart-axis-x>
+    </chart-axis>
                         </c3chart>
                     </div>
                 </div>

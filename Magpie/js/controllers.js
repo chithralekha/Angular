@@ -531,6 +531,7 @@ function dashBoardController($scope,$stateParams,$state,$http,filterService,work
     $scope.datacolumns = [{"id": "top-1", "type": "bar", "name": "Top one"},
         {"id": "top-2", "type": "bar", "name": "Top two"}];
     $scope.datax = {"id": "x"};
+    $scope.dataX = ["20150601", '2015-06-02 12:00:00:00', "2015-06-03 12:00:00:00", "2015-06-04 12:00:00:00", "2015-06-05 12:00:00:00", "2015-06-06 12:00:00:00","2015-06-07 12:00:00:00","2015-06-08 12:00:00:00","2015-06-09 12:00:00:00","2015-06-10 12:00:00:00"]
 }
 /**
  * dashboardRACIPerformance - simple controller for data

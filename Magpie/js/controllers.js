@@ -525,7 +525,7 @@ function dashBoardController($scope,$stateParams,$state,$http,filterService,work
                                              {"x" : 40, "User1" : 50, "User2" : 45, "User3" : 90}];
     $scope.datacolumnsTaskCompletionByUser = [{"id" : "User1", "type" : "line", "name" : "User 1", "color" : "#1ab394"},
                                               {"id" : "User2", "type" : "spline", "name" : "User 2", "color" : "#BABABA"},
-                                             {"id": "User3", "type" : "line", "name" : "User 3", "color" : "#1ab394"}];
+                                              {"id": "User3", "type" : "line", "name" : "User 3", "color" : "#1ab394"}];
     $scope.datax={"id":"x"};
     $scope.data1 = [0, 30, 200, 100, 400, 150, 250, 100, 0];
     $scope.data2 = [0, 50, 20, 10, 40, 15, 25, 30, 0];

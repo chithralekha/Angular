@@ -626,7 +626,7 @@
                     'Content-Type' : 'application/json'
                 }});
                 return promise.then(function (data) {
-                      alert(data.data.userName);
+                    //  alert(data.data.userName);
                     return data;
                 });
             };

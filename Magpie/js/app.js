@@ -16,18 +16,27 @@
             baseURL : 
           'http://localhost:3706/api/',
          // 'http://magpie-qa-api.us-west-2.elasticbeanstalk.com/api/',
-            authURL : 'http://localhost:50443/oauth/token',
+            authURL : 'http://localhost:50443/',
             oldMagpieBaseURL : 'http://ec2-52-88-137-146.us-west-2.compute.amazonaws.com/Landing/index?n='
         })
         .constant('USER_ROLES', {
             all : '*',
+            System : 'System',
+            NotificationService : 'NotificationService',
+            Debugger : 'Debugger',            
             Administrator : 'Administrator',
-            editor : 'editor',
-            guest : 'guest',
+            AccountManager : 'AccountManager',
+            UserManager : 'UserManager',
+            RaciTeamManager : 'RaciTeamManager',
+            BusinessProcessManager : 'BusinessProcessManager',
             QlikUser : 'QlikUser',
-            OldTroutUser : 'OldTroutUser',
             TaskBoardUser : 'TaskBoardUser',
-            Executive : 'Executive'
+            TaskBoardUserReadOnly : 'TaskBoardUserReadOnly',
+            ProgramDesigner : 'ProgramDesigner',
+            LogViewer : 'LogViewer',
+            DocumentRepositoryUser : 'DocumentRepositoryUser',
+            DocumentRepositoryUserReadOnly : 'DocumentRepositoryUserReadOnly',
+            IncidentResponseUser : 'IncidentResponseUser'
         
         })
         .constant("baseURL", "http://localhost:3706/api/")
@@ -620,7 +629,7 @@
         })
         .service('userService', ['$resource', 'baseURL', 'Config', '$interpolate','$http', function ($resource, baseURL, Config, $interpolate, $http) {
             this.getUserProfile = function (bearerToken) {
-                var promise = $http.get('http://localhost:50443/user/profile',{
+                var promise = $http.get(Config.authURL + 'user/profile',{
                 headers: {
                     'Authorization' : 'Bearer ' + bearerToken,
                     'Content-Type' : 'application/json'
@@ -761,7 +770,7 @@
                     };         
   
                 // http://localhost:50443
-                $http.post(Config.authURL, data, config)
+                $http.post(Config.authURL + 'oauth/token', data, config)
                     .then(function(data) {
                         if (data != null) {
                             userReturnData = data.data;              

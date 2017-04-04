@@ -34,7 +34,7 @@
                     <li ng-show= "isAuthorized(userRoles.Administrator)" ui-sref-active="active"><a ui-sref="dashboards.dashboard_4">{{ 'RACI' | translate }}</a></li>
                     <li ng-show= "isAuthorized(userRoles.Administrator)" ui-sref-active="active"><a ui-sref="dashboards.dashboard_3">{{ 'Due Date' | translate }}</a></li>
                     <li ng-show= "isAuthorized(userRoles.Administrator)" ui-sref-active="active"><a ui-sref="dashboards.dashboard_4_1">{{ 'Performance' | translate }}</a></li>
-                    <li ng-show= "isAuthorized([userRoles.OldTroutUser,userRoles.Administrator])" ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=Operations&c=Dashboard">{{ 'Operations' | translate }}<span class="label label-primary pull-right">NEW</span></a></li>
+                    <li ng-show= "isAuthorized([userRoles.Administrator,userRoles.System, userRoles.NotificationService, userRoles.AccountManager, userRoles.UserManager, userRoles.RaciTeamManager])" ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=Operations&c=Dashboard">{{ 'Operations' | translate }}<span class="label label-primary pull-right">NEW</span></a></li>
                 </ul>
 <!--                <div ng-if="isAuthorized(userRoles.admin)">You're admin.</div>-->
             </li>

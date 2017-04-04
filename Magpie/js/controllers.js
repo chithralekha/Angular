@@ -1543,7 +1543,7 @@ function chartistCtrl() {
  * userProfile - Controller for User Profile
  */
 function userProfile($scope,authenticationService,USER_ROLES,Config,userService) {
-    var userData = null, isAuthorizedUser = false;
+    var userData = null, isAuthorizedUser = false, userProfile = null;
     if (sessionStorage.userData != null) {
         userData = JSON.parse(sessionStorage.userData);    
         if (userData != null) {
@@ -1560,10 +1560,27 @@ function userProfile($scope,authenticationService,USER_ROLES,Config,userService)
     
     $scope.userName = userData.username; 
     $scope.userRoles = USER_ROLES;    
-    $scope.currentUser = userService.getUserData(userData.bearerToken,userData.username);
-    $scope.currentUserRoles = $scope.currentUser.userRoles.join();
-//    alert($scope.currentUser.userRole);
-//    alert(sessionStorage.userData);
+    $scope.currentUser = userService.getUserProfile(userData.bearerToken);
+    $scope.currentUser.then (function (response) {
+        $scope.userProfile = response.data;
+        // alert($scope.userProfile);
+        console.log($scope.userProfile);
+        sessionStorage.userProfile = JSON.stringify($scope.userProfile);
+        $scope.currentUserRoles = $scope.userProfile.roles.join();
+    });
+ if(sessionStorage.userProfile != null) {
+     $scope.currentUserProfile = JSON.parse(sessionStorage.userProfile);
+     if($scope.currentUserProfile != null)
+         {
+             if($scope.currentUserProfile.roles != null)
+                 $scope.currentUserRoles = $scope.currentUserProfile.roles.join();
+         }
+     
+ }
+    else
+        {
+            $scope.currentUserRoles = 'none';
+        } 
     $scope.isAuthorized = function (authorizedRoles) {
         isAuthorizedUser = false;
                 if (!angular.isArray(authorizedRoles)) {
@@ -1574,11 +1591,18 @@ function userProfile($scope,authenticationService,USER_ROLES,Config,userService)
 //        alert(val);
   //      alert(authorizedRoles);
         if(userData.isAuthenticated) {
-            angular.forEach($scope.currentUser.userRoles, function (item) {
+            if(sessionStorage.userProfile != null)
+                {
+           var userProfile = JSON.parse(sessionStorage.userProfile); 
+                    if(userProfile != null)
+                        {
+            angular.forEach(userProfile.roles, function (item) {
                 if(authorizedRoles.indexOf(item) !== -1) {
                     isAuthorizedUser = true;
                 }
             });
+                        }
+                }
         }
         //alert(isAuthorizedUser);
         return(isAuthorizedUser)
@@ -2295,6 +2319,7 @@ function loginCtrl($scope, $http, $state, authenticationService) {
     if ($state.$current.url.source == "/logout")
     {
         sessionStorage.userData = null;
+        sessionStorage.userProfile = null;
         authenticationService.removeAuthentication();        
     }        
     
@@ -2309,6 +2334,7 @@ function loginCtrl($scope, $http, $state, authenticationService) {
         
     $scope.logout = function() {
         sessionStorage.userData = null;
+        sessionStorage.userProfile = null;
         authenticationService.removeAuthentication();
     }
         

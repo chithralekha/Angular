@@ -16,17 +16,19 @@
             baseURL : 
           'http://localhost:3706/api/',
          // 'http://magpie-qa-api.us-west-2.elasticbeanstalk.com/api/',
-            authURL : 'http://development.pyinagztvy.us-west-2.elasticbeanstalk.com/oauth/token',
-            oldMagpieBaseURL : 'http://magpie-sandbox.azurewebsites.net/Landing/index?n='
+            authURL : 'http://localhost:50443/oauth/token',
+            oldMagpieBaseURL : 'http://ec2-52-88-137-146.us-west-2.compute.amazonaws.com/Landing/index?n='
         })
         .constant('USER_ROLES', {
             all : '*',
-            admin : 'admin',
+            Administrator : 'Administrator',
             editor : 'editor',
             guest : 'guest',
             QlikDashboardUser : 'QlikDashboardUser',
             OldTroutUser : 'OldTroutUser',
-            MagpieLiteTaskBoardUser : 'MagpieLiteTaskBoardUser'
+            MagpieLiteTaskBoardUser : 'MagpieLiteTaskBoardUser',
+            Executive : 'Executive'
+        
         })
         .constant("baseURL", "http://localhost:3706/api/")
         .service('filterService', ['$resource', 'baseURL', 'Config', function ($resource, baseURL, Config) {
@@ -73,33 +75,6 @@
                 setCount : setCount
             };
 
-        }])
-        .service('userService', ['$resource', 'baseURL', 'Config', '$interpolate', function ($resource, baseURL, Config, $interpolate) {
-            this.getUserData = function (bearerToken, userId) {
-                var exp = $interpolate(Config.baseURL + 'CurrentUser/{{BearerToken}}}', false, null, true),
-                    url = exp({ BearerToken: bearerToken}),
-                    promise,
-                //  promise = $http.get(url);
-                //  return promise.then(function (data) {
-                //  //  alert(data);
-                //  return data;
-                //   });
-                    userRoles = [];
-                if (userId === 'Rob') {
-                    userRoles.push('QlikDashboardUser');
-                    userRoles.push('admin');
-                } else if (userId === 'Ed') {
-                    userRoles.push('admin');
-                    userRoles.push('OldTroutUser');
-                } else {
-                    userRoles.push('admin');
-                    userRoles.push('MagpieLiteTaskBoardUser');
-                }
-                var userData = {
-                    userRoles : userRoles
-                }
-                return userData;
-            };
         }])
         .service('responsibleUserService', ['$resource', 'baseURL', 'Config', function ($resource, baseURL, Config) {
             var userList = $resource(Config.baseURL + 'Users', null, {
@@ -643,6 +618,20 @@
                 return value + (tail || ' …');
             };
         })
+        .service('userService', ['$resource', 'baseURL', 'Config', '$interpolate','$http', function ($resource, baseURL, Config, $interpolate, $http) {
+            this.getUserProfile = function (bearerToken) {
+                var promise = $http.get('http://localhost:50443/user/profile',{
+                headers: {
+                    'Authorization' : 'Bearer ' + bearerToken,
+                    'Content-Type' : 'application/json'
+                }});
+                return promise.then(function (data) {
+                      alert(data.data.userName);
+                    return data;
+                });
+            };
+            
+            }])
         .service('authenticationService', ['$http', 'Config',function ($http, Config) {
   
             function NoAuthenticationException(message) {

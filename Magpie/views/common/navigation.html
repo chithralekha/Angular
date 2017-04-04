@@ -57,7 +57,7 @@
             </li>
             
             <!-- Links from Angular app to OldMagpie -->
-            <li ng-controller="userProfile" ng-show = "isAuthorized([userRoles.OldTroutUser,userRoles.Administrator])">
+            <li ng-controller="userProfile" ng-show = "isAuthorized([userRoles.QlikUser, userRoles.TaskboardUser, userRoles.Administrator])">
                 <a href=""><i class="fa fa-sitemap"></i> <span class="nav-label">{{ 'Operations' | translate }}</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
                     <!-- Operations -->

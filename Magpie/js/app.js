@@ -24,9 +24,9 @@
             Administrator : 'Administrator',
             editor : 'editor',
             guest : 'guest',
-            QlikDashboardUser : 'QlikDashboardUser',
+            QlikUser : 'QlikUser',
             OldTroutUser : 'OldTroutUser',
-            MagpieLiteTaskBoardUser : 'MagpieLiteTaskBoardUser',
+            TaskBoardUser : 'TaskBoardUser',
             Executive : 'Executive'
         
         })

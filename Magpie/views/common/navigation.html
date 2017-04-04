@@ -34,13 +34,13 @@
                     <li ng-show= "isAuthorized(userRoles.Administrator)" ui-sref-active="active"><a ui-sref="dashboards.dashboard_4">{{ 'RACI' | translate }}</a></li>
                     <li ng-show= "isAuthorized(userRoles.Administrator)" ui-sref-active="active"><a ui-sref="dashboards.dashboard_3">{{ 'Due Date' | translate }}</a></li>
                     <li ng-show= "isAuthorized(userRoles.Administrator)" ui-sref-active="active"><a ui-sref="dashboards.dashboard_4_1">{{ 'Performance' | translate }}</a></li>
-                    <li ng-show= "isAuthorized(userRoles.OldTroutUser)" ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=Operations&c=Dashboard">{{ 'Operations' | translate }}<span class="label label-primary pull-right">NEW</span></a></li>
+                    <li ng-show= "isAuthorized([userRoles.OldTroutUser,userRoles.Administrator])" ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=Operations&c=Dashboard">{{ 'Operations' | translate }}<span class="label label-primary pull-right">NEW</span></a></li>
                 </ul>
 <!--                <div ng-if="isAuthorized(userRoles.admin)">You're admin.</div>-->
             </li>
             
             <!-- TaskBoard -->
-            <li ng-class="{active: $state.includes('miscellaneous')}" ng-show = "isAuthorized(userRoles.MagpieLiteTaskBoardUser)" ng-controller="userProfile">
+            <li ng-class="{active: $state.includes('miscellaneous')}" ng-show = "isAuthorized([userRoles.MagpieLiteTaskBoardUser, userRoles.Administrator])" ng-controller="userProfile">
                 <a href="#"><i class="fa fa-tasks"></i> <span class="nav-label">{{ 'Task Board' | translate }}</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('miscellaneous')}" ng-controller="businessControlProfile">
                     <li ng-class="navClass(item)" ng-repeat="item in businessControlProfileList"><a ui-sref="miscellaneous.task_board({filterText: 1, bcp: item.workingSetId})">{{item.name}}</a></li>              
@@ -57,7 +57,7 @@
             </li>
             
             <!-- Links from Angular app to OldMagpie -->
-            <li ng-controller="userProfile" ng-show = "isAuthorized(userRoles.OldTroutUser)">
+            <li ng-controller="userProfile" ng-show = "isAuthorized([userRoles.OldTroutUser,userRoles.Administrator])">
                 <a href=""><i class="fa fa-sitemap"></i> <span class="nav-label">{{ 'Operations' | translate }}</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
                     <!-- Operations -->

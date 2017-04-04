@@ -1582,7 +1582,7 @@ function userProfile($scope,authenticationService,USER_ROLES,Config,userService)
             $scope.currentUserRoles = 'none';
         } 
     $scope.isAuthorized = function (authorizedRoles) {
-        alert(authorizedRoles);
+       // alert(authorizedRoles);
         isAuthorizedUser = false;
                 if (!angular.isArray(authorizedRoles)) {
                   authorizedRoles = [authorizedRoles];

@@ -13,9 +13,7 @@
         'ngResource'
     ])
         .constant('Config', {
-            baseURL : 
-          'http://localhost:3706/api/',
-         // 'http://magpie-qa-api.us-west-2.elasticbeanstalk.com/api/',
+            baseURL : 'http://localhost:3706/api/', // 'http://magpie-qa-api.us-west-2.elasticbeanstalk.com/api/',
             authURL : 'http://localhost:50443/',
             oldMagpieBaseURL : 'http://ec2-52-88-137-146.us-west-2.compute.amazonaws.com/Landing/index?n='
         })
@@ -23,7 +21,7 @@
             all : '*',
             System : 'System',
             NotificationService : 'NotificationService',
-            Debugger : 'Debugger',            
+            Debugger : 'Debugger',
             Administrator : 'Administrator',
             AccountManager : 'AccountManager',
             UserManager : 'UserManager',
@@ -37,7 +35,6 @@
             DocumentRepositoryUser : 'DocumentRepositoryUser',
             DocumentRepositoryUserReadOnly : 'DocumentRepositoryUserReadOnly',
             IncidentResponseUser : 'IncidentResponseUser'
-        
         })
         .constant("baseURL", "http://localhost:3706/api/")
         .service('filterService', ['$resource', 'baseURL', 'Config', function ($resource, baseURL, Config) {
@@ -627,21 +624,22 @@
                 return value + (tail || ' …');
             };
         })
-        .service('userService', ['$resource', 'baseURL', 'Config', '$interpolate','$http', function ($resource, baseURL, Config, $interpolate, $http) {
+        .service('userService', ['$resource', 'baseURL', 'Config', '$interpolate', '$http', function ($resource, baseURL, Config, $interpolate, $http) {
             this.getUserProfile = function (bearerToken) {
-                var promise = $http.get(Config.authURL + 'user/profile',{
-                headers: {
-                    'Authorization' : 'Bearer ' + bearerToken,
-                    'Content-Type' : 'application/json'
-                }});
+                var promise = $http.get(Config.authURL + 'user/profile', {
+                        headers: {
+                            'Authorization' : 'Bearer ' + bearerToken,
+                            'Content-Type' : 'application/json'
+                        }
+                    });
                 return promise.then(function (data) {
                     //  alert(data.data.userName);
                     return data;
                 });
             };
             
-            }])
-        .service('authenticationService', ['$http', 'Config',function ($http, Config) {
+        }])
+        .service('authenticationService', ['$http', 'Config', function ($http, Config) {
   
             function NoAuthenticationException(message) {
                 this.name = 'AuthenticationRequired';

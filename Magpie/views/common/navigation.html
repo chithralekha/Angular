@@ -30,17 +30,17 @@
                 <a href="index.html"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">{{ 'DASHBOARD' | translate }}</span> <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('dashboards')}">                    
                     <li ui-sref-active="active"><a ui-sref="dashboards.Home">{{ 'Home' | translate }}</a></li>
-                    <li ng-show= "isAuthorized(userRoles.Administrator)" ui-sref-active="active"><a ui-sref="dashboards.dashboard_2">{{ 'Home' | translate }}</a></li>
-                    <li ng-show= "isAuthorized(userRoles.Administrator)" ui-sref-active="active"><a ui-sref="dashboards.dashboard_4">{{ 'RACI' | translate }}</a></li>
-                    <li ng-show= "isAuthorized(userRoles.Administrator)" ui-sref-active="active"><a ui-sref="dashboards.dashboard_3">{{ 'Due Date' | translate }}</a></li>
-                    <li ng-show= "isAuthorized(userRoles.Administrator)" ui-sref-active="active"><a ui-sref="dashboards.dashboard_4_1">{{ 'Performance' | translate }}</a></li>
+                    <li ng-show= "isAuthorized([userRoles.Administrator, userRoles.QlikUser])" ui-sref-active="active"><a ui-sref="dashboards.dashboard_2">{{ 'Home' | translate }}</a></li>
+                    <li ng-show= "isAuthorized([userRoles.Administrator, userRoles.QlikUser])" ui-sref-active="active"><a ui-sref="dashboards.dashboard_4">{{ 'RACI' | translate }}</a></li>
+                    <li ng-show= "isAuthorized([userRoles.Administrator, userRoles.QlikUser])" ui-sref-active="active"><a ui-sref="dashboards.dashboard_3">{{ 'Due Date' | translate }}</a></li>
+                    <li ng-show= "isAuthorized([userRoles.Administrator, userRoles.QlikUser])" ui-sref-active="active"><a ui-sref="dashboards.dashboard_4_1">{{ 'Performance' | translate }}</a></li>
                     <li ng-show= "isAuthorized([userRoles.Administrator,userRoles.System, userRoles.NotificationService, userRoles.AccountManager, userRoles.UserManager, userRoles.RaciTeamManager])" ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=Operations&c=Dashboard">{{ 'Operations' | translate }}<span class="label label-primary pull-right">NEW</span></a></li>
                 </ul>
 <!--                <div ng-if="isAuthorized(userRoles.admin)">You're admin.</div>-->
             </li>
             
             <!-- TaskBoard -->
-            <li ng-class="{active: $state.includes('miscellaneous')}" ng-show = "isAuthorized([userRoles.MagpieLiteTaskBoardUser, userRoles.Administrator])" ng-controller="userProfile">
+            <li ng-class="{active: $state.includes('miscellaneous')}" ng-show = "isAuthorized([userRoles.TaskBoardUser, userRoles.Administrator, userRoles.TaskBoardUserReadOnly])" ng-controller="userProfile">
                 <a href="#"><i class="fa fa-tasks"></i> <span class="nav-label">{{ 'Task Board' | translate }}</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('miscellaneous')}" ng-controller="businessControlProfile">
                     <li ng-class="navClass(item)" ng-repeat="item in businessControlProfileList"><a ui-sref="miscellaneous.task_board({filterText: 1, bcp: item.workingSetId})">{{item.name}}</a></li>              

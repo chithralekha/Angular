@@ -511,7 +511,7 @@ function homeController($scope,$stateParams,$state,$http,filterService,workingSe
         });
     };
 }
-function complianceScoreCtrl($scope,$http,$uibModalInstance,filterService,$filter,filterWebAPIService,$interpolate,responsibleUserService,baseURL, Config) {
+function complianceScoreCtrl($scope,$http,$uibModalInstance,filterService,$filter,filterWebAPIService,$interpolate,responsibleUserService,Config) {
     
     //alert($scope.workingSetName);
 }
@@ -1822,7 +1822,7 @@ function raciTeam($scope, $http,$uibModal,$stateParams,filterService,$filter,tas
 /**
  * agileBoard - Controller for agile Board view
  */
-function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter,filterWebAPIService,$interpolate,responsibleUserService,baseURL, Config) {
+function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter,filterWebAPIService,$interpolate,responsibleUserService,Config) {
     $scope.onSelected = function (selectedItem) {
         $scope.selectedUser = selectedItem;
         $scope.id = selectedItem.Id;
@@ -2002,7 +2002,7 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
 /**
  * taskBoard - Controller for task_board view
  */
-function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filter, tasksService, dataService, workingSetWebAPIService, $interpolate, responsibleUserService,baseURL, Config) {
+function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filter, tasksService, dataService, workingSetWebAPIService, $interpolate, responsibleUserService, Config) {
     
     this.daterange = { startDate : null, endDate : null };
     $scope.Filters=filterService.getFilters();

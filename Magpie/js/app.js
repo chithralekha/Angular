@@ -36,8 +36,7 @@
             DocumentRepositoryUserReadOnly : 'DocumentRepositoryUserReadOnly',
             IncidentResponseUser : 'IncidentResponseUser'
         })
-        .constant("baseURL", "http://localhost:3706/api/")
-        .service('filterService', ['$resource', 'baseURL', 'Config', function ($resource, baseURL, Config) {
+        .service('filterService', ['$resource','Config', function ($resource,Config) {
             var filterList = $resource(Config.baseURL + 'Filters').query(),
                 count = 0,
                 addFilter = function (newObj) {
@@ -82,7 +81,7 @@
             };
 
         }])
-        .service('responsibleUserService', ['$resource', 'baseURL', 'Config', function ($resource, baseURL, Config) {
+        .service('responsibleUserService', ['$resource', 'Config', function ($resource, Config) {
             var userList = $resource(Config.baseURL + 'Users', null, {
                 query: {
                     method: 'GET',
@@ -119,7 +118,7 @@
             return myService;
         }])
     
-        .service('dataService', ['$http', '$interpolate', 'baseURL', 'Config', function ($http, $interpolate, baseURL, Config) {
+        .service('dataService', ['$http', '$interpolate','Config', function ($http, $interpolate,Config) {
             this.getData = function (workingSetId, filterId) {
                 var exp = $interpolate(Config.baseURL + 'WorkingSets/{{WorkingSetId}}/Tasks?filterId={{FilterId}}', false, null, true),
                     url = exp({ WorkingSetId: workingSetId, FilterId : filterId}),
@@ -132,7 +131,7 @@
             };
         }])
         
-        .service('filterWebAPIService', ['$http', 'baseURL', 'Config', function ($http, baseURL, Config) {
+        .service('filterWebAPIService', ['$http', 'Config', function ($http, Config) {
             this.getData = function () {
                 var  promise;
                 promise = $http.get(Config.baseURL + 'Filters');
@@ -145,7 +144,7 @@
             
         }])
         
-        .service('workingSetWebAPIService', ['$http', '$interpolate', 'baseURL', 'Config', function ($http, $interpolate, baseURL, Config) {
+        .service('workingSetWebAPIService', ['$http', '$interpolate', 'Config', function ($http, $interpolate,Config) {
             this.getData = function () {
                 var  promise;
                 promise = $http.get(Config.baseURL + 'WorkingSets');
@@ -178,7 +177,7 @@
             
         }])
     
-        .service('tasksService', ['$resource', 'baseURL', 'Config', function ($resource, baseURL, Config) {
+        .service('tasksService', ['$resource','Config', function ($resource, Config) {
             var tasksList = [{
                 TaskCategory: 'CompletedUserTasks',
                 Tasks : [
@@ -583,7 +582,7 @@
                 return value + (tail || ' …');
             };
         })
-        .service('userService', ['$resource', 'baseURL', 'Config', '$interpolate', '$http', function ($resource, baseURL, Config, $interpolate, $http) {
+        .service('userService', ['$resource','Config', '$interpolate', '$http', function ($resource, Config, $interpolate, $http) {
             this.getUserProfile = function (bearerToken) {
                 var promise = $http.get(Config.authURL + 'user/profile', {
                         headers: {

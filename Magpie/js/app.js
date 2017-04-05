@@ -118,48 +118,7 @@
                 };
             return myService;
         }])
-        .service('plotterSrv', ['$http', function ($http) {
-            return {
-                getData: function () {
-            // 1)
-            // Asyncronous request to get the data.
-
-            // ?
-            // How could I update the revenues array?
-                    var promise = $http({method : 'GET', url : 'http://magpie-sandbox-api.us-west-2.elasticbeanstalk.com/api/Filters'})
-                                .success(function (data, status, headers, config) {
-                                return data;
-                            })
-                            .error(function (data, status, headers, config) {
-                                return {"status": false};
-                            });
-
-                    return promise;
-                },
-                drawPlot: function (d) {
-            // 1)
-            // plot the data.
-                    var dataObj = {
-                        "FilterId": 6,
-                        "FilterName": "Filter ABCDEF",
-                        "FilterOwnerUserId": "B981D6E6-FC59-4C02-A1D4-7E1038FC5E95",
-                        "FilterTypeId": 1,
-                        "FilterType": "System",
-                        "AssignedStatusId": null,
-                        "ControlId": null,
-                        "ControlSetId": null,
-                        "DueStatusId": 2,
-                        "IncludeRelations": null,
-                        "ResponsibleUserId": null,
-                        "TaskStateId": null,
-                        "UserTaskCode": null,
-                        "UserTaskId": null,
-                        "WorkingSetId": null
-                    };
-                    d.push(dataObj);
-                }
-            };
-        }])
+    
         .service('dataService', ['$http', '$interpolate', 'baseURL', 'Config', function ($http, $interpolate, baseURL, Config) {
             this.getData = function (workingSetId, filterId) {
                 var exp = $interpolate(Config.baseURL + 'WorkingSets/{{WorkingSetId}}/Tasks?filterId={{FilterId}}', false, null, true),

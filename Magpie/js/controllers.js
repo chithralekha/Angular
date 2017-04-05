@@ -511,7 +511,7 @@ function homeController($scope,$stateParams,$state,$http,filterService,workingSe
         });
     };
 }
-function complianceScoreCtrl($scope,$http,$uibModalInstance,filterService,$filter,filterWebAPIService,plotterSrv,$interpolate,responsibleUserService,baseURL, Config) {
+function complianceScoreCtrl($scope,$http,$uibModalInstance,filterService,$filter,filterWebAPIService,$interpolate,responsibleUserService,baseURL, Config) {
     
     //alert($scope.workingSetName);
 }
@@ -1639,7 +1639,7 @@ function oldMagpieApp($scope,Config) {
 /**
  * sideBarAgileBoard - Controller for sidebar-agile Board
  */
-function sideBar($scope, $http,$uibModal,$stateParams,filterService,$filter,tasksService,filterWebAPIService,dataService,plotterSrv,$timeout) {
+function sideBar($scope, $http,$uibModal,$stateParams,filterService,$filter,tasksService,filterWebAPIService,dataService,$timeout) {
     $scope.initializing = true;
     $scope.filtersList1 = filterService.getFilters();
     $timeout(function () { $scope.count = filterService.getCount(); });
@@ -1822,7 +1822,7 @@ function raciTeam($scope, $http,$uibModal,$stateParams,filterService,$filter,tas
 /**
  * agileBoard - Controller for agile Board view
  */
-function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter,filterWebAPIService,plotterSrv,$interpolate,responsibleUserService,baseURL, Config) {
+function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter,filterWebAPIService,$interpolate,responsibleUserService,baseURL, Config) {
     $scope.onSelected = function (selectedItem) {
         $scope.selectedUser = selectedItem;
         $scope.id = selectedItem.Id;

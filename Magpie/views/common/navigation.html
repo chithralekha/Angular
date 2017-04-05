@@ -46,7 +46,7 @@
                     <li ng-class="navClass(item)" ng-repeat="item in businessControlProfileList"><a ui-sref="miscellaneous.task_board({filterText: 1, bcp: item.workingSetId})">{{item.name}}</a></li>              
                 </ul>
                 <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('miscellaneous')}" ng-controller="sideBar">
-                    <li><a href="#">Filters <span class="fa arrow"></a></span>
+                    <li><a href="#">Filters <span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level collapse" ng-model = "filtersList1">
                             <li ng-class="navClass(filter)" ng-repeat="filter in filtersList1"><a ui-sref="{filterText: filter.filterId}">{{filter.filterName}}
                                 <span class="badge" style="margin-left:2em; float:right">{{numberOfTasksByFilterName(filter)}}</span> </a>

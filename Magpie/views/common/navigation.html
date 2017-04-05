@@ -39,8 +39,8 @@
 <!--                <div ng-if="isAuthorized(userRoles.admin)">You're admin.</div>-->
             </li>
             
-            <!-- TaskBoard -->
-            <li ng-class="{active: $state.includes('miscellaneous')}" ng-show = "isAuthorized([userRoles.TaskBoardUser, userRoles.Administrator, userRoles.TaskBoardUserReadOnly])" ng-controller="userProfile">
+            <!-- TaskBoard [Roles : System, Debugger, Administrator, TaskBoardUser, TaskBoardUserReadOnly ]-->
+            <li ng-class="{active: $state.includes('miscellaneous')}" ng-show = "isAuthorized([userRoles.System, userRoles.Debugger, userRoles.TaskBoardUser, userRoles.Administrator, userRoles.TaskBoardUserReadOnly])" ng-controller="userProfile">
                 <a href="#"><i class="fa fa-tasks"></i> <span class="nav-label">{{ 'Task Board' | translate }}</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse" ng-class="{in: $state.includes('miscellaneous')}" ng-controller="businessControlProfile">
                     <li ng-class="navClass(item)" ng-repeat="item in businessControlProfileList"><a ui-sref="miscellaneous.task_board({filterText: 1, bcp: item.workingSetId})">{{item.name}}</a></li>              

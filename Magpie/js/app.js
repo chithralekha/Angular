@@ -15,7 +15,7 @@
         .constant('Config', {
             baseURL : 'http://localhost:3706/api/', // 'http://magpie-qa-api.us-west-2.elasticbeanstalk.com/api/',
             authURL : 'http://localhost:50443/',
-            oldMagpieBaseURL : 'http://ec2-52-88-137-146.us-west-2.compute.amazonaws.com/Landing/index?n='
+            oldTroutBaseURL : 'http://ec2-52-88-137-146.us-west-2.compute.amazonaws.com/Landing/index?n='
         })
         .constant('USER_ROLES', {
             all : '*',

@@ -74,10 +74,10 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 }
             }
         })
-        .state('dashboards.dashboard_1', {
-            url: "/dashboard_1",
-            templateUrl: "views/dashboard_1.html",
-            data: { pageTitle: 'RACI Performance' },
+        .state('dashboards.dashboardSingleWorkingSet', {
+            url: "/dashboardSingleWorkingSet",
+            templateUrl: "views/dashboardSingleWorkingSet.html",
+            data: { pageTitle: 'Profile' },
             params: {
                 obj: null
             },
@@ -113,10 +113,11 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 }
             }
         })
-        .state('dashboards.dashboard_2', {
-            url: "/dashboard_2",
-            templateUrl: "views/dashboard_2.html",
-            data: { pageTitle: 'Compliance Trend' },
+        .state('dashboards.dashboard2QlikHome', {
+            url: "/dashboard2QlikHome",
+            templateUrl: "views/dashboard2QlikHome.html",
+            data: { pageTitle: 'Home',
+                  authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]},
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -152,9 +153,9 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 }
             }
         })
-        .state('dashboards.dashboard_3', {
-            url: "/dashboard_3",
-            templateUrl: "views/dashboard_3.html",
+        .state('dashboards.dashboard3QlikDueDate', {
+            url: "/dashboard3QlikDueDate",
+            templateUrl: "views/dashboard3QlikDueDate.html",
             data: { pageTitle: 'Workload Balancing' },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
@@ -182,62 +183,62 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 }
             }
         })
+        .state('dashboards.dashboard4QlikRACI', {
+            url: "/dashboard4QlikRACI",
+            templateUrl: "views/dashboard4QlikRACI.html",
+            data: { pageTitle: 'RACI' },
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            name: 'angles',
+                            files: ['js/plugins/chartJs/angles.js', 'js/plugins/chartJs/Chart.min.js']
+                        },
+                        {
+                            name: 'angular-peity',
+                            files: ['js/plugins/peity/jquery.peity.min.js', 'js/plugins/peity/angular-peity.js']
+                        },
+                        {
+                            serie: true,
+                            name: 'angular-flot',
+                            files: [ 'js/plugins/flot/jquery.flot.js', 'js/plugins/flot/jquery.flot.time.js', 'js/plugins/flot/jquery.flot.tooltip.min.js', 'js/plugins/flot/jquery.flot.spline.js', 'js/plugins/flot/jquery.flot.resize.js', 'js/plugins/flot/jquery.flot.pie.js', 'js/plugins/flot/curvedLines.js', 'js/plugins/flot/angular-flot.js', ]
+                        }
+                    ]);
+                }
+            }
+        })
+        .state('dashboards.dashboard5QlikPerformance', {
+            url: "/dashboard5QlikPerformance",
+            templateUrl: "views/dashboard5QlikPerformance.html",
+            data: { pageTitle: 'Cyber Security Performance' },
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            name: 'angles',
+                            files: ['js/plugins/chartJs/angles.js', 'js/plugins/chartJs/Chart.min.js']
+                        },
+                        {
+                            name: 'angular-peity',
+                            files: ['js/plugins/peity/jquery.peity.min.js', 'js/plugins/peity/angular-peity.js']
+                        },
+                        {
+                            serie: true,
+                            name: 'angular-flot',
+                            files: [ 'js/plugins/flot/jquery.flot.js', 'js/plugins/flot/jquery.flot.time.js', 'js/plugins/flot/jquery.flot.tooltip.min.js', 'js/plugins/flot/jquery.flot.spline.js', 'js/plugins/flot/jquery.flot.resize.js', 'js/plugins/flot/jquery.flot.pie.js', 'js/plugins/flot/curvedLines.js', 'js/plugins/flot/angular-flot.js', ]
+                        }
+                    ]);
+                }
+            }
+        })
         .state('dashboards_top', {
             abstract: true,
             url: "/dashboards_top",
             templateUrl: "views/common/content_top_navigation.html",
         })
-        .state('dashboards.dashboard_4', {
-            url: "/dashboard_4",
-            templateUrl: "views/dashboard_4.html",
-            data: { pageTitle: 'Cyber Security Performance' },
-            resolve: {
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        {
-                            name: 'angles',
-                            files: ['js/plugins/chartJs/angles.js', 'js/plugins/chartJs/Chart.min.js']
-                        },
-                        {
-                            name: 'angular-peity',
-                            files: ['js/plugins/peity/jquery.peity.min.js', 'js/plugins/peity/angular-peity.js']
-                        },
-                        {
-                            serie: true,
-                            name: 'angular-flot',
-                            files: [ 'js/plugins/flot/jquery.flot.js', 'js/plugins/flot/jquery.flot.time.js', 'js/plugins/flot/jquery.flot.tooltip.min.js', 'js/plugins/flot/jquery.flot.spline.js', 'js/plugins/flot/jquery.flot.resize.js', 'js/plugins/flot/jquery.flot.pie.js', 'js/plugins/flot/curvedLines.js', 'js/plugins/flot/angular-flot.js', ]
-                        }
-                    ]);
-                }
-            }
-        })
-        .state('dashboards.dashboard_4_1', {
-            url: "/dashboard_4_1",
-            templateUrl: "views/dashboard_4_1.html",
-            data: { pageTitle: 'Cyber Security Performance' },
-            resolve: {
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        {
-                            name: 'angles',
-                            files: ['js/plugins/chartJs/angles.js', 'js/plugins/chartJs/Chart.min.js']
-                        },
-                        {
-                            name: 'angular-peity',
-                            files: ['js/plugins/peity/jquery.peity.min.js', 'js/plugins/peity/angular-peity.js']
-                        },
-                        {
-                            serie: true,
-                            name: 'angular-flot',
-                            files: [ 'js/plugins/flot/jquery.flot.js', 'js/plugins/flot/jquery.flot.time.js', 'js/plugins/flot/jquery.flot.tooltip.min.js', 'js/plugins/flot/jquery.flot.spline.js', 'js/plugins/flot/jquery.flot.resize.js', 'js/plugins/flot/jquery.flot.pie.js', 'js/plugins/flot/curvedLines.js', 'js/plugins/flot/angular-flot.js', ]
-                        }
-                    ]);
-                }
-            }
-        })
-        .state('dashboards.dashboard_5', {
-            url: "/dashboard_5",
-            templateUrl: "views/dashboard_5.html",
+        .state('dashboards.dashboard_5_1', {
+            url: "/dashboard_5_1",
+            templateUrl: "views/dashboard_5_1.html",
             data: { pageTitle: 'Operations' },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {

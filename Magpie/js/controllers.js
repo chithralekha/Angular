@@ -1,8 +1,7 @@
 /**
- * INSPINIA - Responsive Admin Theme
  *
  * Main controller.js file
- * Define controllers with data used in Inspinia theme
+ * Define controllers with data used
  *
  *
  * Functions (controllers)
@@ -69,58 +68,7 @@ function MainCtrl() {
     /**
      * states - Data used in Advanced Form view for Chosen plugin
      */
-    this.states = [
-        'Alabama',
-        'Alaska',
-        'Arizona',
-        'Arkansas',
-        'California',
-        'Colorado',
-        'Connecticut',
-        'Delaware',
-        'Florida',
-        'Georgia',
-        'Hawaii',
-        'Idaho',
-        'Illinois',
-        'Indiana',
-        'Iowa',
-        'Kansas',
-        'Kentucky',
-        'Louisiana',
-        'Maine',
-        'Maryland',
-        'Massachusetts',
-        'Michigan',
-        'Minnesota',
-        'Mississippi',
-        'Missouri',
-        'Montana',
-        'Nebraska',
-        'Nevada',
-        'New Hampshire',
-        'New Jersey',
-        'New Mexico',
-        'New York',
-        'North Carolina',
-        'North Dakota',
-        'Ohio',
-        'Oklahoma',
-        'Oregon',
-        'Pennsylvania',
-        'Rhode Island',
-        'South Carolina',
-        'South Dakota',
-        'Tennessee',
-        'Texas',
-        'Utah',
-        'Vermont',
-        'Virginia',
-        'Washington',
-        'West Virginia',
-        'Wisconsin',
-        'Wyoming'
-    ];
+    this.states = [ ];
 
     /**
      * check's - Few variables for checkbox input used in iCheck plugin. Only for demo purpose
@@ -169,9 +117,9 @@ function MainCtrl() {
      * alerts - used for dynamic alerts in Notifications and Tooltips view
      */
     this.alerts = [
-        { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
-        { type: 'success', msg: 'Well done! You successfully read this important alert message.' },
-        { type: 'info', msg: 'OK, You are done a great job man.' }
+        { type: 'danger', msg: '.' },
+        { type: 'success', msg: '.' },
+        { type: 'info', msg: '.' }
     ];
 
     /**
@@ -209,8 +157,7 @@ function MainCtrl() {
      * summernoteText - used for Summernote plugin
      */
     this.summernoteText = ['<h3>Hello Jonathan! </h3>',
-    '<p>dummy text of the printing and typesetting industry. <strong>Lorem Ipsum has been the dustrys</strong> standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more',
-        'recently with</p>'].join('');
+    '<p>','</p>'].join('');
 
     /**
      * General variables for Peity Charts
@@ -320,81 +267,11 @@ function MainCtrl() {
  */
 function dashboardFlotOne() {
 
-    var data1 = [
-        [0, 4],
-        [1, 8],
-        [2, 5],
-        [3, 10],
-        [4, 4],
-        [5, 16],
-        [6, 5],
-        [7, 11],
-        [8, 6],
-        [9, 11],
-        [10, 30],
-        [11, 10],
-        [12, 13]       
-    ];
-    var data2 = [
-        [0, 1],
-        [1, 0],
-        [2, 2],
-        [3, 0],
-        [4, 1],
-        [5, 3],
-        [6, 1],
-        [7, 5],
-        [8, 2],
-        [9, 3],
-        [10, 2],
-        [11, 1],
-        [12, 0]        
-    ];
-    var data3 = [
-        [0, 2],
-        [1, 1],
-        [2, 10],
-        [3, 30],
-        [4, 15],
-        [5, 3],
-        [6, 10],
-        [7, 35],
-        [8, 20],
-        [9, 31],
-        [10, 20],
-        [11, 1],
-        [12, 0]       
-    ];
-    var data4 = [
-        [0, 10],
-        [1, 15],
-        [2, 25],
-        [3, 30],
-        [4, 35],
-        [5, 10],
-        [6, 15],
-        [7, 25],
-        [8, 20],
-        [9, 31],
-        [10, 20],
-        [11, 10],
-        [12, 0]       
-    ];
-    var data5 = [
-        [0, 11],
-        [1, 25],
-        [2, 15],
-        [3, 35],
-        [4, 30],
-        [5, 15],
-        [6, 10],
-        [7, 20],
-        [8, 25],
-        [9, 20],
-        [10, 30],
-        [11, 0],
-        [12, 10]       
-    ];
+    var data1 = [ [0, 4], [1, 8], [2, 5], [3, 10], [4, 4], [5, 16], [6, 5], [7, 11], [8, 6], [9, 11], [10, 30], [11, 10], [12, 13] ];
+    var data2 = [ [0, 1], [1, 0], [2, 2], [3, 0],  [4, 1], [5, 3],  [6, 1], [7, 5],  [8, 2], [9, 3],  [10, 2],  [11, 1],  [12, 0]  ];
+    var data3 = [ [0, 2], [1, 1], [2, 10], [3, 30], [4, 15], [5, 3], [6, 10], [7, 35], [8, 20], [9, 31], [10, 20], [11, 1], [12, 0] ];
+    var data4 = [ [0, 10], [1, 15], [2, 25], [3, 30], [4, 35], [5, 10], [6, 15], [7, 25], [8, 20], [9, 31], [10, 20],  [11, 10], [12, 0] ];
+    var data5 = [ [0, 11], [1, 25], [2, 15], [3, 35], [4, 30], [5, 15], [6, 10], [7, 20], [8, 25], [9, 20], [10, 30], [11, 0], [12, 10] ];
 
     var dataset = [
         {
@@ -465,6 +342,10 @@ function dashboardFlotOne() {
     this.flotData = dataset;
     this.flotOptions = options;
 }
+
+/**
+ * homeController - for all workingSets 
+ */
 function homeController($scope,$stateParams,$state,$http,filterService,workingSetWebAPIService,$uibModal) {
     $scope.workingSetList = workingSetWebAPIService.getData();
     $scope.workingSetList.then (function (response) {
@@ -515,6 +396,10 @@ function complianceScoreCtrl($scope,$http,$uibModalInstance,filterService,$filte
     
     //alert($scope.workingSetName);
 }
+
+/**
+ * dashBoardController - for single workingSet
+ */
 function dashBoardController($scope,$stateParams,$state,$http,filterService,workingSetWebAPIService) {
     $scope.businessControlProfile = $stateParams.obj.name;
     $scope.businessControlProfileId = $stateParams.obj.workingSetId;
@@ -532,11 +417,11 @@ function dashBoardController($scope,$stateParams,$state,$http,filterService,work
     $scope.data3 = [0, 200, 30, 400, 10, 250, 30, 25, 0];
     $scope.dataX = ["20150601", '2015-06-02 12:00:00:00', "2015-06-03 12:00:00:00", "2015-06-04 12:00:00:00", "2015-06-05 12:00:00:00", "2015-06-06 12:00:00:00","2015-06-07 12:00:00:00","2015-06-08 12:00:00:00","2015-06-09 12:00:00:00","2015-06-10 12:00:00:00"]
 }
+
 /**
  * dashboardRACIPerformance - simple controller for data
  * for RACI performance in Dashboards
  */
-
 function dashboardRACIPerformance($scope, SweetAlert){
     this.resizeIframe = function (obj) {
     obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
@@ -570,81 +455,11 @@ function dashboardRACIPerformance($scope, SweetAlert){
             text: description
         });
     };
-    var data1 = [
-        [0, 4],
-        [1, 8],
-        [2, 5],
-        [3, 10],
-        [4, 4],
-        [5, 16],
-        [6, 5],
-        [7, 11],
-        [8, 6],
-        [9, 11],
-        [10, 30],
-        [11, 10],
-        [12, 13]       
-    ];
-    var data2 = [
-        [0, 1],
-        [1, 0],
-        [2, 2],
-        [3, 0],
-        [4, 1],
-        [5, 3],
-        [6, 1],
-        [7, 5],
-        [8, 2],
-        [9, 3],
-        [10, 2],
-        [11, 1],
-        [12, 0]        
-    ];
-    var data3 = [
-        [0, 2],
-        [1, 1],
-        [2, 10],
-        [3, 30],
-        [4, 15],
-        [5, 3],
-        [6, 10],
-        [7, 35],
-        [8, 20],
-        [9, 31],
-        [10, 20],
-        [11, 1],
-        [12, 0]       
-    ];
-    var data4 = [
-        [0, 10],
-        [1, 15],
-        [2, 25],
-        [3, 30],
-        [4, 35],
-        [5, 10],
-        [6, 15],
-        [7, 25],
-        [8, 20],
-        [9, 31],
-        [10, 20],
-        [11, 10],
-        [12, 0]       
-    ];
-    var data5 = [
-        [0, 11],
-        [1, 25],
-        [2, 15],
-        [3, 35],
-        [4, 30],
-        [5, 15],
-        [6, 10],
-        [7, 20],
-        [8, 25],
-        [9, 20],
-        [10, 30],
-        [11, 0],
-        [12, 10]       
-    ];
+    var data1 = [ [0, 4], [1, 8], [2, 5], [3, 10], [4, 4], [5, 16], [6, 5], [7, 11], [8, 6], [9, 11], [10, 30], [11, 10], [12, 13] ];
+    var data2 = [ [0, 1], [1, 0], [2, 2], [3, 0], [4, 1], [5, 3], [6, 1], [7, 5], [8, 2], [9, 3], [10, 2], [11, 1], [12, 0] ];
+    var data3 = [ [0, 2], [1, 1], [2, 10],[3, 30],[4, 15], [5, 3], [6, 10], [7, 35], [8, 20], [9, 31], [10, 20], [11, 1], [12, 0] ];
+    var data4 = [ [0, 10], [1, 15], [2, 25], [3, 30], [4, 35], [5, 10], [6, 15], [7, 25], [8, 20], [9, 31], [10, 20], [11, 10], [12, 0] ];
+    var data5 = [ [0, 11], [1, 25], [2, 15], [3, 35], [4, 30], [5, 15], [6, 10], [7, 20], [8, 25], [9, 20], [10, 30], [11, 0],  [12, 10] ];
 
     var dataset = [
         {
@@ -670,7 +485,6 @@ function dashboardRACIPerformance($scope, SweetAlert){
     ];
 
     var options = {
-       
         series: {
             lines: {
                 show: false,
@@ -722,8 +536,6 @@ function dashboardRACIPerformance($scope, SweetAlert){
  */
 
 function dashboardComplianceTrend($scope, SweetAlert) {
-    
-    
     $scope.demo1 = function (message,description) {
         SweetAlert.swal({
             title: message,
@@ -1427,119 +1239,6 @@ function chartJsCtrl() {
 }
 
 /**
- * chartistCtrl - Controller for Chartist library
- */
-function chartistCtrl() {
-
-    this.lineData = {
-        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        series: [
-            [12, 9, 7, 8, 5],
-            [2, 1, 3.5, 7, 3],
-            [1, 3, 4, 5, 6]
-        ]
-    }
-
-    this.lineOptions = {
-        fullWidth: true,
-        chartPadding: {
-            right: 40
-        }
-    }
-
-    var times = function (n) {
-        return Array.apply(null, new Array(n));
-    };
-
-    var prepareData = times(26).map(Math.random).reduce(function (data, rnd, index) {
-        data.labels.push(index + 1);
-        data.series.forEach(function (series) {
-            series.push(Math.random() * 100)
-        });
-
-        return data;
-    }, {
-        labels: [],
-        series: times(4).map(function () {
-            return new Array()
-        })
-    });
-
-    this.scatterData = prepareData;
-
-    this.scatterOptions = {
-        showLine: false,
-        axisX: {
-            labelInterpolationFnc: function (value, index) {
-                return index % 13 === 0 ? 'W' + value : null;
-            }
-        }
-    }
-
-    this.stackedData = {
-        labels: ['Q1', 'Q2', 'Q3', 'Q4'],
-        series: [
-            [800000, 1200000, 1400000, 1300000],
-            [200000, 400000, 500000, 300000],
-            [100000, 200000, 400000, 600000]
-        ]
-    }
-    this.stackedOptions = {
-        stackBars: true,
-        axisY: {
-            labelInterpolationFnc: function (value) {
-                return (value / 1000) + 'k';
-            }
-        }
-    }
-
-    this.horizontalData = {
-        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-        series: [
-            [5, 4, 3, 7, 5, 10, 3],
-            [3, 2, 9, 5, 4, 6, 4]
-        ]
-    }
-
-    this.horizontalOptions = {
-        seriesBarDistance: 10,
-        reverseData: true,
-        horizontalBars: true,
-        axisY: {
-            offset: 70
-        }
-    }
-
-    var prepareData = {
-        series: [5, 3, 4]
-    }
-
-    this.pieData = prepareData
-
-    var sum = function (a, b) {
-        return a + b
-    };
-
-    this.pieOptions = {
-        labelInterpolationFnc: function (value) {
-            return Math.round(value / prepareData.series.reduce(sum) * 100) + '%';
-        }
-    }
-
-    this.gaugeData = {
-        series: [20, 10, 30, 40]
-    }
-
-    this.gaugeOptions = {
-        donut: true,
-        donutWidth: 60,
-        startAngle: 270,
-        total: 200,
-        showLabel: false
-    }
-
-}
-/**
  * userProfile - Controller for User Profile
  */
 function userProfile($scope,authenticationService,USER_ROLES,Config,userService) {
@@ -1608,7 +1307,7 @@ function userProfile($scope,authenticationService,USER_ROLES,Config,userService)
         //alert(isAuthorizedUser);
         return(isAuthorizedUser)
     };
-    $scope.oldMagpieBaseLink = Config.oldMagpieBaseURL + $scope.userName + "&id=B1AB60A1-BB56-4CC3-B4A2-85833C278C08";
+    $scope.oldMagpieBaseLink = Config.oldTroutBaseURL + $scope.userName + "&id=B1AB60A1-BB56-4CC3-B4A2-85833C278C08";
 }
 
 /**
@@ -2374,7 +2073,6 @@ angular
     .controller('homeController', homeController)
     .controller('dashBoardController',dashBoardController)
     .controller('chartJsCtrl',chartJsCtrl)
-    .controller('chartistCtrl',chartistCtrl)
     .controller('dashboardFlotOne', dashboardFlotOne)
     .controller('dashboardFlotTwo', dashboardFlotTwo)
     .controller('dashboardFive', dashboardFive)

@@ -60,6 +60,7 @@
 //                    alert(count);
                     return count;
                 },
+                
                 setCount = function (val) {
                     count = val;
                 },
@@ -411,7 +412,7 @@
                     from_date = $filter('date')(new Date(fromDate), 'yyyy-MM-dd');
                     to_date = $filter('date')(new Date(toDate), 'yyyy-MM-dd');
                     angular.forEach(items, function (item) {
-                        if (item.Due > from_date && item.Due < to_date) {
+                        if (item.due > from_date && item.due < to_date) {
                             filtered.push(item);
                         }
                     });
@@ -427,7 +428,7 @@
                 } else {
                     searchVal = searchControlOrCode.toLowerCase();
                     angular.forEach(items, function (item) {
-                        var control = item.ControlTitle.toLowerCase(), code = item.ControlCode.toLowerCase();
+                        var control = item.controlTitle.toLowerCase(), code = item.controlCode.toLowerCase();
                         if (control.indexOf(searchVal) >= 0 || code.indexOf(searchVal) >= 0) {
                             filtered.push(item);
                         }
@@ -444,7 +445,7 @@
                 } else {
                     searchVal = searchTitleOrCode.toLowerCase();
                     angular.forEach(items, function (item) {
-                        var title = item.Title.toLowerCase(), code = item.Code.toLowerCase();
+                        var title = item.title.toLowerCase(), code = item.code.toLowerCase();
                         if (title.indexOf(searchVal) >= 0 || code.indexOf(searchVal) >= 0) {
                             filtered.push(item);
                         }
@@ -459,11 +460,11 @@
                 if (angular.isUndefined(searchValue) || searchValue === null) {
                     filtered = items;
                 } else {
-                    searchVal = searchValue.toLowerCase();
+                    searchVal = searchValue.toLocaleLowerCase();
                     angular.forEach(items, function (item) {
-                        var taskCode = item.Code.toLowerCase(),
-                            controlTitle = item.ControlTitle.toLowerCase(),
-                            controlCode = item.ControlCode.toLocaleLowerCase();
+                        var taskCode = item.code.toLocaleLowerCase(),
+                            controlTitle = item.controlTitle.toLocaleLowerCase(),
+                            controlCode = item.controlCode.toLocaleLowerCase();
                         if (taskCode.indexOf(searchVal) >= 0 || controlTitle.indexOf(searchVal) >= 0 || controlCode.indexOf(searchVal) >= 0) {
                             filtered.push(item);
                         }
@@ -476,13 +477,13 @@
             return function (items, responsibleUser) {
                // alert(responsibleUser);
                 var filtered = [], user;
-                if (angular.isUndefined(responsibleUser) || responsibleUser === null || responsibleUser.UserName  === ' ') {
+                if (angular.isUndefined(responsibleUser) || responsibleUser === null || responsibleUser.userName  === ' ') {
                     filtered = items;
                 } else {
-                    user = responsibleUser.UserName.toLowerCase();
+                    user = responsibleUser.userName.toLowerCase();
                     angular.forEach(items, function (item) {
-                        if (item.ResponsibleUser != null) {
-                            var respUser = item.ResponsibleUser.UserName.toLowerCase();
+                        if (item.responsibleUser != null) {
+                            var respUser = item.responsibleUser.userName.toLowerCase();
                             if (!(angular.isUndefined(respUser)) && !(respUser === null)) {
                                 if (respUser  === user) {
                                     filtered.push(item);
@@ -501,7 +502,7 @@
                     filtered = items;
                 } else {
                     angular.forEach(items, function (item) {
-                        if (item.ControlSetId == controlCatalogueId) {
+                        if (item.controlSetId == controlCatalogueId) {
                             filtered.push(item);
                         }
                     });

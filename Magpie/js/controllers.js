@@ -1672,11 +1672,11 @@ function sideBar($scope, $http,$uibModal,$stateParams,filterService,$filter,task
 //           alert($stateParams.bcp);
             angular.forEach(filter.taskFilterResultCounts, function (item) {
                         if (item.workingSetId == $stateParams.bcp) {
-                            count = item.Count;
+                            count = item.count;
 //                            alert(count);
                         }
             });
-            //             alert(count);
+//                         alert(count);
             return count;
         };
         //alert(tasksService.getTasksByCategory('NewUserTasks').Tasks);

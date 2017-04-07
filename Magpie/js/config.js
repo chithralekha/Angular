@@ -342,7 +342,8 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
         })
         .state('miscellaneous.task_board', {
             url: "/task_board/:filterText?bcp",
-            templateUrl: "views/task_board.html",            
+            templateUrl: "views/task_board.html",
+            authenticate : true,
             data: { pageTitle: 'Task board' },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {

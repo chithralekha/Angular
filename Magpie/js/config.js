@@ -33,6 +33,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
             url: "/Home",
             templateUrl: "views/Home.html",
             data: { pageTitle: 'Home' },
+            authenticate : true,
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -78,6 +79,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
             url: "/dashboardSingleWorkingSet",
             templateUrl: "views/dashboardSingleWorkingSet.html",
             data: { pageTitle: 'Profile' },
+        authenticate : true,
             params: {
                 obj: null
             },
@@ -424,6 +426,15 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
 angular
     .module('inspinia')
     .config(config)
-    .run(function($rootScope, $state) {
+    .run(function($rootScope, $state, authenticationService) {
+     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+         alert(toState.authenticate);
+         alert(authenticationService.isAuthenticated());
+      if (toState.authenticate && !authenticationService.isAuthenticated()){
+        // User isn’t authenticated
+        $state.transitionTo("login");
+        event.preventDefault(); 
+      }
+    });
         $rootScope.$state = $state;
     });

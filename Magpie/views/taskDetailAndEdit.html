@@ -1,7 +1,10 @@
 <div class="modal-body" ng-style="taskDueStatus(DialogTask)">
     <div class = "row">
         <div class = "row">
-            <div class = "col-lg-1" style="font-size : 12px; padding-top : 8px">{{dialogTask.code}}</div>
+            <div class = "col-lg-1" style="font-size : 12px; padding-top : 8px"> 
+                <input type="text" style="font-size : 12px; padding-top : 8px" class="form-control no-border" name="TaskCode" ng-model="dialogTask.code"  placeholder="Code" required />
+            </div>
+            
             <div class = "col-lg-10" style="font-weight:bold;">
                 <input type="text" style="font-size:25px" class="form-control no-border" name="TaskTitle" ng-model="dialogTask.title"  placeholder="Task Title" required />
             </div>
@@ -42,13 +45,12 @@
                                 <div class = "form-group">
                                     <label class = "col-md-4 control-label" style="padding-top : 10px">Task State</label>
                                     <div class = "col-md-6">
-                                        <input type="text" class="form-control no-border hidden" name="TaskState" ng-model="dialogTask.taskState.name"  placeholder="Task State"/>
                                          <div class="btn-group hidden" role="group" aria-label="...">
                                             <button type="button" class="btn btn-sm btn-primary">New</button>
                                               <button type="button" class="btn btn-sm btn-primary">In Progress</button>
                                               <button type="button" class="btn btn-sm btn-primary">Completed</button>
                                         </div>
-                                          <select class="form-control m-b" ng-model="taskStates.Value" ng-options="taskState.Value as taskState.Name for taskState in taskStates.Values" ng-change="update(taskStates.Value)"></select>
+                                          <select class="form-control m-b" ng-disabled="enableStatus(task)" ng-model="taskStates.Value" ng-options="taskState.Value as taskState.Name for taskState  in taskStates.Values" ng-change="update(taskStates.Value)"></select>
                                         <select class="form-control m-b hidden" name="Name" ng-model="dialogTask.taskState.name" placeholder="Task State">
                                             <option ng-repeat="item in taskStates" value="{{item.Value}}">{{item.Name}}</option>
                                     </select>   

@@ -379,7 +379,7 @@ function homeController($scope,$stateParams,$state,$http,filterService,workingSe
         $scope.showClick = function(bcp) {
             //$scope.clicked = data;
            // alert(bcp.name);
-            $state.go('dashboards.dashboard_1', {obj: bcp});
+            $state.go('dashboards.dashboardSingleWorkingSet', {obj: bcp});
         }
     });
     $scope.complianceScore = function(workingSet){

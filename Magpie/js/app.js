@@ -671,8 +671,8 @@
                 return true;
             },
                 isAuthenticated = function () {
-                    alert(userData.isAuthenticated);
-                    alert(isAuthenticationExpired(userData.expirationDate));
+//                    alert(userData.isAuthenticated);
+//                    alert(isAuthenticationExpired(userData.expirationDate));
                     if (userData.isAuthenticated && isAuthenticationExpired(userData.expirationDate)) {
                         return true;
                     } else {

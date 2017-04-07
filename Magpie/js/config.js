@@ -428,8 +428,8 @@ angular
     .config(config)
     .run(function($rootScope, $state, authenticationService) {
      $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
-         alert(toState.authenticate);
-         alert(authenticationService.isAuthenticated());
+//         alert(toState.authenticate);
+//         alert(authenticationService.isAuthenticated());
       if (toState.authenticate && !authenticationService.isAuthenticated()){
         // User isn’t authenticated
         $state.transitionTo("login");

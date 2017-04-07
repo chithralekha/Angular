@@ -1521,7 +1521,7 @@ function raciTeam($scope, $http,$uibModal,$stateParams,filterService,$filter,tas
 /**
  * agileBoard - Controller for agile Board view
  */
-function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter,filterWebAPIService,plotterSrv,$interpolate,responsibleUserService,baseURL, Config,$stateParams) {
+function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter,filterWebAPIService,$interpolate,responsibleUserService,Config,$stateParams) {
 
     $scope.onSelected = function (selectedItem) {
         $scope.selectedUser = selectedItem;

@@ -786,7 +786,10 @@
                     this.authorized = true;
                     var targetState = this.memorizedState ? this.memorizedState : fallback;
                     alert('targetState===' + targetState);
-                    $state.go(targetState);
+                    if(targetState === 'miscellaneous.task_board')
+                        $state.go(targetState, {filterText:1, bcp:1});
+                    else
+                        $state.go(targetState);
                 };
             return {
                 authorized : this.authorized,

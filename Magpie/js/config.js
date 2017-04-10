@@ -344,7 +344,10 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
             url: "/task_board/:filterText?bcp",
             templateUrl: "views/task_board.html",
             authenticate : true,
-            data: { pageTitle: 'Task board' },
+            data: { pageTitle: 'Task board',
+                  authorization : true,
+      redirectTo : 'login',
+      memory : true },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -427,15 +430,31 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
 angular
     .module('inspinia')
     .config(config)
-    .run(function($rootScope, $state, authenticationService) {
-     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
-//         alert(toState.authenticate);
-//         alert(authenticationService.isAuthenticated());
-      if (toState.authenticate && !authenticationService.isAuthenticated()){
-        // User isn’t authenticated
-        $state.transitionTo("login");
-        event.preventDefault(); 
+    .run(function($rootScope, $state, authenticationService, Authorization) {
+//     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+////         alert(toState.authenticate);
+////         alert(authenticationService.isAuthenticated());
+//      if (toState.authenticate && !authenticationService.isAuthenticated()){
+//        // User isn’t authenticated
+//        $state.transitionTo("login");
+//        event.preventDefault(); 
+//      }
+//    });
+    $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+        alert(Authorization.authorized);
+        alert(Authorization.memorizedState);
+    if (!Authorization.authorized) {
+      if (Authorization.memorizedState && (!_.has(fromState, 'data.redirectTo') || toState.name !== fromState.data.redirectTo)) {
+        Authorization.clear();
       }
-    });
+      if ((toState.data.authorization) && (toState.data.redirectTo != null)) {
+        if ((toState.data.memory)) {
+          Authorization.memorizedState = toState.name;
+        }
+        $state.go(toState.data.redirectTo);
+      }
+    }
+
+  });
         $rootScope.$state = $state;
     });

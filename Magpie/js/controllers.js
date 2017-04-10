@@ -2015,7 +2015,7 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
 }
 
 /* login Controller */
-function loginCtrl($scope, $http, $state, authenticationService) {
+function loginCtrl($scope, $http, $state, authenticationService, Authorization) {
     $scope.username = '';
     $scope.password = '';
     $scope.persist = true;
@@ -2049,10 +2049,12 @@ function loginCtrl($scope, $http, $state, authenticationService) {
         sessionStorage.userData = null;
         sessionStorage.userProfile = null;
         authenticationService.removeAuthentication();
+        Authorization.clear();
     }
         
     function goToMain() {
-        $state.go('dashboards.Home');
+        Authorization.go('dashboards.Home');
+//        $state.go('dashboards.Home');
     }
     
     function loginError(errorMsg) {     

@@ -37,6 +37,14 @@
             DocumentRepositoryUserReadOnly : 'DocumentRepositoryUserReadOnly',
             IncidentResponseUser : 'IncidentResponseUser'
         })
+        .constant('AUTH_EVENTS', {
+            loginSuccess : 'auth-login-success',
+            loginFailed : 'auth-login-failed',
+            logoutSuccess : 'auth-logout-success',
+            sessionTimeout : 'auth-session-timeout',
+            notAuthenticated : 'auth-not-authenticated',
+            notAuthorized : 'auth-not-authorized'
+        })
         .service('filterService', ['$resource', 'Config', function ($resource, Config) {
             var filterList = $resource(Config.baseURL + 'Filters').query(),
                 count = 0,
@@ -788,7 +796,7 @@
                     this.authorized = true;
                     var targetState = this.memorizedState ? this.memorizedState : fallback;
 //                    alert('targetState===' + targetState);
-                        $state.go(targetState,this.params);
+                    $state.go(targetState, this.params);
                 };
             return {
                 authorized : this.authorized,

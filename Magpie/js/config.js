@@ -435,7 +435,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
 angular
     .module('inspinia')
     .config(config)
-    .run(function($rootScope, $state, authenticationService, Authorization) {
+    .run(function($rootScope, $state, authenticationService, Authorization, AUTH_EVENTS) {
 //     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
 ////         alert(toState.authenticate);
 ////         alert(authenticationService.isAuthenticated());
@@ -458,6 +458,7 @@ angular
           Authorization.memorizedState = toState.name;
             Authorization.params = toParams;
         }
+        $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
         $state.go(toState.data.redirectTo);
       }
     }

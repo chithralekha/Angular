@@ -446,9 +446,9 @@ angular
 //      }
 //    });
     $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
-        alert(Authorization.authorized);
-        alert(Authorization.memorizedState);
-        alert(toParams["bcp"]);
+//        alert(Authorization.authorized);
+//        alert(Authorization.memorizedState);
+//        alert(toParams["bcp"]);
     if (!Authorization.authorized) {
       if (Authorization.memorizedState && ((fromState.data.redirectTo == null) || toState.name !== fromState.data.redirectTo)) {
         Authorization.clear();

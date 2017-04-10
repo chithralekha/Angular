@@ -787,7 +787,7 @@
                 go = function (fallback) {
                     this.authorized = true;
                     var targetState = this.memorizedState ? this.memorizedState : fallback;
-                    alert('targetState===' + targetState);
+//                    alert('targetState===' + targetState);
                     if(targetState === 'miscellaneous.task_board')
                         $state.go(targetState, this.params);
                     else

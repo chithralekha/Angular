@@ -783,15 +783,12 @@
                 this.authorized = false;
                 this.memorizedState = null;
                 this.params = null;
-            }, // pass the urls to the $state.go(how to fetch the paramets from the state.)
+            },
                 go = function (fallback) {
                     this.authorized = true;
                     var targetState = this.memorizedState ? this.memorizedState : fallback;
 //                    alert('targetState===' + targetState);
-                    if(targetState === 'miscellaneous.task_board')
-                        $state.go(targetState, this.params);
-                    else
-                        $state.go(targetState);
+                        $state.go(targetState,this.params);
                 };
             return {
                 authorized : this.authorized,

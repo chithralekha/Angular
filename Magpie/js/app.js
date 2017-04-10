@@ -775,31 +775,26 @@
                 isAuthenticated : isAuthenticated
             };
         }])
-    .service('Authorization', function($state) {
-
-  this.authorized = false,
-  this.memorizedState = null;
-
-  var
-  clear = function() {
-    this.authorized = false;
-    this.memorizedState = null;
-  },
-
-  go = function(fallback) {
-    this.authorized = true;
-    var targetState = this.memorizedState ? this.memorizedState : fallback;
-      alert('targetState===' + targetState);
-    $state.go(targetState);
-  };
-
-  return {
-    authorized: this.authorized,
-    memorizedState: this.memorizedState,
-    clear: clear,
-    go: go
-  };
-});
+        .service('Authorization', ['$state', function ($state) {
+            this.authorized = false;
+            this.memorizedState = null;
+            var clear = function () {
+                this.authorized = false;
+                this.memorizedState = null;
+            },
+                go = function (fallback) {
+                    this.authorized = true;
+                    var targetState = this.memorizedState ? this.memorizedState : fallback;
+                    alert('targetState===' + targetState);
+                    $state.go(targetState);
+                };
+            return {
+                authorized : this.authorized,
+                memorizedState : this.memorizedState,
+                clear : clear,
+                go : go
+            };
+        }]);
 })();
 
 // Other libraries are loaded dynamically in the config.js file using the library ocLazyLoad

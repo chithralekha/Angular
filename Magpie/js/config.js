@@ -32,7 +32,11 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
         .state('dashboards.Home', {
             url: "/Home",
             templateUrl: "views/Home.html",
-            data: { pageTitle: 'Home' },
+            data: { pageTitle: 'Home',
+                   authorization : true,
+                   redirectTo : 'login',
+                   memory : true 
+                  },
             authenticate : true,
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
@@ -345,9 +349,10 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
             templateUrl: "views/task_board.html",
             authenticate : true,
             data: { pageTitle: 'Task board',
-                  authorization : true,
-      redirectTo : 'login',
-      memory : true },
+                   authorization : true,
+                   redirectTo : 'login',
+                   memory : true 
+                  },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -444,7 +449,7 @@ angular
         alert(Authorization.authorized);
         alert(Authorization.memorizedState);
     if (!Authorization.authorized) {
-      if (Authorization.memorizedState && (!_.has(fromState, 'data.redirectTo') || toState.name !== fromState.data.redirectTo)) {
+      if (Authorization.memorizedState && ((fromState.data.redirectTo == null) || toState.name !== fromState.data.redirectTo)) {
         Authorization.clear();
       }
       if ((toState.data.authorization) && (toState.data.redirectTo != null)) {

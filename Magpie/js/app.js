@@ -778,16 +778,18 @@
         .service('Authorization', ['$state', function ($state) {
             this.authorized = false;
             this.memorizedState = null;
+            this.params = null;
             var clear = function () {
                 this.authorized = false;
                 this.memorizedState = null;
-            },
+                this.params = null;
+            }, // pass the urls to the $state.go(how to fetch the paramets from the state.)
                 go = function (fallback) {
                     this.authorized = true;
                     var targetState = this.memorizedState ? this.memorizedState : fallback;
                     alert('targetState===' + targetState);
                     if(targetState === 'miscellaneous.task_board')
-                        $state.go(targetState, {filterText:1, bcp:1});
+                        $state.go(targetState, this.params);
                     else
                         $state.go(targetState);
                 };

@@ -448,6 +448,7 @@ angular
     $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
         alert(Authorization.authorized);
         alert(Authorization.memorizedState);
+        alert(toParams["bcp"]);
     if (!Authorization.authorized) {
       if (Authorization.memorizedState && ((fromState.data.redirectTo == null) || toState.name !== fromState.data.redirectTo)) {
         Authorization.clear();
@@ -455,6 +456,7 @@ angular
       if ((toState.data.authorization) && (toState.data.redirectTo != null)) {
         if ((toState.data.memory)) {
           Authorization.memorizedState = toState.name;
+            Authorization.params = toParams;
         }
         $state.go(toState.data.redirectTo);
       }

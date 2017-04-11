@@ -16,7 +16,7 @@
         .constant('Config', {
             baseURL : 'http://localhost:3706/api/',
             authURL : 'http://localhost:50443/',
-            oldTroutBaseURL : 'http://ec2-52-88-137-146.us-west-2.compute.amazonaws.com/Landing/index?n='
+            oldTroutBaseURL : 'http://ec2-35-164-78-65.us-west-2.compute.amazonaws.com/OldTrout/Landing/index?n='
         })
         .constant('USER_ROLES', {
             all : '*',

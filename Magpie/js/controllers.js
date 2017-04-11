@@ -1974,7 +1974,7 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
                 var fromIndex = ui.item.sortable.index,
                     toIndex = ui.item.sortable.dropindex,
                     temdata = {},
-                    destinationList = $('[ui-sortable="sortableOptions"]').attr('ng-model');
+                    destinationList = ui.item.sortable.droptarget.attr('ng-model');
                 if(destinationList === 'todoList') {
                     itemdata = $scope.todoList[toIndex];
                     //alert(itemdata.Id);

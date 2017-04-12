@@ -350,23 +350,34 @@ function homeController($scope,$stateParams,$state,$http,filterService,workingSe
     $scope.workingSetList = workingSetWebAPIService.getData();
     $scope.workingSetList.then (function (response) {
         $scope.businessControlProfileList  = response.data;
+        if(!angular.isUndefined($scope.businessControlProfileList[0]) || $scope.businessControlProfileList[0] == null) {
         $scope.businessControlProfileList[0].color = "#1ab394";
         $scope.businessControlProfileList[0].score = 50;
-        
+        }
+        if(!angular.isUndefined($scope.businessControlProfileList[1]) || $scope.businessControlProfileList[1] == null) {
         $scope.businessControlProfileList[1].color = "#0e6037";
         $scope.businessControlProfileList[1].score = 60;
-        
+        }
+        if(!angular.isUndefined($scope.businessControlProfileList[2]) || $scope.businessControlProfileList[2] == null) {
         $scope.businessControlProfileList[2].color  = "#02512a";
         $scope.businessControlProfileList[2].score = 70;
-        
+        }
+        if(!angular.isUndefined($scope.businessControlProfileList[3]) || $scope.businessControlProfileList[3] == null) {
         $scope.businessControlProfileList[3].color = "#dda33e";
         $scope.businessControlProfileList[3].score = 30;
-        
+        }
+        if(!angular.isUndefined($scope.businessControlProfileList[4]) || $scope.businessControlProfileList[4] == null) {
         $scope.businessControlProfileList[4].color = "#682c25";
         $scope.businessControlProfileList[4].score = 20;
-        
+        }
+        if(!angular.isUndefined($scope.businessControlProfileList[5]) || $scope.businessControlProfileList[5] == null) {
         $scope.businessControlProfileList[5].color = "#dda33e";
         $scope.businessControlProfileList[5].score = 45;
+        }
+         if(!angular.isUndefined($scope.businessControlProfileList[6]) || $scope.businessControlProfileList[6] == null) {
+        $scope.businessControlProfileList[6].color = "#dda33e";
+        $scope.businessControlProfileList[6].score = 75;
+        }
        // alert($scope.BusinessControlProfileList);
         $scope.determineColor = function(color)
         {

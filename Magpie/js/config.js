@@ -33,11 +33,11 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
             url: "/Home",
             templateUrl: "views/Home.html",
             data: { pageTitle: 'Home',
-//                   authorization : true,
+                   authorization : false,
                    redirectTo : 'login',
                    memory : true 
                   },
-//            authenticate : true,
+            authenticate : false,
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -83,7 +83,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
             url: "/dashboardSingleWorkingSet",
             templateUrl: "views/dashboardSingleWorkingSet.html",
             data: { pageTitle: 'Profile' },
-        authenticate : true,
+        authenticate : false,
             params: {
                 obj: null
             },
@@ -349,7 +349,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
             templateUrl: "views/task_board.html",
             authenticate : true,
             data: { pageTitle: 'Task board',
-//                   authorization : true,
+                   authorization : false,
                    redirectTo : 'login',
                    memory : true 
                   },

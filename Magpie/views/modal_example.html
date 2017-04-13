@@ -15,7 +15,7 @@
                     <div class="well" style="border:2px">    
                    <ul ui-sortable="sortableOptions" class="sortable-list connectList" ng-model="RACITeam">
                         <ol ng-class="" ng-repeat="user in RACITeam">                                                                                   
-                         <a href="#"><img alt="member" class="img-circle" src="{{user.img}}"></a>                                                       
+                         <img alt="member" class="img-circle" src="{{user.img}}">                                                       
                         </ol>
                     </ul>
                     </div>
@@ -30,7 +30,7 @@
                     <p class="small"><i class="fa fa-hand-o-up"></i> Drag between list</p>
                     <ul ui-sortable="sortableOptions" class="sortable-list connectList" ng-model="AvailableUsers">                        
                         <li style="display: inline-block;" ng-class="" ng-repeat="user in AvailableUsers">                                               
-                           <a href="#"><img alt="member" class="img-circle" src="{{user.img}}"></a>                                                    
+                           <img alt="member" class="img-circle" src="{{user.img}}">                                                    
                         </li>
                     </ul>
                 </div>

@@ -64,7 +64,6 @@
                     <li ng-show = "isAuthorized([userRoles.System, userRoles.Debugger, userRoles.Administrator, userRoles.NotificationService, userRoles.DocumentRepositoryUser, userRoles.DocumentRepositoryUserReadOnly, userRoles.IncidentResponseUser])">
                         <a href=""><i class="fa fa-gear"></i><span class="nav-label">{{ 'Operations' | translate }}</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level">
-                            <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=UserTasks&c=TaskList">{{ 'TaskList' | translate }}</a></li>
                             <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=CrisisManagement&c=Index">{{ 'Crisis Management' | translate }}</a></li>
                             <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=DocumentRepository&c=Index">{{ 'Document Repository' | translate }}</a></li>
                             <li ui-sref-active="active"><a ui-sref="design.teams_board">RACI Team</a></li>

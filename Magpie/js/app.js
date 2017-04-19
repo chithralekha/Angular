@@ -186,7 +186,18 @@
             };
             
         }])
-    
+        .service('workingSetHistoryService', ['$http', '$interpolate', 'Config', function ($http, $interpolate, Config) {
+            this.getData = function (workingSetId) {
+                var exp = $interpolate(Config.baseURL + 'WorkingSetHistory/{{WorkingSetId}}', false, null, true),
+                    url = exp({ WorkingSetId: workingSetId}),
+                    promise;
+                promise = $http.get(url);
+                return promise.then(function (data) {
+                    //  alert(data);
+                    return data;
+                });
+            };
+        }])
         .service('tasksService', ['$resource', 'Config', function ($resource, Config) {
             var tasksList = [{
                 TaskCategory: 'CompletedUserTasks',

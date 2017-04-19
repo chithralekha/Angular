@@ -375,34 +375,7 @@ function homeController($scope,$stateParams,$state,$http,filterService,workingSe
                 item.color = "#02512a";
             }
         })
-//        if($scope.businessControlProfileList[0]) {
-//        $scope.businessControlProfileList[0].color = "#1ab394";
-//        $scope.businessControlProfileList[0].score = 50;
-//        }
-//        if($scope.businessControlProfileList[1]) {
-//        $scope.businessControlProfileList[1].color = "#0e6037";
-//        $scope.businessControlProfileList[1].score = 60;
-//        }
-//        if($scope.businessControlProfileList[2]) {
-//        $scope.businessControlProfileList[2].color  = "#02512a";
-//        $scope.businessControlProfileList[2].score = 70;
-//        }
-//        if($scope.businessControlProfileList[3]) {
-//        $scope.businessControlProfileList[3].color = "#dda33e";
-//        $scope.businessControlProfileList[3].score = 30;
-//        }
-//        if($scope.businessControlProfileList[4]) {
-//        $scope.businessControlProfileList[4].color = "#682c25";
-//        $scope.businessControlProfileList[4].score = 20;
-//        }
-//        if($scope.businessControlProfileList[5]) {
-//        $scope.businessControlProfileList[5].color = "#dda33e";
-//        $scope.businessControlProfileList[5].score = 45;
-//        }
-//         if($scope.businessControlProfileList[6]) {
-//        $scope.businessControlProfileList[6].color = "#dda33e";
-//        $scope.businessControlProfileList[6].score = 75;
-//        }
+
        // alert($scope.BusinessControlProfileList);
         $scope.determineColor = function(color)
         {
@@ -428,6 +401,187 @@ function homeController($scope,$stateParams,$state,$http,filterService,workingSe
         });
     };
 }
+/**
+ * dashboardFlotTwo - simple controller for data
+ * for Flot chart in Dashboard view
+ */
+function dashboardFlotTwo($scope,$stateParams,$state,$http,filterService,workingSetHistoryService,$uibModal) {
+    $scope.businessControlProfile = $stateParams.obj.name;
+    $scope.businessControlProfileId = $stateParams.obj.workingSetId;
+    $scope.workingSetHistory = workingSetHistoryService.getData($scope.businessControlProfileId);
+    $scope.workingSetHistory.then (function (response) {
+        $scope.businessControlProfileHistoryList  = response.data;
+        $scope.businessControlProfileHistoryList.data1 = [];
+        $scope.businessControlProfileHistoryList.data2 = [];
+        $scope.businessControlProfileHistoryList.dataset = [];
+        angular.forEach($scope.businessControlProfileHistoryList, function (item) {
+            var t = new Date(item.timestamp);
+            
+//            alert(t.getDate());
+//            alert(t.getFullYear());
+//            alert(t.getMonth());
+            $scope.businessControlProfileHistoryList.data2.push([gd(t.getFullYear(), t.getMonth(), t.getDate()),item.totalCompleted]);
+            $scope.businessControlProfileHistoryList.data1.push([item.timestamp,item.compliancePercent]);
+        })
+        alert( $scope.businessControlProfileHistoryList.data1);
+        alert($scope.businessControlProfileHistoryList.data2);
+        var data1 = [
+        [gd(2012, 1, 1), 0],
+        [gd(2012, 1, 15), 25],
+        [gd(2012, 2, 1), 15],
+        [gd(2012, 2, 15), 60],
+        [gd(2012, 3, 1), 80],
+        [gd(2012, 3, 15), 99],
+        [gd(2012, 4, 1), 35],
+        [gd(2012, 4, 15), 37],
+        [gd(2012, 5, 1), 17],
+        [gd(2012, 5, 15), 80],
+        [gd(2012, 6, 1), 90],
+        [gd(2012, 6, 15), 60],
+        [gd(2012, 7, 1), 45],
+        [gd(2012, 7, 15), 57],
+        [gd(2012, 8, 1), 90],
+        [gd(2012, 8, 15), 80],
+        [gd(2012, 9, 1), 83],
+        [gd(2012, 9, 15), 91],
+        [gd(2012, 10, 1), 71],
+        [gd(2012, 10, 15), 76],
+        [gd(2012, 11, 1), 67],
+        [gd(2012, 11, 15), 84],
+        [gd(2012, 12, 1), 51],
+        [gd(2012, 12, 15), 50]        
+    ];
+
+    var data2 = [
+        [gd(2012, 1, 1), 100],
+        [gd(2012, 1, 15), 140],
+        [gd(2012, 2, 1), 90],
+        [gd(2012, 2, 15), 77],
+        [gd(2012, 3, 1), 100],
+        [gd(2012, 3, 15), 145],
+        [gd(2012, 4, 1), 89],
+        [gd(2012, 4, 15), 88],
+        [gd(2012, 5, 1), 69],
+        [gd(2012, 5, 15), 87],
+        [gd(2012, 6, 1), 99],
+        [gd(2012, 6, 15), 140],
+        [gd(2012, 7, 1), 150],
+        [gd(2012, 7, 15), 147],
+        [gd(2012, 8, 1), 88],
+        [gd(2012, 8, 15), 78],
+        [gd(2012, 9, 1), 130],
+        [gd(2012, 9, 15), 88],
+        [gd(2012, 10, 1), 137],
+        [gd(2012, 10, 15), 148],
+        [gd(2012, 11, 1), 98],
+        [gd(2012, 11, 15), 40],
+        [gd(2012, 12, 1), 99],
+        [gd(2012, 12, 15), 56]       
+    ];
+
+
+    $scope.businessControlProfileHistoryList.dataset = [
+        {
+            label: "Number of completed User Tasks",
+            grow:{stepMode:"linear"},
+            data: $scope.businessControlProfileHistoryList.data2,
+            color: "#1ab394",
+            bars: {
+                show: true,
+                align: "center",
+                barWidth: 24 * 60 * 60 * 6600,
+                lineWidth: 0
+            }
+
+        },
+        {
+            label: "Percentage Of Compliance",
+            grow:{stepMode:"linear"},
+            data: $scope.businessControlProfileHistoryList.data1,
+            yaxis: 2,
+            color: "#1C84C6",
+            lines: {
+                lineWidth: 1,
+                show: true,
+                fill: true,
+                fillColor: {
+                    colors: [
+                        {
+                            opacity: 0.3
+                        },
+                        {
+                            opacity: 0.3
+                        }
+                    ]
+                }
+            }
+        }
+    ];
+
+
+    $scope.businessControlProfileHistoryList.options = {
+        grid: {
+            hoverable: true,
+            clickable: true,
+            tickColor: "#d5d5d5",
+            borderWidth: 0,
+            color: '#d5d5d5'
+        },
+        colors: ["#1ab394", "#464f88"],
+        tooltip: true,
+        xaxis: {
+            mode: "time",
+            tickSize: [15, "day"],
+            tickLength: 0,
+            axisLabel: "Date",
+            axisLabelUseCanvas: true,
+            axisLabelFontSizePixels: 12,
+            axisLabelFontFamily: 'Arial',
+            axisLabelPadding: 10,
+            color: "#d5d5d5"
+        },
+        yaxes: [
+            {
+                position: "left",
+                max: 150,
+                color: "#d5d5d5",
+                axisLabelUseCanvas: true,
+                axisLabelFontSizePixels: 12,
+                axisLabelFontFamily: 'Arial',
+                axisLabelPadding: 3
+            },
+            {
+                position: "right",
+                max: 100,
+                color: "#d5d5d5",
+                axisLabelUseCanvas: true,
+                axisLabelFontSizePixels: 12,
+                axisLabelFontFamily: ' Arial',
+                axisLabelPadding: 67
+            }
+        ],
+        legend: {
+            noColumns: 1,
+            labelBoxBorderColor: "#d5d5d5",
+            position: "nw"
+        }
+
+    };
+
+    function gd(year, month, day) {
+        return new Date(year, month - 1, day).getTime();
+    }
+
+    /**
+     * Definition of variables
+     * Flot chart
+     */
+        alert($scope.businessControlProfileHistoryList.dataset);
+    this.flotData = $scope.businessControlProfileHistoryList.dataset;
+    this.flotOptions = $scope.businessControlProfileHistoryList.options;
+    })
+}
+
 function complianceScoreCtrl($scope,$http,$uibModalInstance,filterService,$filter,filterWebAPIService,$interpolate,responsibleUserService,Config) {
     
     //alert($scope.workingSetName);
@@ -644,167 +798,6 @@ function dashboardComplianceTrend($scope, SweetAlert) {
 
 }
 
-/**
- * dashboardFlotTwo - simple controller for data
- * for Flot chart in Dashboard view
- */
-function dashboardFlotTwo() {
-
-    var data1 = [
-        [gd(2012, 1, 1), 0],
-        [gd(2012, 1, 15), 25],
-        [gd(2012, 2, 1), 15],
-        [gd(2012, 2, 15), 60],
-        [gd(2012, 3, 1), 80],
-        [gd(2012, 3, 15), 99],
-        [gd(2012, 4, 1), 35],
-        [gd(2012, 4, 15), 37],
-        [gd(2012, 5, 1), 17],
-        [gd(2012, 5, 15), 80],
-        [gd(2012, 6, 1), 90],
-        [gd(2012, 6, 15), 60],
-        [gd(2012, 7, 1), 45],
-        [gd(2012, 7, 15), 57],
-        [gd(2012, 8, 1), 90],
-        [gd(2012, 8, 15), 80],
-        [gd(2012, 9, 1), 83],
-        [gd(2012, 9, 15), 91],
-        [gd(2012, 10, 1), 71],
-        [gd(2012, 10, 15), 76],
-        [gd(2012, 11, 1), 67],
-        [gd(2012, 11, 15), 84],
-        [gd(2012, 12, 1), 51],
-        [gd(2012, 12, 15), 50]        
-    ];
-
-    var data2 = [
-        [gd(2012, 1, 1), 100],
-        [gd(2012, 1, 15), 140],
-        [gd(2012, 2, 1), 90],
-        [gd(2012, 2, 15), 77],
-        [gd(2012, 3, 1), 100],
-        [gd(2012, 3, 15), 145],
-        [gd(2012, 4, 1), 89],
-        [gd(2012, 4, 15), 88],
-        [gd(2012, 5, 1), 69],
-        [gd(2012, 5, 15), 87],
-        [gd(2012, 6, 1), 99],
-        [gd(2012, 6, 15), 140],
-        [gd(2012, 7, 1), 150],
-        [gd(2012, 7, 15), 147],
-        [gd(2012, 8, 1), 88],
-        [gd(2012, 8, 15), 78],
-        [gd(2012, 9, 1), 130],
-        [gd(2012, 9, 15), 88],
-        [gd(2012, 10, 1), 137],
-        [gd(2012, 10, 15), 148],
-        [gd(2012, 11, 1), 98],
-        [gd(2012, 11, 15), 40],
-        [gd(2012, 12, 1), 99],
-        [gd(2012, 12, 15), 56]       
-    ];
-
-
-    var dataset = [
-        {
-            label: "Number of completed User Tasks",
-            grow:{stepMode:"linear"},
-            data: data2,
-            color: "#1ab394",
-            bars: {
-                show: true,
-                align: "center",
-                barWidth: 24 * 60 * 60 * 6600,
-                lineWidth: 0
-            }
-
-        },
-        {
-            label: "Percentage Of Compliance",
-            grow:{stepMode:"linear"},
-            data: data1,
-            yaxis: 2,
-            color: "#1C84C6",
-            lines: {
-                lineWidth: 1,
-                show: true,
-                fill: true,
-                fillColor: {
-                    colors: [
-                        {
-                            opacity: 0.3
-                        },
-                        {
-                            opacity: 0.3
-                        }
-                    ]
-                }
-            }
-        }
-    ];
-
-
-    var options = {
-        grid: {
-            hoverable: true,
-            clickable: true,
-            tickColor: "#d5d5d5",
-            borderWidth: 0,
-            color: '#d5d5d5'
-        },
-        colors: ["#1ab394", "#464f88"],
-        tooltip: true,
-        xaxis: {
-            mode: "time",
-            tickSize: [15, "day"],
-            tickLength: 0,
-            axisLabel: "Date",
-            axisLabelUseCanvas: true,
-            axisLabelFontSizePixels: 12,
-            axisLabelFontFamily: 'Arial',
-            axisLabelPadding: 10,
-            color: "#d5d5d5"
-        },
-        yaxes: [
-            {
-                position: "left",
-                max: 150,
-                color: "#d5d5d5",
-                axisLabelUseCanvas: true,
-                axisLabelFontSizePixels: 12,
-                axisLabelFontFamily: 'Arial',
-                axisLabelPadding: 3
-            },
-            {
-                position: "right",
-                max: 100,
-                color: "#d5d5d5",
-                axisLabelUseCanvas: true,
-                axisLabelFontSizePixels: 12,
-                axisLabelFontFamily: ' Arial',
-                axisLabelPadding: 67
-            }
-        ],
-        legend: {
-            noColumns: 1,
-            labelBoxBorderColor: "#d5d5d5",
-            position: "nw"
-        }
-
-    };
-
-    function gd(year, month, day) {
-        return new Date(year, month - 1, day).getTime();
-    }
-
-    /**
-     * Definition of variables
-     * Flot chart
-     */
-    this.flotData = dataset;
-    this.flotOptions = options;
-    
-}
 
 /**
  * dashboardFlotFive - simple controller for data
@@ -1562,8 +1555,8 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
 
     $scope.onSelected = function (selectedItem) {
         $scope.selectedUser = selectedItem;
-        $scope.id = selectedItem.Id;
-        $scope.firstName = selectedItem.FirstName;
+        $scope.id = selectedItem.id;
+        $scope.firstName = selectedItem.firstName;
     }
     $scope.update = function (item) {
         $scope.selectedStateId = item;
@@ -1591,7 +1584,9 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
         }
         $scope.dialogTask.Title = $scope.taskTitle;
         var res;
-          if($scope.dialogTask.Id == null || $scope.dialogTask.Id == 0){
+        alert($scope.dialogTask.id);
+          if(angular.isUndefined($scope.dialogTask.id) || $scope.dialogTask.id == null){
+              alert('post');
               res = $http.post(Config.baseURL + 'Tasks/',$scope.dialogTask);
           }
           else{

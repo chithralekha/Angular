@@ -421,7 +421,7 @@ function dashboardFlotTwo($scope,$stateParams,$state,$http,filterService,working
 //            alert(t.getFullYear());
 //            alert(t.getMonth());
             $scope.businessControlProfileHistoryList.data2.push([gd(t.getFullYear(), t.getMonth(), t.getDate()),item.totalCompleted]);
-            $scope.businessControlProfileHistoryList.data1.push([item.timestamp,item.compliancePercent]);
+            $scope.businessControlProfileHistoryList.data1.push([gd(t.getFullYear(), t.getMonth(), t.getDate()),item.compliancePercent]);
         })
         alert( $scope.businessControlProfileHistoryList.data1);
         alert($scope.businessControlProfileHistoryList.data2);

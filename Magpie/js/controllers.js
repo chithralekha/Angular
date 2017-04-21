@@ -543,7 +543,7 @@ function dashboardFlotTwo($scope,$stateParams,$state,$http,filterService,working
         yaxes: [
             {
                 position: "left",
-                max: 150,
+                max: 500,
                 color: "#d5d5d5",
                 axisLabelUseCanvas: true,
                 axisLabelFontSizePixels: 12,
@@ -552,7 +552,7 @@ function dashboardFlotTwo($scope,$stateParams,$state,$http,filterService,working
             },
             {
                 position: "right",
-                max: 100,
+                max: 500,
                 color: "#d5d5d5",
                 axisLabelUseCanvas: true,
                 axisLabelFontSizePixels: 12,
@@ -569,7 +569,7 @@ function dashboardFlotTwo($scope,$stateParams,$state,$http,filterService,working
     };
 
     function gd(year, month, day) {
-        return new Date(year, month - 1, day).getTime();
+        return new Date(year, month, day + 1).getTime();
     }
 
     /**

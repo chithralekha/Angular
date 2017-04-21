@@ -1584,7 +1584,7 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
         }
         $scope.dialogTask.Title = $scope.taskTitle;
         var res;
-        alert($scope.dialogTask.id);
+//        alert($scope.dialogTask.id);
           if(angular.isUndefined($scope.dialogTask.id) || $scope.dialogTask.id == null){
               alert('post');
               res = $http.post(Config.baseURL + 'Tasks/',$scope.dialogTask);
@@ -1593,8 +1593,8 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
               res = $http.put(url,$scope.dialogTask);
           }
         res.then(function(data) {
-            $scope.dialogTask.id = data.data.id;
-            if($scope.dialogTask.Id == null || $scope.dialogTask.Id == 0){
+        //    $scope.dialogTask.id = data.data.id;
+            if(angular.isUndefined($scope.dialogTask.id) || $scope.dialogTask.id == null){
                 //add new task
                 
                 $scope.todoList.push($scope.dialogTask);

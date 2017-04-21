@@ -423,8 +423,8 @@ function dashboardFlotTwo($scope,$stateParams,$state,$http,filterService,working
             $scope.businessControlProfileHistoryList.data2.push([gd(t.getFullYear(), t.getMonth(), t.getDate()),item.totalCompleted]);
             $scope.businessControlProfileHistoryList.data1.push([gd(t.getFullYear(), t.getMonth(), t.getDate()),item.compliancePercent]);
         })
-        alert( $scope.businessControlProfileHistoryList.data1);
-        alert($scope.businessControlProfileHistoryList.data2);
+//        alert( $scope.businessControlProfileHistoryList.data1);
+//        alert($scope.businessControlProfileHistoryList.data2);
         var data1 = [
         [gd(2012, 1, 1), 0],
         [gd(2012, 1, 15), 25],
@@ -576,7 +576,7 @@ function dashboardFlotTwo($scope,$stateParams,$state,$http,filterService,working
      * Definition of variables
      * Flot chart
      */
-        alert($scope.businessControlProfileHistoryList.dataset);
+//        alert($scope.businessControlProfileHistoryList.dataset);
     this.flotData = $scope.businessControlProfileHistoryList.dataset;
     this.flotOptions = $scope.businessControlProfileHistoryList.options;
     })

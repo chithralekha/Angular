@@ -1643,7 +1643,7 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
                                 id : $scope.dialogTask.raciTeam.responsibleUser.id
                             };
                          }
-                    if(angular.isUndefined($scope.dialogTask.raciTeam.responsibleUser) && $scope.dialogTask.raciTeam.responsibleUser == null)
+                    if(!angular.isUndefined($scope.dialogTask.raciTeam.responsibleUser) && $scope.dialogTask.raciTeam.responsibleUser !== null)
                          { 
                     item.responsibleUser.firstName = $scope.dialogTask.raciTeam.responsibleUser.firstName;
                     item.responsibleUser = $scope.dialogTask.raciTeam.responsibleUser;                   
@@ -1678,7 +1678,7 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
                                 id : $scope.dialogTask.raciTeam.responsibleUser.id
                             };
                          }
-                     if(angular.isUndefined($scope.dialogTask.raciTeam.responsibleUser) && $scope.dialogTask.raciTeam.responsibleUser == null)
+                     if(!angular.isUndefined($scope.dialogTask.raciTeam.responsibleUser) && $scope.dialogTask.raciTeam.responsibleUser !== null)
                          { 
                     item.responsibleUser.firstName = $scope.dialogTask.raciTeam.responsibleUser.firstName;
                     item.responsibleUser = $scope.dialogTask.raciTeam.responsibleUser;                   
@@ -1713,7 +1713,7 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
                                 id : $scope.dialogTask.raciTeam.responsibleUser.id
                             };
                          }
-                     if(angular.isUndefined($scope.dialogTask.raciTeam.responsibleUser) && $scope.dialogTask.raciTeam.responsibleUser == null)
+                     if(!angular.isUndefined($scope.dialogTask.raciTeam.responsibleUser) && $scope.dialogTask.raciTeam.responsibleUser !== null)
                          { 
                     item.responsibleUser.firstName = $scope.dialogTask.raciTeam.responsibleUser.firstName;
                     item.responsibleUser = $scope.dialogTask.raciTeam.responsibleUser;                   

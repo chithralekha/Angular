@@ -1575,30 +1575,23 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
         //if the task was unassigned and a User is selected from the dropDown
         if(angular.isUndefined($scope.dialogTask.raciTeam.responsibleUser) || $scope.dialogTask.raciTeam.responsibleUser == null) {
             if(!angular.isUndefined($scope.id) && $scope.id !== null) {
-            if ($scope.id != 0) {
-                $scope.dialogTask.raciTeam.responsibleUser = {
-                    id : $scope.id
-                };
-            }
-                else
-                    {
-                        $scope.dialogTask.RaciTeam.ResponsibleUser = null;
-                    }
-            }
-        } else { 
-            if(!angular.isUndefined($scope.id) && $scope.id !== null)
-                {
-//                    alert('Assigning');
-                    if ($scope.id != 0) {
-               $scope.dialogTask.raciTeam.responsibleUser.id = $scope.id;
-            }
-                else
-                    {
-                        $scope.dialogTask.raciTeam.responsibleUser = null;
-                    }
-            
+                if ($scope.id != 0) {
+                    $scope.dialogTask.raciTeam.responsibleUser = { id : $scope.id }; 
+                } else {
+                    $scope.dialogTask.raciTeam.responsibleUser = null;
                 }
-               }
+            }
+        } else {
+            if(!angular.isUndefined($scope.id) && $scope.id !== null) {
+                //                    alert('Assigning');
+                if ($scope.id != 0) {
+                    $scope.dialogTask.raciTeam.responsibleUser.id = $scope.id;
+                } else {
+                    $scope.dialogTask.raciTeam.responsibleUser = null;
+                }
+            }
+        }
+        
         if($scope.selectedStateId == 2) {
             $scope.dialogTask.taskState.id = 2;
         }
@@ -1608,17 +1601,18 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
         else if($scope.selectedStateId == 3) {
             $scope.dialogTask.taskState.id = 3;
         }
+        
         $scope.dialogTask.Title = $scope.taskTitle;
         var res;
-//        alert($scope.dialogTask.id);
-          if(angular.isUndefined($scope.dialogTask.id) || $scope.dialogTask.id == null){
-//              alert('post');
-              res = $http.post(Config.baseURL + 'Tasks/',$scope.dialogTask);
-          }
-          else{
-              res = $http.put(url,$scope.dialogTask);
-          }
-        res.then(function(data) {
+        //        alert($scope.dialogTask.id);
+        if(angular.isUndefined($scope.dialogTask.id) || $scope.dialogTask.id == null) {
+            //              alert('post');
+            res = $http.post(Config.baseURL + 'Tasks/',$scope.dialogTask);
+        } else {
+            res = $http.put(url,$scope.dialogTask);
+        }
+        
+        res.then( function(data) {
             var exp = $interpolate(Config.baseURL + 'Tasks/{{id}}', false, null, true),
             url = exp({id: $scope.dialogTask.id});
             
@@ -1628,127 +1622,91 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
         //    $scope.dialogTask.id = data.data.id;
             if(angular.isUndefined($scope.dialogTask.id) || $scope.dialogTask.id == null) {
                 //add new task
-                
                 $scope.todoList.push($scope.dialogTask);
             }
             console.log('data...',data.data);
             //alert(data.data);
-            //Client side update
-            angular.forEach($scope.todoList, function (item) {
-                if (item.id == $scope.dialogTask.id) {
-                    item.title = $scope.dialogTask.title;
-                    if(angular.isUndefined(item.responsibleUser) || item.responsibleUser == null)
-                         { 
-                            item.responsibleUser = {
-                                id : $scope.dialogTask.raciTeam.responsibleUser.id
-                            };
-                         }
-                    if(!angular.isUndefined($scope.dialogTask.raciTeam.responsibleUser) && $scope.dialogTask.raciTeam.responsibleUser !== null)
-                         { 
-                    item.responsibleUser.firstName = $scope.dialogTask.raciTeam.responsibleUser.firstName;
-                    item.responsibleUser = $scope.dialogTask.raciTeam.responsibleUser;                   
-                    item.taskState.id = $scope.dialogTask.taskState.id;
-                         }
-                    else {
-                        item.responsibleUser = null;
-                    }
+                
+                //Client side update
+                angular.forEach($scope.todoList, function (item) {                    
+                    if (item.id == $scope.dialogTask.id) {
                         
-                    
-                    if(item.taskState.id == 2) {
-                        $scope.inProgressList.push(item);
-                        //alert(item.TaskState.Id);
-                        var index = $scope.todoList.indexOf(item);
-                        $scope.todoList.splice(index, 1);
+                        $scope.assignUpdatedValuesOnClientSide(item, $scope.dialogTask, 'todoList');
                     }
-                    if(item.taskState.id == 3) {
-                        $scope.completedList.push(item);
-                        //alert(item.TaskState.Id);
-                        var index = $scope.todoList.indexOf(item);
-                        $scope.todoList.splice(index, 1);
+                });
+                
+                angular.forEach($scope.inProgressList, function (item) {
+                    if (item.id == $scope.dialogTask.id) {
+                        
+                        $scope.assignUpdatedValuesOnClientSide(item, $scope.dialogTask, 'inProgressList');
                     }
-                }
+                });
+                
+                angular.forEach($scope.completedList, function (item) {
+                 if (item.id == $scope.dialogTask.id) {
+                     
+                     $scope.assignUpdatedValuesOnClientSide(item, $scope.dialogTask, 'completedList');
+                 }
+             });
             });
-             angular.forEach($scope.inProgressList, function (item) {
-                 if (item.id == $scope.dialogTask.id) {
-                     item.title = $scope.dialogTask.title;
-                     item.title = $scope.dialogTask.title;
-                     if(angular.isUndefined(item.responsibleUser) || item.responsibleUser == null)
-                         { 
-                            item.responsibleUser = {
-                                id : $scope.dialogTask.raciTeam.responsibleUser.id
-                            };
-                         }
-                     if(!angular.isUndefined($scope.dialogTask.raciTeam.responsibleUser) && $scope.dialogTask.raciTeam.responsibleUser !== null)
-                         { 
-                    item.responsibleUser.firstName = $scope.dialogTask.raciTeam.responsibleUser.firstName;
-                    item.responsibleUser = $scope.dialogTask.raciTeam.responsibleUser;                   
-                    item.taskState.id = $scope.dialogTask.taskState.id;
-                         }
-                    else {
-                        item.responsibleUser = null;
-                    }
-                     
-                     if(item.taskState.id == 1) {
-                         $scope.todoList.push(item);
-                         //alert(item.TaskState.Id);
-                         var index = $scope.inProgressList.indexOf(item);
-                         $scope.inProgressList.splice(index, 1);
-                     }
-                     if(item.taskState.id == 3) {
-                         $scope.completedList.push(item);
-                         //alert(item.TaskState.Id);
-                         var index = $scope.inProgressList.indexOf(item);
-                         $scope.inProgressList.splice(index, 1);
-                     }
-                 }
-             });
-             angular.forEach($scope.completedList, function (item) {
-                 if (item.id == $scope.dialogTask.id) {
-                     item.title = $scope.dialogTask.title;
-                     item.title = $scope.dialogTask.title;
-                     item.title = $scope.dialogTask.title;
-                      if(angular.isUndefined(item.responsibleUser) || item.responsibleUser == null)
-                         { 
-                            item.responsibleUser = {
-                                id : $scope.dialogTask.raciTeam.responsibleUser.id
-                            };
-                         }
-                     if(!angular.isUndefined($scope.dialogTask.raciTeam.responsibleUser) && $scope.dialogTask.raciTeam.responsibleUser !== null)
-                         { 
-                    item.responsibleUser.firstName = $scope.dialogTask.raciTeam.responsibleUser.firstName;
-                    item.responsibleUser = $scope.dialogTask.raciTeam.responsibleUser;                   
-                    item.taskState.id = $scope.dialogTask.taskState.id;
-                         }
-                    else {
-                        item.responsibleUser = null;
-                    }
-                     
-                     if(item.taskState.id == 2) {
-                         $scope.inProgressList.push(item);
-                         //alert(item.TaskState.Id);
-                         var index = $scope.completedList.indexOf(item);
-                         $scope.completedList.splice(index, 1);
-                     }
-                     if(item.taskState.id == 1) {
-                         $scope.todoList.push(item);
-                         //alert(item.TaskState.Id);
-                         var index = $scope.completedList.indexOf(item);
-                         $scope.completedList.splice(index, 1);
-                     }
-                 }
-             });
-        });
         
         res.catch(function(data, status, headers, config) {
 			console.log('failure message:',JSON.stringify({data: data}));
 		});
         $uibModalInstance.close();
-            alert($scope.dialogTask.raciTeam.responsibleUser.firstName);
+            
+//            alert($scope.dialogTask.raciTeam.responsibleUser.firstName);
         });
     };
+    
     $scope.save = function () {
         $uibModalInstance.close();
     };
+    $scope.assignUpdatedValuesOnClientSide = function (task, updatedTask, source) {
+        task.title = updatedTask.title;
+        alert(task.responsibleUser);
+        //Update has assignedUser
+        if(!angular.isUndefined(updatedTask.raciTeam.responsibleUser) && updatedTask.raciTeam.responsibleUser !== null) {
+            //Old value was unassigned
+            if(angular.isUndefined(task.responsibleUser) || task.responsibleUser == null) {
+                alert('ResponsibleUser null');
+                task.responsibleUser = { id : updatedTask.raciTeam.responsibleUser.id };
+                task.responsibleUser = updatedTask.raciTeam.responsibleUser;
+            } else { //Old value was assigned
+                alert('Assign');
+                task.responsibleUser.firstName = updatedTask.raciTeam.responsibleUser.firstName;
+                task.responsibleUser = updatedTask.raciTeam.responsibleUser;
+            }
+        } else { //Update is unassigned
+            task.responsibleUser = null;
+        }
+        task.taskState.id = updatedTask.taskState.id;
+        
+        if(task.taskState.id == 2) {
+            $scope.inProgressList.push(task);
+            //alert(item.TaskState.Id);;
+        }
+        if(task.taskState.id == 3) {
+            $scope.completedList.push(task);
+            //alert(item.TaskState.Id);
+        }
+        if(task.taskState.id == 1) {
+            $scope.todoList.push(task);
+            //alert(item.TaskState.Id);
+        }
+        
+        if(source == 'todoList') {
+            var index = $scope.todoList.indexOf(task);
+            $scope.todoList.splice(index, 1);
+        } else if (source == 'completedList') {
+            var index = $scope.completedList.indexOf(task);
+            $scope.completedList.splice(index, 3);
+        } else if (source == 'inProgressList') {
+            var index = $scope.inProgressList.indexOf(task);
+            $scope.inProgressList.splice(index, 2);
+        }
+    };
+    
     $scope.edit = function (FilterName, Name, DueStatus, AssignedTo, WorkingSet, NistControlFamily, NistBaseline) {
         //alert('Modal Close');
         $scope.filterTextFilterName = FilterName;

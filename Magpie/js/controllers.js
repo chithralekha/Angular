@@ -1613,9 +1613,10 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
         }
         
         res.then( function(data) {
-            var taskId;
+            var taskId, isNewTask;
             if(angular.isUndefined($scope.dialogTask.id) || $scope.dialogTask.id == null || $scope.dialogTask.id == 0) {
                 taskId = data.data.id;
+                isNewTask = true;
             } else {
                 taskId = $scope.dialogTask.id;
             }

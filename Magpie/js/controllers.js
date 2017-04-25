@@ -1613,7 +1613,7 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
         }
         
         res.then( function(data) {
-            var taskId, isNewTask;
+            var taskId, isNewTask = false;
             if(angular.isUndefined($scope.dialogTask.id) || $scope.dialogTask.id == null || $scope.dialogTask.id == 0) {
                 taskId = data.data.id;
                 isNewTask = true;
@@ -1628,10 +1628,10 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
                 $scope.dialogTask = response.data;
                 
         //    $scope.dialogTask.id = data.data.id;
-            if(angular.isUndefined($scope.dialogTask.id) || $scope.dialogTask.id == null) {
+            if(isNewTask == true) {
                 //add new task
                 $scope.todoList.push($scope.dialogTask);
-            }
+            } else {
             console.log('data...',data.data);
             //alert(data.data);
                 
@@ -1666,6 +1666,7 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
                      }
                  }
              });
+            }
             });
         
         res.catch(function(data, status, headers, config) {

@@ -1568,7 +1568,7 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
     //task Save
     $scope.ok = function() {
         //alert($scope.dialogTask.Id);
-        alert($scope.id);
+//        alert($scope.id);
         var exp = $interpolate(Config.baseURL + 'Tasks/{{id}}', false, null, true),
             url = exp({id: $scope.dialogTask.id});
         
@@ -1631,21 +1631,31 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
                 angular.forEach($scope.todoList, function (item) {                    
                     if (item.id == $scope.dialogTask.id) {
                         
-                        $scope.assignUpdatedValuesOnClientSide(item, $scope.dialogTask, 'todoList');
+                        $scope.assignUpdatedValuesOnClientSide(item, $scope.dialogTask);
+                        if(item.taskState.id !== 1) {
+                            $scope.updateTaskCategory(item, 'todoList');
+                            
+                        }
                     }
                 });
                 
                 angular.forEach($scope.inProgressList, function (item) {
                     if (item.id == $scope.dialogTask.id) {
                         
-                        $scope.assignUpdatedValuesOnClientSide(item, $scope.dialogTask, 'inProgressList');
+                        $scope.assignUpdatedValuesOnClientSide(item, $scope.dialogTask);
+                        if(item.taskState.id !== 2) {
+                            $scope.updateTaskCategory(item, 'inProgressList');
+                        }
                     }
                 });
                 
                 angular.forEach($scope.completedList, function (item) {
                  if (item.id == $scope.dialogTask.id) {
                      
-                     $scope.assignUpdatedValuesOnClientSide(item, $scope.dialogTask, 'completedList');
+                     $scope.assignUpdatedValuesOnClientSide(item, $scope.dialogTask);
+                     if(item.taskState.id !== 3) {
+                         $scope.updateTaskCategory(item, 'completedList');
+                     }
                  }
              });
             });
@@ -1664,16 +1674,16 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
     };
     $scope.assignUpdatedValuesOnClientSide = function (task, updatedTask, source) {
         task.title = updatedTask.title;
-        alert(task.responsibleUser);
+//        alert(task.responsibleUser);
         //Update has assignedUser
         if(!angular.isUndefined(updatedTask.raciTeam.responsibleUser) && updatedTask.raciTeam.responsibleUser !== null) {
             //Old value was unassigned
             if(angular.isUndefined(task.responsibleUser) || task.responsibleUser == null) {
-                alert('ResponsibleUser null');
+//                alert('ResponsibleUser null');
                 task.responsibleUser = { id : updatedTask.raciTeam.responsibleUser.id };
                 task.responsibleUser = updatedTask.raciTeam.responsibleUser;
             } else { //Old value was assigned
-                alert('Assign');
+//                alert('Assign');
                 task.responsibleUser.firstName = updatedTask.raciTeam.responsibleUser.firstName;
                 task.responsibleUser = updatedTask.raciTeam.responsibleUser;
             }
@@ -1681,8 +1691,9 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
             task.responsibleUser = null;
         }
         task.taskState.id = updatedTask.taskState.id;
-        
-        if(task.taskState.id == 2) {
+    };
+    $scope.updateTaskCategory = function (task,source) {
+     if(task.taskState.id == 2) {
             $scope.inProgressList.push(task);
             //alert(item.TaskState.Id);;
         }
@@ -1704,7 +1715,7 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
         } else if (source == 'inProgressList') {
             var index = $scope.inProgressList.indexOf(task);
             $scope.inProgressList.splice(index, 2);
-        }
+        }   
     };
     
     $scope.edit = function (FilterName, Name, DueStatus, AssignedTo, WorkingSet, NistControlFamily, NistBaseline) {

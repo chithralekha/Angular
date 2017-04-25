@@ -1605,7 +1605,7 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
         $scope.dialogTask.Title = $scope.taskTitle;
         var res;
         //        alert($scope.dialogTask.id);
-        if(angular.isUndefined($scope.dialogTask.id) || $scope.dialogTask.id == null) {
+        if(angular.isUndefined($scope.dialogTask.id) || $scope.dialogTask.id == null || $scope.dialogTask.id == 0) {
             //              alert('post');
             res = $http.post(Config.baseURL + 'Tasks/',$scope.dialogTask);
         } else {
@@ -1663,8 +1663,7 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
         res.catch(function(data, status, headers, config) {
 			console.log('failure message:',JSON.stringify({data: data}));
 		});
-        $uibModalInstance.close();
-            
+        $uibModalInstance.close();            
 //            alert($scope.dialogTask.raciTeam.responsibleUser.firstName);
         });
     };

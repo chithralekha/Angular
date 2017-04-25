@@ -1613,8 +1613,15 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
         }
         
         res.then( function(data) {
+            var taskId;
+            if(angular.isUndefined($scope.dialogTask.id) || $scope.dialogTask.id == null || $scope.dialogTask.id == 0) {
+                taskId = data.data.id;
+            } else {
+                taskId = $scope.dialogTask.id;
+            }
+            
             var exp = $interpolate(Config.baseURL + 'Tasks/{{id}}', false, null, true),
-            url = exp({id: $scope.dialogTask.id});
+            url = exp({id : taskId});
             
             $http.get(url).then (function(response) {
                 $scope.dialogTask = response.data;
@@ -1824,6 +1831,13 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
     }
     
     $scope.openTaskDetailsDialog = function (task) {
+        if(sessionStorage.userProfile != null) {
+            var userProfile = JSON.parse(sessionStorage.userProfile);
+            if(userProfile != null) { 
+                var currentUser = userProfile.id;
+            }
+        }
+        alert(currentUser);
         var defaultUser = {
                 id : 0,
                 email : ' ',
@@ -1880,7 +1894,7 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
                     taskState:{
                         id:1
                     },
-                    createdByUserId: 'FDB29009-3B60-4520-9F56-B1D071E97543',
+                    createdByUserId: currentUser,
                     descripion:'',
                     due:'',
                     completed:null,

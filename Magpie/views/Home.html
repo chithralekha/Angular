@@ -51,12 +51,17 @@
                         </div>
                         <div class="ibox-content">
                             <div>
-                                <ul class="list-group clear-list m-t" ng-repeat="cs in item.controlSets | limitTo:4">
-                                    <li class="clear-list">
+                                <ul class="list-group clear-list m-t" ng-repeat="cs in item.controlSets | limitTo:4" ng-init="outerIndex = $index">
+                                    <li class="list-group-item">
+                                        <span class="label label-success">{{outerIndex + 1}}</span>
                                         <span class="pull-right">{{cs.code}}</span>
                                         <span class="label label-success"></span>{{cs.title |  cut:true:10:' ...' }}
-                                    </li>
-                                    
+                                    </li>                                     
+                                </ul>
+                                <ul class="list-group clear-list m-t">
+                                    <li class="list-group-item">
+                                        <span class="label label-primary pull-right">More....</span>
+                                    </li>                                     
                                 </ul>
                             </div>
                         </div>
@@ -65,13 +70,13 @@
                     <div class="col-lg-3">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <span class="label label-primary pull-right" ng-click="complianceScore(item)">?</span>
+                            <span class="label label-primary pull-right" ng-click="complianceScore(item)"></span>
                             <h5>Users</h5>
                         </div>
                         <div class="ibox-content">
                             <ul class="list-group clear-list m-t" ng-repeat="user in item.users | limitTo:4">
 <!--                                    <li class="list-group-item fist-item">-->
-                                <li class="clear-list">
+                                <li class="list-group-item clear-list">
                                         <span class="label label-success"></span>{{user.firstName |  cut:true:10:' ...' }}
                                     </li>
                                     

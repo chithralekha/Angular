@@ -8,7 +8,7 @@
             <li>
                 Dashboards
             </li>
-            <li class="active"><strong>Business Control Profiles</strong></li>
+            <li class="active"><strong>Profiles</strong></li>
         </ol>
     </div>
     <div class="col-lg-2"></div>
@@ -51,7 +51,7 @@
                         </div>
                         <div class="ibox-content">
                             <div>
-                                <ul class="list-group clear-list m-t" ng-repeat="cs in item.controlSets | limitTo:4" ng-init="outerIndex = $index">
+                                <ul class="list-group clear-list m-t" ng-repeat="cs in item.workingSetTemplate.controlSets | limitTo:4" ng-init="outerIndex = $index">
                                     <li class="list-group-item">
                                         <span class="label label-success">{{outerIndex + 1}}</span>
                                         <span class="pull-right">{{cs.code}}</span>
@@ -77,10 +77,14 @@
                             <ul class="list-group clear-list m-t" ng-repeat="user in item.users | limitTo:4">
 <!--                                    <li class="list-group-item fist-item">-->
                                 <li class="list-group-item clear-list">
-                                        <span class="label label-success"></span>{{user.firstName |  cut:true:10:' ...' }}
-                                    </li>
-                                    
-                                </ul>
+                                    <span class="label label-success"></span>{{user.firstName |  cut:true:10:' ...' }}
+                                </li>
+                            </ul>
+                            <ul class="list-group clear-list m-t">
+                                <li class="list-group-item">
+                                    <span class="label label-primary pull-right">More....</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     </div>

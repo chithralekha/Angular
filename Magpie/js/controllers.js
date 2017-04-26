@@ -350,6 +350,9 @@ function homeController($scope,$stateParams,$state,$http,filterService,workingSe
     $scope.workingSetList = workingSetWebAPIService.getData();
     $scope.workingSetList.then (function (response) {
         $scope.businessControlProfileList  = response.data;
+//        alert($scope.businessControlProfileList[0].controlSets);
+        $scope.controlSets = $scope.businessControlProfileList.controlSets;
+//        alert($scope.controlSets);
         angular.forEach($scope.businessControlProfileList, function (item) {
             if(item.compliance <= 50)
                 {

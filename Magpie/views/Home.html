@@ -1,21 +1,38 @@
-
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Business Control Profiles</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                Dashboards
+            </li>
+            <li class="active"><strong>Business Control Profiles</strong></li>
+        </ol>
+    </div>
+    <div class="col-lg-2"></div>
+</div>
 <!-- New York, Chiago, Seattle, Dallas,  -->
 <div class="wrapper wrapper-content" ng-controller= "homeController">
+<!--
      <div class="ibox float-e-margins">
          <div class="ibox-title">
             <h5>Business Control Profiles</h5>                
         </div>
          <div class="ibox-content">
+-->
 <div class="row" ng-repeat="item in businessControlProfileList">
         
         
-        <div class="ibox float-e-margins col-lg-4">
+        <div class="ibox float-e-margins col-lg-8">
             <div class="ibox-title">
-                <span class="label label-primary pull-right" ng-click="complianceScore(item)">%</span>
-                <h5>{{item.name | cut:true:20:' ...'}}</h5>                
+                <span class="label label-primary pull-right" ng-click="complianceScore(item)"></span>
+                <h5>{{item.name}}</h5>                
             </div>
             <div class="ibox-content">
-                <div>
+                <div class="row">
+                <div class="col-lg-6">
                         <c3chart bindto-id="gauge-plot{{item.workingSetId}}-chart">
                             <chart-column column-id="Data 1" column-color="{{item.color}}"
                                           column-values="{{item.compliance}}"
@@ -26,39 +43,49 @@
                              <chart-events on-click-data="showClick(item)"/>
                         </c3chart>
                     </div>
-                
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <span class="label label-primary pull-right" ng-click="complianceScore(item)">?</span>
+                            <h5>Control Sets</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div>
+                                <ul class="list-group clear-list m-t" ng-repeat="cs in item.controlSets | limitTo:4">
+                                    <li class="clear-list">
+                                        <span class="pull-right">{{cs.code}}</span>
+                                        <span class="label label-success"></span>{{cs.title |  cut:true:10:' ...' }}
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <span class="label label-primary pull-right" ng-click="complianceScore(item)">?</span>
+                            <h5>Users</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <ul class="list-group clear-list m-t" ng-repeat="user in item.users | limitTo:4">
+<!--                                    <li class="list-group-item fist-item">-->
+                                <li class="clear-list">
+                                        <span class="label label-success"></span>{{user.firstName |  cut:true:10:' ...' }}
+                                    </li>
+                                    
+                                </ul>
+                        </div>
+                    </div>
+                    </div>
+                </div>
             </div>
-        </div>
+    </div>
        
     
-    <div class="col-lg-2">
-        <div class="ibox float-e-margins">
-            <div class="ibox-title">
-                <span class="label label-primary pull-right" ng-click="complianceScore(item)">?</span>
-                <h5>Control Set</h5>                
-            </div>
-            <div class="ibox-content">
-                <div>
-                      
-                </div>
-                
-            </div>
-        </div>
-    </div>    
-    <div class="col-lg-2">
-        <div class="ibox float-e-margins">
-            <div class="ibox-title">
-                <span class="label label-primary pull-right" ng-click="complianceScore(item)">?</span>
-                <h5>Users</h5>                
-            </div>
-            <div class="ibox-content">
-                <div>
-                      
-                </div>
-                
-            </div>
-        </div>
-    </div>       
+     
     </div>
+<!--
               </div>
-</div>
+</div>-->

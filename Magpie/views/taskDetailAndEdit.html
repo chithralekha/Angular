@@ -1,11 +1,11 @@
 <div class="modal-body" ng-style="taskDueStatus(dialogTask)">
     <div class = "row">
         <div class = "row">
-            <div class = "col-lg-1" style="font-size : 12px; padding-top : 8px"> 
+            <div class = "col-lg-2" style="font-size : 12px; padding-top : 8px"> 
                 <input type="text" style="font-size : 12px; padding-top : 8px" class="form-control no-border" name="TaskCode" ng-model="dialogTask.code"  placeholder="Code" required />
             </div>
             
-            <div class = "col-lg-10" style="font-weight:bold;">
+            <div class = "col-lg-9" style="font-weight:bold;">
                 <input type="text" style="font-size:25px" class="form-control no-border" name="TaskTitle" ng-model="dialogTask.title"  placeholder="Task Title" required />
             </div>
             <div class="col-lg-1 pull-right">
@@ -13,7 +13,7 @@
             </div>
         </div>
         <br>
-        <br
+        <br>
         <div class="row">
             <div class="col-lg-4">
                 <ui-select ng-model="responsibleUserListDialog.selected" theme="bootstrap" on-select="onSelected($item)">

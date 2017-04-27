@@ -1605,7 +1605,7 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
             $scope.dialogTask.taskState.id = 3;
         }
         
-        $scope.dialogTask.Title = $scope.taskTitle;
+        $scope.dialogTask.Title = $scope.dialogTask.title;
         $scope.dialogTask.Due = $scope.taskDue;
         var res;
 //                alert($scope.dialogTask.Title);

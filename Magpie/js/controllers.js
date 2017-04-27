@@ -1606,6 +1606,7 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
         }
         
         $scope.dialogTask.Title = $scope.taskTitle;
+        $scope.dialogTask.Due = $scope.taskDue;
         var res;
                 alert($scope.dialogTask.Title);
         if(angular.isUndefined($scope.dialogTask.id) || $scope.dialogTask.id == null || $scope.dialogTask.id == 0) {
@@ -1863,7 +1864,7 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
                 { Name : 'In Progress', Value : 2 },
                 { Name : 'New', Value : 1 },
                 { Name : 'Completed', Value : 3 }];
-           alert(task.id);
+//           alert(task.id);
         if(angular.isUndefined(task) || task === null )
             {
                 $scope.taskTitle = '';

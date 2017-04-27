@@ -34,7 +34,7 @@
                     <li ng-show= "isAuthorized([userRoles.System, userRoles.Debugger, userRoles.Administrator, userRoles.QlikUser])" ui-sref-active="active"><a ui-sref="dashboards.dashboard4QlikRACI">{{ 'RACI' | translate }}</a></li>
                     <li ng-show= "isAuthorized([userRoles.System, userRoles.Debugger, userRoles.Administrator, userRoles.QlikUser])" ui-sref-active="active"><a ui-sref="dashboards.dashboard3QlikDueDate">{{ 'Due Date' | translate }}</a></li>
                     <li ng-show= "isAuthorized([userRoles.System, userRoles.Debugger, userRoles.Administrator, userRoles.QlikUser])" ui-sref-active="active"><a ui-sref="dashboards.dashboard5QlikPerformance">{{ 'Performance' | translate }}</a></li>
-                    <li ng-show= "isAuthorized([userRoles.Administrator,userRoles.System, userRoles.NotificationService, userRoles.AccountManager, userRoles.UserManager, userRoles.RaciTeamManager])" ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=Operations&c=Dashboard">{{ 'Operations' | translate }}</a></li>
+                    <li ng-show= "isAuthorized([userRoles.Administrator,userRoles.System, userRoles.Debugger, userRoles.NotificationService, userRoles.AccountManager, userRoles.UserManager, userRoles.RaciTeamManager])" ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=Operations&c=Dashboard">{{ 'Operations' | translate }}</a></li>
                 </ul>
 <!--                <div ng-if="isAuthorized(userRoles.admin)">You're admin.</div>-->
             </li>

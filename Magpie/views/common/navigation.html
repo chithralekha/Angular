@@ -64,9 +64,9 @@
                     <li ng-show = "isAuthorized([userRoles.System, userRoles.Debugger, userRoles.Administrator, userRoles.NotificationService, userRoles.DocumentRepositoryUser, userRoles.DocumentRepositoryUserReadOnly, userRoles.IncidentResponseUser])">
                         <a href=""><i class="fa fa-gear"></i><span class="nav-label">{{ 'Operations' | translate }}</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level">
-                            <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=CrisisManagement&c=Index">{{ 'Crisis Management' | translate }}</a></li>
-                            <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=DocumentRepository&c=Index">{{ 'Document Repository' | translate }}</a></li>
-                            <li ui-sref-active="active"><a ui-sref="design.teams_board">RACI Team</a></li>
+                            <li ui-sref-active="active" ng-show = "isAuthorized([userRoles.System, userRoles.Debugger, userRoles.Administrator, userRoles.NotificationService])"><a href="{{oldMagpieBaseLink}}&a=CrisisManagement&c=Index">{{ 'Crisis Management' | translate }}</a></li>
+                            <li ui-sref-active="active" ng-show = "isAuthorized([userRoles.System, userRoles.Debugger, userRoles.Administrator, userRoles.NotificationService])"><a href="{{oldMagpieBaseLink}}&a=DocumentRepository&c=Index">{{ 'Document Repository' | translate }}</a></li>
+                            <li ui-sref-active="active" ng-show = "isAuthorized([userRoles.System, userRoles.Debugger, userRoles.Administrator, userRoles.NotificationService])"><a ui-sref="design.teams_board">RACI Team</a></li>
                         </ul>
                     </li>
                     
@@ -79,20 +79,20 @@
                             <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=ControlSets&c=Index">{{ 'Control Catalogs' | translate }}</a></li>
                             <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=NistControls&c=Index">{{ 'Nist Controls' | translate }}</a></li>
                             <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=TaskDefinitions&c=Index">{{ 'Customise Task Definitions' | translate }}</a></li>
-                            <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=Processes&c=Index">{{ 'Business Processes' | translate }}</a></li>
-                            <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=Assets&c=Index">{{ 'Assets' | translate }}</a></li>
-                            <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=SupportSystems&c=Index">{{ 'Business Support Systems' | translate }}</a></li>
+                            <li ui-sref-active="active" ng-show = "isAuthorized([userRoles.System, userRoles.Debugger, userRoles.Administrator, userRoles.BusinessProcessManager])"><a href="{{oldMagpieBaseLink}}&a=Processes&c=Index">{{ 'Business Processes' | translate }}</a></li>
+                            <li ui-sref-active="active" ng-show = "isAuthorized([userRoles.System, userRoles.Debugger, userRoles.Administrator, userRoles.BusinessProcessManager])"><a href="{{oldMagpieBaseLink}}&a=Assets&c=Index">{{ 'Assets' | translate }}</a></li>
+                            <li ui-sref-active="active" ng-show = "isAuthorized([userRoles.System, userRoles.Debugger, userRoles.Administrator, userRoles.BusinessProcessManager])"><a href="{{oldMagpieBaseLink}}&a=SupportSystems&c=Index">{{ 'Business Support Systems' | translate }}</a></li>
                         </ul>
                     </li>
                     
                     <!-- Admin [Roles : System, Debugger, Administrator, AccountManager, UserManager, RaciTeamManager, LogViewer]  -->
-                    <li ng-show = "isAuthorized([userRoles.Administrator, userRoles.AccountManager, userRoles.UserManager, userRoles.RaciTeamManager, userRoles.LogViewer])">
+                    <li ng-show = "isAuthorized([userRoles.Administrator, userRoles.AccountManager, userRoles.UserManager, userRoles.RaciTeamManager, userRoles.LogViewer, userRoles.ProgramDesigner])">
                         <a href=""><i class="fa fa-wrench"></i> <span class="nav-label">{{ 'Admin' | translate }}</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li ui-sref-active="active"><a href="{{oldMagpieBaseLink}}&a=Home&c=Contact">{{ 'Contact' | translate }}</a></li>
                             <li ui-sref-active="active" ng-show = "isAuthorized([userRoles.Administrator, userRoles.AccountManager, userRoles.LogViewer])"><a href="{{oldMagpieBaseLink}}&a=Log&c=Logs">{{ 'Logs' | translate }}</a></li>
                             <li ui-sref-active="active" ng-show = "isAuthorized([userRoles.Administrator, userRoles.AccountManager, userRoles.UserManager])"><a href="{{oldMagpieBaseLink}}&a=UserManagement&c=Index">{{ 'Manage Users' | translate }}</a></li>
-                            <li ui-sref-active="active" ng-show = "isAuthorized([userRoles.Administrator, userRoles.AccountManager])"><a href="{{oldMagpieBaseLink}}&a=Notifications&c=DisplayNotifications">{{ 'Notifications' | translate }}</a></li>
+                            <li ui-sref-active="active" ng-show = "isAuthorized([userRoles.Administrator, userRoles.AccountManager, userRoles.ProgramDesigner])"><a href="{{oldMagpieBaseLink}}&a=Notifications&c=DisplayNotifications">{{ 'Notifications' | translate }}</a></li>
                             <li ui-sref-active="active" ng-show = "isAuthorized([userRoles.Administrator, userRoles.AccountManager, userRoles.RaciTeamManager])"><a href="{{oldMagpieBaseLink}}&a=Raciteams&c=Index">{{ 'RACI Teams' | translate }}</a></li>
                         </ul>
                     </li>

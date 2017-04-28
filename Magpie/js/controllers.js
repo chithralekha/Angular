@@ -411,17 +411,22 @@ function homeController($scope,$stateParams,$state,$http,filterService,workingSe
 function dashboardFlotTwo($scope,$stateParams,$state,$http,filterService,workingSetHistoryService,$uibModal) {
     $scope.businessControlProfile = $stateParams.obj.name;
     $scope.businessControlProfileId = $stateParams.obj.workingSetId;
-    $scope.workingSetHistory = workingSetHistoryService.getData($scope.businessControlProfileId);
+    $scope.workingSetHistory = workingSetHistoryService.getData($scope.businessControlProfileId);   
     $scope.workingSetHistory.then (function (response) {
         $scope.businessControlProfileHistoryList  = response.data;
         $scope.businessControlProfileHistoryList.data1 = [];
         $scope.businessControlProfileHistoryList.data2 = [];
         $scope.businessControlProfileHistoryList.dataset = [];
          $scope.businessControlProfileRadarDataSet = [];
+        $scope.datax={"id":"x"};
+        $scope.datacolumns=[{"id":"data 1","type":"bar","name":"Tasks Due","color":"#1ab394"},
+	                    {"id":"data 2","type":"bar","name":"Tasks Completed", "color" : "#BABABA"}];
+        $scope.datapoints=[];
         var count =0, fillColor = 1, pointHighlightStroke = 1;
         angular.forEach($scope.businessControlProfileHistoryList, function (item) {
             var t = new Date(item.timestamp);
             count += 1;            
+            $scope.datapoints.push({"x":gd(t.getFullYear(), t.getMonth(), t.getDate()),"data 1":item.totalOverdue,"data 2":item.totalCompleted});
             
 //            alert(t.getDate());
 //            alert(t.getFullYear());
@@ -659,6 +664,10 @@ function dashboardFlotTwo($scope,$stateParams,$state,$http,filterService,working
         datasets : $scope.businessControlProfileRadarDataSet        
     };
     $scope.radarOptions = $scope.businessControlProfileRadarDataOptions;
+//    alert($scope.datapoints);
+    console.log($scope.datapoints);
+	 
+	
        
     })
     

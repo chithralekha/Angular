@@ -1635,7 +1635,8 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
             if(isNewTask == true) {
                 //add new task
                 $scope.todoList.push($scope.dialogTask);
-            } else {
+            } 
+//                else {
             console.log('data...',data.data);
             //alert(data.data);
                 
@@ -1670,7 +1671,7 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
                      }
                  }
              });
-            }
+//            }
             });
         
         res.catch(function(data, status, headers, config) {

@@ -417,14 +417,44 @@ function dashboardFlotTwo($scope,$stateParams,$state,$http,filterService,working
         $scope.businessControlProfileHistoryList.data1 = [];
         $scope.businessControlProfileHistoryList.data2 = [];
         $scope.businessControlProfileHistoryList.dataset = [];
+         $scope.businessControlProfileRadarDataSet = [];
+        var count =0, fillColor = 1, pointHighlightStroke = 1;
         angular.forEach($scope.businessControlProfileHistoryList, function (item) {
             var t = new Date(item.timestamp);
+            count += 1;            
             
 //            alert(t.getDate());
 //            alert(t.getFullYear());
 //            alert(t.getMonth());
             $scope.businessControlProfileHistoryList.data2.push([gd(t.getFullYear(), t.getMonth(), t.getDate()),item.totalCompleted]);
             $scope.businessControlProfileHistoryList.data1.push([gd(t.getFullYear(), t.getMonth(), t.getDate()),item.compliancePercent]);
+            if( count % 5 === 0 ) {
+                fillColor = ""
+                pointHighlightStroke = "";
+                strokeAndPointColor = "";
+                if(count % 10 === 0) {
+                    fillColor = "rgba(220,220,220,0.2)";
+                    strokeAndPointColor = "rgba(220,220,220,1)";
+                }
+                else {
+                        fillColor = "rgba(26,179,148,0.2)";
+                        strokeAndPointColor = "rgba(151,187,205,1)";
+                    }
+                var data = {
+                label: "data" + count,
+                fillColor: fillColor,
+                strokeColor: strokeAndPointColor,
+                pointColor: strokeAndPointColor,
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: strokeAndPointColor,
+                data: [item.totalNew, item.totalInProgress, item.totalInJeopardy, item.totalOverdue, item.totalCompleted, item.totalOnTime]
+            };
+//              alert(data.strokeColor);  
+                 $scope.businessControlProfileRadarDataSet.push(data);
+            }
+           
+            
         })
 //        alert( $scope.businessControlProfileHistoryList.data1);
 //        alert($scope.businessControlProfileHistoryList.data2);
@@ -582,7 +612,57 @@ function dashboardFlotTwo($scope,$stateParams,$state,$http,filterService,working
 //        alert($scope.businessControlProfileHistoryList.dataset);
     this.flotData = $scope.businessControlProfileHistoryList.dataset;
     this.flotOptions = $scope.businessControlProfileHistoryList.options;
+//    $scope.businessControlProfileRadarDataSet = [
+//            {
+//                label: "My First dataset",
+//                fillColor: "rgba(220,220,220,0.2)",
+//                strokeColor: "rgba(220,220,220,1)",
+//                pointColor: "rgba(220,220,220,1)",
+//                pointStrokeColor: "#fff",
+//                pointHighlightFill: "#fff",
+//                pointHighlightStroke: "rgba(220,220,220,1)",
+//                data: [65, 59, 90, 81]
+//            },
+//            {
+//                label: "My Second dataset",
+//                fillColor: "rgba(26,179,148,0.2)",
+//                strokeColor: "rgba(26,179,148,1)",
+//                pointColor: "rgba(26,179,148,1)",
+//                pointStrokeColor: "#fff",
+//                pointHighlightFill: "#fff",
+//                pointHighlightStroke: "rgba(151,187,205,1)",
+//                data: [28, 48, 40, 19]
+//            }
+//        ];
+        $scope.businessControlProfileRadarDataLabels = ["New", "In Progress", "In Jeopardy", "Overdue", "Completed", "On Time"];
+        $scope.businessControlProfileRadarDataOptions = {
+        scaleShowLine : true,
+        angleShowLineOut : true,
+        scaleShowLabels : false,
+        scaleBeginAtZero : true,
+        angleLineColor : "rgba(0,0,0,.1)",
+        angleLineWidth : 1,
+        pointLabelFontFamily : "'Arial'",
+        pointLabelFontStyle : "normal",
+        pointLabelFontSize : 10,
+        pointLabelFontColor : "#666",
+        pointDot : true,
+        pointDotRadius : 5,
+        pointDotStrokeWidth : 1,
+        pointHitDetectionRadius : 20,
+        datasetStroke : true,
+        datasetStrokeWidth : 2,
+        datasetFill : true
+    };    
+    $scope.radarData = {
+        labels : $scope.businessControlProfileRadarDataLabels,
+        datasets : $scope.businessControlProfileRadarDataSet        
+    };
+    $scope.radarOptions = $scope.businessControlProfileRadarDataOptions;
+       
     })
+    
+     
 }
 
 function complianceScoreCtrl($scope,$http,$uibModalInstance,filterService,$filter,filterWebAPIService,$interpolate,responsibleUserService,Config) {

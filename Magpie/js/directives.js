@@ -602,7 +602,7 @@ function formattedDate(dateFilter) {
  * Pass all functions into module
  */
 angular
-    .module('inspinia')
+    .module('magpie')
     .directive('pageTitle', pageTitle)
     .directive('sideNavigation', sideNavigation)
     .directive('iboxTools', iboxTools)

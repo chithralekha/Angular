@@ -4,7 +4,7 @@
  */
 (function () {
     "use strict";
-    angular.module('inspinia', [
+    angular.module('magpie', [
         'ui.router',                    // Routing
         'oc.lazyLoad',                  // ocLazyLoad
         'ui.bootstrap',                 // Ui Bootstrap

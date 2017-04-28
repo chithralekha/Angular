@@ -2150,7 +2150,7 @@ function loginCtrl($scope, $http, $state, authenticationService, Authorization) 
  * Pass all functions into module
  */
 angular
-    .module('inspinia')
+    .module('magpie')
     .controller('MainCtrl', MainCtrl)
     .controller('homeController', homeController)
     .controller('dashBoardController',dashBoardController)

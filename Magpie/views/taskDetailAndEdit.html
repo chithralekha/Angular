@@ -1,12 +1,25 @@
+<div class="ibox">
+<div class="ibox-content">
+<form role="form" name="signup_form2" novalidate ng-submit="ok()">
 <div class="modal-body" ng-style="taskDueStatus(dialogTask)">
     <div class = "row">
         <div class = "row">
             <div class = "col-lg-2" style="font-size : 12px; padding-top : 8px"> 
                 <input type="text" style="font-size : 12px; padding-top : 8px" class="form-control no-border" name="TaskCode" ng-model="dialogTask.code"  placeholder="Code" required />
+                <div class="m-t-xs" ng-show="signup_form2.TaskCode.$invalid && signup_form2.TaskCode.$dirty">
+                    <small class="text-danger" ng-show="signup_form2.TaskCode.$error.required">Please input a Task Code</small>
+                    <small class="text-danger" ng-show="signup_form2.TaskCode.$error.minlength">Your Task Code is required to be at least 3 characters</small>
+                    <small class="text-danger" ng-show="signup_form2.TaskCode.$error.maxlength">Your Task Code cannot be longer than 20 characters</small>
+                </div>
             </div>
             
             <div class = "col-lg-9" style="font-weight:bold;">
                 <input type="text" style="font-size:25px" class="form-control no-border" name="TaskTitle" ng-model="dialogTask.title"  placeholder="Task Title" required />
+                <div class="m-t-xs" ng-show="signup_form2.TaskTitle.$invalid && signup_form2.TaskTitle.$dirty">
+                    <small class="text-danger" ng-show="signup_form2.TaskTitle.$error.required">Please input a Task Title</small>
+                    <small class="text-danger" ng-show="signup_form2.TaskTitle.$error.minlength">Your Task Title is required to be at least 3 characters</small>
+                    <small class="text-danger" ng-show="signup_form2.TaskTitle.$error.maxlength">Your Task Title cannot be longer than 20 characters</small>
+                </div>
             </div>
             <div class="col-lg-1 pull-right">
                 <button type="button" class="close" ng-click="cancel()">X</button>
@@ -26,7 +39,7 @@
                 </ui-select>
             </div>
             <div class = "col-lg-2 pull-right">
-            <button type="button" class="btn btn-info pull-right" ng-click="ok()"><i class="fa fa-save"></i> Save</button></div> 
+            <button type="button" class="btn btn-info pull-right" ng-click="ok()" ng-disabled="signup_form2.$invalid"><i class="fa fa-save"></i> Save</button></div> 
         </div>
 </div>
 </div>
@@ -169,62 +182,20 @@
                             </div>
                         </uib-tab>
                         
-                        <uib-tab class="hidden">
+                        <uib-tab>
                             <uib-tab-heading>
                                 <i class="fa fa-comment-o"></i>
                             </uib-tab-heading>
                             <div class="panel-body">
                                 <div class="col-lg-6">
                                     <div class="ibox float-e-margins">
-                                        <div class="ibox-title"><h5>Timeline</h5>
-                                            <span class="label label-primary">Meeting today</span>
-                                            <div ibox-tools></div>
-                                        </div>
-                                        <div class="ibox-content inspinia-timeline">
-                                            <div class="timeline-item">
-                                                <div class="row">
-                                                    <div class="col-xs-3 date">
-                                                        <i class="fa fa-briefcase"></i>6:00 am<br/>
-                                                        <small class="text-navy">2 hour ago</small>
-                                                    </div>
-                                                    <div class="col-xs-7 content no-top-border">
-                                                        <p class="m-b-xs"><strong>Meeting</strong></p>
-                                                        <p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="timeline-item">
-                                                <div class="row">
-                                                    <div class="col-xs-3 date">
-                                                        <i class="fa fa-file-text"></i>7:00 am<br/>
-                                                        <small class="text-navy">3 hour ago</small>
-                                                    </div>
-                                                    <div class="col-xs-7 content">
-                                                        <p class="m-b-xs"><strong>Send documents to Mike</strong></p><p>Please find the document attached.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="timeline-item">
-                                                <div class="row">
-                                                    <div class="col-xs-3 date"><i class="fa fa-coffee"></i>8:00 am<br/>
-                                                    </div>
-                                                    <div class="col-xs-7 content">
-                                                        <p class="m-b-xs"><strong>Coffee Break</strong></p>
-                                                        <p>Please find the document attached.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="timeline-item">
-                                                <div class="row">
-                                                    <div class="col-xs-3 date">
-                                                        <i class="fa fa-phone"></i>11:00 am<br/><small class="text-navy">21 hour ago</small>
-                                                    </div>
-                                                    <div class="col-xs-7 content">
-                                                        <p class="m-b-xs"><strong>Phone with Jeronimo</strong></p><p>Please find the document attached.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <div class = "form-group">
+                                    <uib-accordion close-others="true">                                        
+                                        <uib-accordion-group heading="Comments" is-open="true">
+                                           <textarea class="form-control no-border" rows="4" name="Comments" ng-model="dialogTask.comments" ></textarea>
+                                        </uib-accordion-group>
+                                    </uib-accordion>
+                                </div>
                                     </div>
                                 </div>
                             </div>
@@ -342,6 +313,8 @@
     <div class="row">
        
     </div>
+    </div>
+</div>
     </div>
 </div>
 

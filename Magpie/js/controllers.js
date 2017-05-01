@@ -1643,6 +1643,8 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
         
         $scope.dialogTask.Title = $scope.dialogTask.title;
         $scope.dialogTask.Due = $scope.taskDue;
+        $scope.dialogTask.Comments = $scope.dialogTask.comments;
+//        alert($scope.dialogTask.Comments);
         var res;
 //                alert($scope.dialogTask.Title);
         if(angular.isUndefined($scope.dialogTask.id) || $scope.dialogTask.id == null || $scope.dialogTask.id == 0) {

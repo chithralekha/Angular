@@ -1643,7 +1643,7 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
         
         $scope.dialogTask.Title = $scope.dialogTask.title;
         $scope.dialogTask.Due = $scope.taskDue;
-        $scope.dialogTask.Comments = $scope.dialogTask.comments;
+        
 //        alert($scope.dialogTask.Comments);
         var res;
 //                alert($scope.dialogTask.Title);

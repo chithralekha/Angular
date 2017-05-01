@@ -463,61 +463,7 @@ function dashboardFlotTwo($scope,$stateParams,$state,$http,filterService,working
         })
 //        alert( $scope.businessControlProfileHistoryList.data1);
 //        alert($scope.businessControlProfileHistoryList.data2);
-        var data1 = [
-        [gd(2012, 1, 1), 0],
-        [gd(2012, 1, 15), 25],
-        [gd(2012, 2, 1), 15],
-        [gd(2012, 2, 15), 60],
-        [gd(2012, 3, 1), 80],
-        [gd(2012, 3, 15), 99],
-        [gd(2012, 4, 1), 35],
-        [gd(2012, 4, 15), 37],
-        [gd(2012, 5, 1), 17],
-        [gd(2012, 5, 15), 80],
-        [gd(2012, 6, 1), 90],
-        [gd(2012, 6, 15), 60],
-        [gd(2012, 7, 1), 45],
-        [gd(2012, 7, 15), 57],
-        [gd(2012, 8, 1), 90],
-        [gd(2012, 8, 15), 80],
-        [gd(2012, 9, 1), 83],
-        [gd(2012, 9, 15), 91],
-        [gd(2012, 10, 1), 71],
-        [gd(2012, 10, 15), 76],
-        [gd(2012, 11, 1), 67],
-        [gd(2012, 11, 15), 84],
-        [gd(2012, 12, 1), 51],
-        [gd(2012, 12, 15), 50]        
-    ];
-
-    var data2 = [
-        [gd(2012, 1, 1), 100],
-        [gd(2012, 1, 15), 140],
-        [gd(2012, 2, 1), 90],
-        [gd(2012, 2, 15), 77],
-        [gd(2012, 3, 1), 100],
-        [gd(2012, 3, 15), 145],
-        [gd(2012, 4, 1), 89],
-        [gd(2012, 4, 15), 88],
-        [gd(2012, 5, 1), 69],
-        [gd(2012, 5, 15), 87],
-        [gd(2012, 6, 1), 99],
-        [gd(2012, 6, 15), 140],
-        [gd(2012, 7, 1), 150],
-        [gd(2012, 7, 15), 147],
-        [gd(2012, 8, 1), 88],
-        [gd(2012, 8, 15), 78],
-        [gd(2012, 9, 1), 130],
-        [gd(2012, 9, 15), 88],
-        [gd(2012, 10, 1), 137],
-        [gd(2012, 10, 15), 148],
-        [gd(2012, 11, 1), 98],
-        [gd(2012, 11, 15), 40],
-        [gd(2012, 12, 1), 99],
-        [gd(2012, 12, 15), 56]       
-    ];
-
-
+        
     $scope.businessControlProfileHistoryList.dataset = [
         {
             label: "Number of completed User Tasks",
@@ -664,6 +610,7 @@ function dashboardFlotTwo($scope,$stateParams,$state,$http,filterService,working
         datasets : $scope.businessControlProfileRadarDataSet        
     };
     $scope.radarOptions = $scope.businessControlProfileRadarDataOptions;
+    
 //    alert($scope.datapoints);
     console.log($scope.datapoints);
 	 

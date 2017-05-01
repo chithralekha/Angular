@@ -16,7 +16,7 @@
             <div class = "col-lg-9" style="font-weight:bold;">
                 <input type="text" style="font-size:25px" class="form-control no-border" name="TaskTitle" ng-model="dialogTask.title"  placeholder="Task Title" required />
                 <div class="m-t-xs" ng-show="signup_form2.TaskTitle.$invalid && signup_form2.TaskTitle.$dirty">
-                    <small class="text-danger" ng-show="signup_form2.TaskTitle.$error.required">Please input a Task Title</small>
+                    <small class="text-danger" style="font-weight:normal;" ng-show="signup_form2.TaskTitle.$error.required">Please input a Task Title</small>
                     <small class="text-danger" ng-show="signup_form2.TaskTitle.$error.minlength">Your Task Title is required to be at least 3 characters</small>
                     <small class="text-danger" ng-show="signup_form2.TaskTitle.$error.maxlength">Your Task Title cannot be longer than 20 characters</small>
                 </div>
@@ -74,6 +74,11 @@
                                     <label class = "col-md-4 control-label" style="padding-top : 10px">Due</label>
                                     <div class = "col-md-6">
                                         <input type="text" class="form-control no-border" name="taskDue" ng-model="dialogTask.due"  placeholder="Task Due" formatted-date format="medium"/>
+                                        <div class="m-t-xs" ng-show="signup_form2.taskDue.$invalid && signup_form2.taskDue.$dirty">
+                                            <small class="text-danger" style="font-weight:normal;" ng-show="signup_form2.taskDue.$error.date">Please input a valid date</small>
+                                            <small class="text-danger" ng-show="signup_form2.taskDue.$error.minlength">Your Task Due is required to be at least 3 characters</small>
+                                            <small class="text-danger" ng-show="signup_form2.taskDue.$error.maxlength">Your Task Due cannot be longer than 20 characters</small>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class = "form-group hidden">
@@ -187,17 +192,32 @@
                                 <i class="fa fa-comment-o"></i>
                             </uib-tab-heading>
                             <div class="panel-body">
+                                <div class="row">
                                 <div class="col-lg-6">
                                     <div class="ibox float-e-margins">
                                         <div class = "form-group">
                                     <uib-accordion close-others="true">                                        
                                         <uib-accordion-group heading="Comments" is-open="true">
-                                           <textarea class="form-control no-border" rows="4" name="Comments" ng-model="dialogTask.comments" ></textarea>
+                                           <textarea class="form-control no-border" rows="4" name="Comments" ng-model="comments" ></textarea>
                                         </uib-accordion-group>
                                     </uib-accordion>
                                 </div>
                                     </div>
                                 </div>
+                                <div class="col-lg-3">
+                                        <ul class="list-group clear-list m-t" ng-repeat="comment in dialogTask.comments| limitTo:4">
+            <!--                                    <li class="list-group-item fist-item">-->
+                                            <li class="list-group-item clear-list">
+                                                <span class="label label-success">{{comment.lastModified | date}}</span>{{comment.text}}
+                                            </li>
+                                        </ul>
+                                        <ul class="list-group clear-list m-t">
+                                            <li class="list-group-item">
+                                                <span class="label label-primary pull-right"></span>
+                                            </li>
+                                        </ul>
+                                </div>
+                                    </div>
                             </div>
                         </uib-tab>
                         

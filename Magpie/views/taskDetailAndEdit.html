@@ -204,16 +204,16 @@
                                 </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3">                                        
+                                <div class="col-lg-6">                                        
                                     <ul  class="list-group clear-list m-t" ng-repeat="comment in dialogTask.comments">
                                         <li class="list-group-item clear-list">
                                             <div class="agile-detail">
-                                                <p>{{comment.lastModifiedByUser.userName}}</p>
-                                                <p class="pull-right"><i class="fa fa-clock-o"></i>{{comment.lastModified | date}}</p>
-                                            </div>
-                                            <div class="agile-detail">
-                                                {{comment.text}}
-                                                <p class="pull-right"></p>                        
+                                                <blockquote>                                                   
+                                                    <p>{{comment.text}}</p>
+                                                    <footer>{{comment.lastModifiedByUser.userName}},
+                                                      <cite>{{comment.lastModified | date}}</cite>
+                                                    </footer>
+                                                </blockquote>                    
                                             </div>   
                                         </li>
                                     </ul>

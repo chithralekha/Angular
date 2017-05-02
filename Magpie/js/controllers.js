@@ -1593,7 +1593,7 @@ function raciTeam($scope, $http,$uibModal,$stateParams,filterService,$filter,tas
 function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter,filterWebAPIService,$interpolate,responsibleUserService,Config,$stateParams) {
 
     //when a ResponsibleUser is selected from the dropDown
-       
+   
     $scope.onSelected = function (selectedItem) {
         $scope.selectedUser = selectedItem;
         $scope.id = selectedItem.id;
@@ -1603,14 +1603,27 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
     $scope.update = function (item) {
         $scope.selectedStateId = item;
     }
-    
     //task Save
     $scope.ok = function() {
         //alert($scope.dialogTask.Id);
 //        alert($scope.id);
+         console.log('schedule: ', $scope.comment);
         var exp = $interpolate(Config.baseURL + 'Tasks/{{id}}', false, null, true),
             url = exp({id: $scope.dialogTask.id});
         
+        var comment = {
+                      id : 0,
+                      lastModified : Date.now,
+                      lastModifiedByUser : {
+                        id : $scope.dialogTask.createdByUserId,
+                        email : "",
+                        firstName : "",
+                        lastName : "",
+                        userName : ""
+                      },
+                      text : $scope.comment.data
+                    };
+        $scope.dialogTask.comments.push(comment);
         //if the task was unassigned and a User is selected from the dropDown
         if(angular.isUndefined($scope.dialogTask.raciTeam.responsibleUser) || $scope.dialogTask.raciTeam.responsibleUser == null) {
             if(!angular.isUndefined($scope.id) && $scope.id !== null) {
@@ -1644,7 +1657,7 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
         $scope.dialogTask.Title = $scope.dialogTask.title;
         $scope.dialogTask.Due = $scope.taskDue;
         
-//        alert($scope.dialogTask.Comments);
+
         var res;
 //                alert($scope.dialogTask.Title);
         if(angular.isUndefined($scope.dialogTask.id) || $scope.dialogTask.id == null || $scope.dialogTask.id == 0) {
@@ -1715,7 +1728,7 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
         res.catch(function(data, status, headers, config) {
 			console.log('failure message:',JSON.stringify({data: data}));
 		});
-        $uibModalInstance.close();            
+        $uibModalInstance.close($scope.schedule);            
 //            alert($scope.dialogTask.raciTeam.responsibleUser.firstName);
         });
     };
@@ -1904,6 +1917,7 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
                 { Name : 'New', Value : 1 },
                 { Name : 'Completed', Value : 3 }];
 //           alert(task.id);
+   
         if(angular.isUndefined(task) || task === null )
             {
                 $scope.taskTitle = '';
@@ -1968,6 +1982,7 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
                 }
             });
         }
+        $scope.comment = { data: '' };
         var modalInstance = $uibModal.open( {
             templateUrl : 'views/taskDetailAndEdit.html',
             size : 'lg',

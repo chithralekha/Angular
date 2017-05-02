@@ -603,6 +603,24 @@
                 return value + (tail || ' …');
             };
         })
+        .filter('newComment', ['$filter', function ($filter) {
+            return function (items, controlCatalogueId) {
+
+                var filtered = [];
+                if (angular.isUndefined(controlCatalogueId) || controlCatalogueId === null) {
+                    filtered = items;
+                } else {
+                    angular.forEach(items, function (item) {
+//                        alert(item.id);
+                        if (item.id === controlCatalogueId) {
+                            filtered.push(item);
+                        }
+                    });
+                }
+                alert(filtered.text);
+                return filtered;
+            };
+        }])
         .service('userService', ['$resource', 'Config', '$interpolate', '$http', function ($resource, Config, $interpolate, $http) {
             this.getUserProfile = function (bearerToken) {
                 var promise = $http.get(Config.authURL + 'user/profile', {

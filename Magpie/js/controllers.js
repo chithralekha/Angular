@@ -1958,6 +1958,7 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
                     Due:'',
                     completed:null,
                     link:null,
+                    comments : []
                 }
                 $scope.responsibleUserListDialog.selected = defaultUser;
                 $scope.taskStates.Value = 1;

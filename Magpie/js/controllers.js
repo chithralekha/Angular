@@ -1,8 +1,7 @@
 /**
- * INSPINIA - Responsive Admin Theme
  *
  * Main controller.js file
- * Define controllers with data used in Inspinia theme
+ * Define controllers with data used
  *
  *
  * Functions (controllers)
@@ -69,58 +68,7 @@ function MainCtrl() {
     /**
      * states - Data used in Advanced Form view for Chosen plugin
      */
-    this.states = [
-        'Alabama',
-        'Alaska',
-        'Arizona',
-        'Arkansas',
-        'California',
-        'Colorado',
-        'Connecticut',
-        'Delaware',
-        'Florida',
-        'Georgia',
-        'Hawaii',
-        'Idaho',
-        'Illinois',
-        'Indiana',
-        'Iowa',
-        'Kansas',
-        'Kentucky',
-        'Louisiana',
-        'Maine',
-        'Maryland',
-        'Massachusetts',
-        'Michigan',
-        'Minnesota',
-        'Mississippi',
-        'Missouri',
-        'Montana',
-        'Nebraska',
-        'Nevada',
-        'New Hampshire',
-        'New Jersey',
-        'New Mexico',
-        'New York',
-        'North Carolina',
-        'North Dakota',
-        'Ohio',
-        'Oklahoma',
-        'Oregon',
-        'Pennsylvania',
-        'Rhode Island',
-        'South Carolina',
-        'South Dakota',
-        'Tennessee',
-        'Texas',
-        'Utah',
-        'Vermont',
-        'Virginia',
-        'Washington',
-        'West Virginia',
-        'Wisconsin',
-        'Wyoming'
-    ];
+    this.states = [ ];
 
     /**
      * check's - Few variables for checkbox input used in iCheck plugin. Only for demo purpose
@@ -169,9 +117,9 @@ function MainCtrl() {
      * alerts - used for dynamic alerts in Notifications and Tooltips view
      */
     this.alerts = [
-        { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
-        { type: 'success', msg: 'Well done! You successfully read this important alert message.' },
-        { type: 'info', msg: 'OK, You are done a great job man.' }
+        { type: 'danger', msg: '.' },
+        { type: 'success', msg: '.' },
+        { type: 'info', msg: '.' }
     ];
 
     /**
@@ -209,8 +157,7 @@ function MainCtrl() {
      * summernoteText - used for Summernote plugin
      */
     this.summernoteText = ['<h3>Hello Jonathan! </h3>',
-    '<p>dummy text of the printing and typesetting industry. <strong>Lorem Ipsum has been the dustrys</strong> standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more',
-        'recently with</p>'].join('');
+    '<p>','</p>'].join('');
 
     /**
      * General variables for Peity Charts
@@ -320,81 +267,11 @@ function MainCtrl() {
  */
 function dashboardFlotOne() {
 
-    var data1 = [
-        [0, 4],
-        [1, 8],
-        [2, 5],
-        [3, 10],
-        [4, 4],
-        [5, 16],
-        [6, 5],
-        [7, 11],
-        [8, 6],
-        [9, 11],
-        [10, 30],
-        [11, 10],
-        [12, 13]       
-    ];
-    var data2 = [
-        [0, 1],
-        [1, 0],
-        [2, 2],
-        [3, 0],
-        [4, 1],
-        [5, 3],
-        [6, 1],
-        [7, 5],
-        [8, 2],
-        [9, 3],
-        [10, 2],
-        [11, 1],
-        [12, 0]        
-    ];
-    var data3 = [
-        [0, 2],
-        [1, 1],
-        [2, 10],
-        [3, 30],
-        [4, 15],
-        [5, 3],
-        [6, 10],
-        [7, 35],
-        [8, 20],
-        [9, 31],
-        [10, 20],
-        [11, 1],
-        [12, 0]       
-    ];
-    var data4 = [
-        [0, 10],
-        [1, 15],
-        [2, 25],
-        [3, 30],
-        [4, 35],
-        [5, 10],
-        [6, 15],
-        [7, 25],
-        [8, 20],
-        [9, 31],
-        [10, 20],
-        [11, 10],
-        [12, 0]       
-    ];
-    var data5 = [
-        [0, 11],
-        [1, 25],
-        [2, 15],
-        [3, 35],
-        [4, 30],
-        [5, 15],
-        [6, 10],
-        [7, 20],
-        [8, 25],
-        [9, 20],
-        [10, 30],
-        [11, 0],
-        [12, 10]       
-    ];
+    var data1 = [ [0, 4], [1, 8], [2, 5], [3, 10], [4, 4], [5, 16], [6, 5], [7, 11], [8, 6], [9, 11], [10, 30], [11, 10], [12, 13] ];
+    var data2 = [ [0, 1], [1, 0], [2, 2], [3, 0],  [4, 1], [5, 3],  [6, 1], [7, 5],  [8, 2], [9, 3],  [10, 2],  [11, 1],  [12, 0]  ];
+    var data3 = [ [0, 2], [1, 1], [2, 10], [3, 30], [4, 15], [5, 3], [6, 10], [7, 35], [8, 20], [9, 31], [10, 20], [11, 1], [12, 0] ];
+    var data4 = [ [0, 10], [1, 15], [2, 25], [3, 30], [4, 35], [5, 10], [6, 15], [7, 25], [8, 20], [9, 31], [10, 20],  [11, 10], [12, 0] ];
+    var data5 = [ [0, 11], [1, 25], [2, 15], [3, 35], [4, 30], [5, 15], [6, 10], [7, 20], [8, 25], [9, 20], [10, 30], [11, 0], [12, 10] ];
 
     var dataset = [
         {
@@ -467,10 +344,274 @@ function dashboardFlotOne() {
 }
 
 /**
+ * homeController - for all workingSets 
+ */
+function homeController($scope,$stateParams,$state,$http,filterService,workingSetWebAPIService,$uibModal) {
+    $scope.workingSetList = workingSetWebAPIService.getData();
+    $scope.workingSetList.then (function (response) {
+        $scope.businessControlProfileList  = response.data;
+        angular.forEach($scope.businessControlProfileList, function (item) {
+            if(item.compliance <= 50)
+                {
+                    item.color = "#682c25";
+                }
+            else if (item.compliance > 50 && item.compliance <= 60)
+                {
+                    item.color = "#dda33e";     
+                }
+            else if (item.compliance > 60 && item.compliance <= 70 )
+                {
+                    item.color = "#1ab394";
+                }
+            else if (item.compliance > 70 && item.compliance <= 80)
+                {
+                    item.color = "#1ab394";
+                }
+            else if (item.compliance > 80 && item.compliance <= 90)
+                {
+                    item.color = "#0e6037";
+                }
+            else {
+                item.color = "#02512a";
+            }
+        })
+
+       // alert($scope.BusinessControlProfileList);
+        $scope.determineColor = function(color)
+        {
+           // alert(color);
+            return color;
+        }
+        $scope.color = '#1ab394';
+        console.log($scope.businessControlProfileList[0]);
+        $scope.clicked = {};
+        $scope.showClick = function(bcp) {
+            //$scope.clicked = data;
+           // alert(bcp.name);
+            $state.go('dashboards.dashboardSingleWorkingSet', {obj: bcp});
+        }
+    });
+    $scope.complianceScore = function(workingSet){
+        $scope.workingSetName = workingSet.name;
+        var modalInstance = $uibModal.open( {
+            templateUrl : 'views/complianceScore.html',
+            size : 'sm',
+            scope : $scope,
+            controller : complianceScoreCtrl
+        });
+    };
+}
+/**
+ * dashboardFlotTwo - simple controller for data
+ * for Flot chart in Dashboard view
+ */
+function dashboardFlotTwo($scope,$stateParams,$state,$http,filterService,workingSetHistoryService,$uibModal) {
+    $scope.businessControlProfile = $stateParams.obj.name;
+    $scope.businessControlProfileId = $stateParams.obj.workingSetId;
+    $scope.workingSetHistory = workingSetHistoryService.getData($scope.businessControlProfileId);
+    $scope.workingSetHistory.then (function (response) {
+        $scope.businessControlProfileHistoryList  = response.data;
+        $scope.businessControlProfileHistoryList.data1 = [];
+        $scope.businessControlProfileHistoryList.data2 = [];
+        $scope.businessControlProfileHistoryList.dataset = [];
+        angular.forEach($scope.businessControlProfileHistoryList, function (item) {
+            var t = new Date(item.timestamp);
+            
+//            alert(t.getDate());
+//            alert(t.getFullYear());
+//            alert(t.getMonth());
+            $scope.businessControlProfileHistoryList.data2.push([gd(t.getFullYear(), t.getMonth(), t.getDate()),item.totalCompleted]);
+            $scope.businessControlProfileHistoryList.data1.push([gd(t.getFullYear(), t.getMonth(), t.getDate()),item.compliancePercent]);
+        })
+//        alert( $scope.businessControlProfileHistoryList.data1);
+//        alert($scope.businessControlProfileHistoryList.data2);
+        var data1 = [
+        [gd(2012, 1, 1), 0],
+        [gd(2012, 1, 15), 25],
+        [gd(2012, 2, 1), 15],
+        [gd(2012, 2, 15), 60],
+        [gd(2012, 3, 1), 80],
+        [gd(2012, 3, 15), 99],
+        [gd(2012, 4, 1), 35],
+        [gd(2012, 4, 15), 37],
+        [gd(2012, 5, 1), 17],
+        [gd(2012, 5, 15), 80],
+        [gd(2012, 6, 1), 90],
+        [gd(2012, 6, 15), 60],
+        [gd(2012, 7, 1), 45],
+        [gd(2012, 7, 15), 57],
+        [gd(2012, 8, 1), 90],
+        [gd(2012, 8, 15), 80],
+        [gd(2012, 9, 1), 83],
+        [gd(2012, 9, 15), 91],
+        [gd(2012, 10, 1), 71],
+        [gd(2012, 10, 15), 76],
+        [gd(2012, 11, 1), 67],
+        [gd(2012, 11, 15), 84],
+        [gd(2012, 12, 1), 51],
+        [gd(2012, 12, 15), 50]        
+    ];
+
+    var data2 = [
+        [gd(2012, 1, 1), 100],
+        [gd(2012, 1, 15), 140],
+        [gd(2012, 2, 1), 90],
+        [gd(2012, 2, 15), 77],
+        [gd(2012, 3, 1), 100],
+        [gd(2012, 3, 15), 145],
+        [gd(2012, 4, 1), 89],
+        [gd(2012, 4, 15), 88],
+        [gd(2012, 5, 1), 69],
+        [gd(2012, 5, 15), 87],
+        [gd(2012, 6, 1), 99],
+        [gd(2012, 6, 15), 140],
+        [gd(2012, 7, 1), 150],
+        [gd(2012, 7, 15), 147],
+        [gd(2012, 8, 1), 88],
+        [gd(2012, 8, 15), 78],
+        [gd(2012, 9, 1), 130],
+        [gd(2012, 9, 15), 88],
+        [gd(2012, 10, 1), 137],
+        [gd(2012, 10, 15), 148],
+        [gd(2012, 11, 1), 98],
+        [gd(2012, 11, 15), 40],
+        [gd(2012, 12, 1), 99],
+        [gd(2012, 12, 15), 56]       
+    ];
+
+
+    $scope.businessControlProfileHistoryList.dataset = [
+        {
+            label: "Number of completed User Tasks",
+            grow:{stepMode:"linear"},
+            data: $scope.businessControlProfileHistoryList.data2,
+            color: "#1ab394",
+            bars: {
+                show: true,
+                align: "center",
+                barWidth: 24 * 60 * 60 * 6600,
+                lineWidth: 0
+            }
+
+        },
+        {
+            label: "Percentage Of Compliance",
+            grow:{stepMode:"linear"},
+            data: $scope.businessControlProfileHistoryList.data1,
+            yaxis: 2,
+            color: "#1C84C6",
+            lines: {
+                lineWidth: 1,
+                show: true,
+                fill: true,
+                fillColor: {
+                    colors: [
+                        {
+                            opacity: 0.3
+                        },
+                        {
+                            opacity: 0.3
+                        }
+                    ]
+                }
+            }
+        }
+    ];
+
+
+    $scope.businessControlProfileHistoryList.options = {
+        grid: {
+            hoverable: true,
+            clickable: true,
+            tickColor: "#d5d5d5",
+            borderWidth: 0,
+            color: '#d5d5d5'
+        },
+        colors: ["#1ab394", "#464f88"],
+        tooltip: true,
+        xaxis: {
+            mode: "time",
+            tickSize: [15, "day"],
+            tickLength: 0,
+            axisLabel: "Date",
+            axisLabelUseCanvas: true,
+            axisLabelFontSizePixels: 12,
+            axisLabelFontFamily: 'Arial',
+            axisLabelPadding: 10,
+            color: "#d5d5d5"
+        },
+        yaxes: [
+            {
+                position: "left",
+                max: 500,
+                color: "#d5d5d5",
+                axisLabelUseCanvas: true,
+                axisLabelFontSizePixels: 12,
+                axisLabelFontFamily: 'Arial',
+                axisLabelPadding: 3
+            },
+            {
+                position: "right",
+                max: 500,
+                color: "#d5d5d5",
+                axisLabelUseCanvas: true,
+                axisLabelFontSizePixels: 12,
+                axisLabelFontFamily: ' Arial',
+                axisLabelPadding: 67
+            }
+        ],
+        legend: {
+            noColumns: 1,
+            labelBoxBorderColor: "#d5d5d5",
+            position: "nw"
+        }
+
+    };
+
+    function gd(year, month, day) {
+        return new Date(year, month, day + 1).getTime();
+    }
+
+    /**
+     * Definition of variables
+     * Flot chart
+     */
+//        alert($scope.businessControlProfileHistoryList.dataset);
+    this.flotData = $scope.businessControlProfileHistoryList.dataset;
+    this.flotOptions = $scope.businessControlProfileHistoryList.options;
+    })
+}
+
+function complianceScoreCtrl($scope,$http,$uibModalInstance,filterService,$filter,filterWebAPIService,$interpolate,responsibleUserService,Config) {
+    
+    //alert($scope.workingSetName);
+}
+
+/**
+ * dashBoardController - for single workingSet
+ */
+function dashBoardController($scope,$stateParams,$state,$http,filterService,workingSetWebAPIService) {
+    $scope.businessControlProfile = $stateParams.obj.name;
+    $scope.businessControlProfileId = $stateParams.obj.workingSetId;
+   // alert($stateParams.obj);
+    $scope.datapointsTaskCompletionByUser = [{"x" : 10, "User1" : 10, "User2" : 15, "User3" : 100},
+                                             {"x" : 20, "User1" : 100, "User2" : 35, "User3" : 40},
+                                             {"x" : 30, "User1" : 15, "User2" : 75, "User3" : 70},
+                                             {"x" : 40, "User1" : 50, "User2" : 45, "User3" : 90}];
+    $scope.datacolumnsTaskCompletionByUser = [{"id" : "User1", "type" : "line", "name" : "User 1", "color" : "#1ab394"},
+                                              {"id" : "User2", "type" : "spline", "name" : "User 2", "color" : "#BABABA"},
+                                              {"id": "User3", "type" : "line", "name" : "User 3", "color" : "#1ab394"}];
+    $scope.datax={"id":"x"};
+    $scope.data1 = [0, 30, 200, 100, 400, 150, 250, 100, 0];
+    $scope.data2 = [0, 50, 20, 10, 40, 15, 25, 30, 0];
+    $scope.data3 = [0, 200, 30, 400, 10, 250, 30, 25, 0];
+    $scope.dataX = ["20150601", '2015-06-02 12:00:00:00', "2015-06-03 12:00:00:00", "2015-06-04 12:00:00:00", "2015-06-05 12:00:00:00", "2015-06-06 12:00:00:00","2015-06-07 12:00:00:00","2015-06-08 12:00:00:00","2015-06-09 12:00:00:00","2015-06-10 12:00:00:00"]
+}
+
+/**
  * dashboardRACIPerformance - simple controller for data
  * for RACI performance in Dashboards
  */
-
 function dashboardRACIPerformance($scope, SweetAlert){
     this.resizeIframe = function (obj) {
     obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
@@ -504,81 +645,11 @@ function dashboardRACIPerformance($scope, SweetAlert){
             text: description
         });
     };
-    var data1 = [
-        [0, 4],
-        [1, 8],
-        [2, 5],
-        [3, 10],
-        [4, 4],
-        [5, 16],
-        [6, 5],
-        [7, 11],
-        [8, 6],
-        [9, 11],
-        [10, 30],
-        [11, 10],
-        [12, 13]       
-    ];
-    var data2 = [
-        [0, 1],
-        [1, 0],
-        [2, 2],
-        [3, 0],
-        [4, 1],
-        [5, 3],
-        [6, 1],
-        [7, 5],
-        [8, 2],
-        [9, 3],
-        [10, 2],
-        [11, 1],
-        [12, 0]        
-    ];
-    var data3 = [
-        [0, 2],
-        [1, 1],
-        [2, 10],
-        [3, 30],
-        [4, 15],
-        [5, 3],
-        [6, 10],
-        [7, 35],
-        [8, 20],
-        [9, 31],
-        [10, 20],
-        [11, 1],
-        [12, 0]       
-    ];
-    var data4 = [
-        [0, 10],
-        [1, 15],
-        [2, 25],
-        [3, 30],
-        [4, 35],
-        [5, 10],
-        [6, 15],
-        [7, 25],
-        [8, 20],
-        [9, 31],
-        [10, 20],
-        [11, 10],
-        [12, 0]       
-    ];
-    var data5 = [
-        [0, 11],
-        [1, 25],
-        [2, 15],
-        [3, 35],
-        [4, 30],
-        [5, 15],
-        [6, 10],
-        [7, 20],
-        [8, 25],
-        [9, 20],
-        [10, 30],
-        [11, 0],
-        [12, 10]       
-    ];
+    var data1 = [ [0, 4], [1, 8], [2, 5], [3, 10], [4, 4], [5, 16], [6, 5], [7, 11], [8, 6], [9, 11], [10, 30], [11, 10], [12, 13] ];
+    var data2 = [ [0, 1], [1, 0], [2, 2], [3, 0], [4, 1], [5, 3], [6, 1], [7, 5], [8, 2], [9, 3], [10, 2], [11, 1], [12, 0] ];
+    var data3 = [ [0, 2], [1, 1], [2, 10],[3, 30],[4, 15], [5, 3], [6, 10], [7, 35], [8, 20], [9, 31], [10, 20], [11, 1], [12, 0] ];
+    var data4 = [ [0, 10], [1, 15], [2, 25], [3, 30], [4, 35], [5, 10], [6, 15], [7, 25], [8, 20], [9, 31], [10, 20], [11, 10], [12, 0] ];
+    var data5 = [ [0, 11], [1, 25], [2, 15], [3, 35], [4, 30], [5, 15], [6, 10], [7, 20], [8, 25], [9, 20], [10, 30], [11, 0],  [12, 10] ];
 
     var dataset = [
         {
@@ -604,7 +675,6 @@ function dashboardRACIPerformance($scope, SweetAlert){
     ];
 
     var options = {
-       
         series: {
             lines: {
                 show: false,
@@ -656,8 +726,6 @@ function dashboardRACIPerformance($scope, SweetAlert){
  */
 
 function dashboardComplianceTrend($scope, SweetAlert) {
-    
-    
     $scope.demo1 = function (message,description) {
         SweetAlert.swal({
             title: message,
@@ -730,166 +798,6 @@ function dashboardComplianceTrend($scope, SweetAlert) {
 
 }
 
-/**
- * dashboardFlotTwo - simple controller for data
- * for Flot chart in Dashboard view
- */
-function dashboardFlotTwo() {
-
-    var data1 = [
-        [gd(2012, 1, 1), 0],
-        [gd(2012, 1, 15), 25],
-        [gd(2012, 2, 1), 15],
-        [gd(2012, 2, 15), 60],
-        [gd(2012, 3, 1), 80],
-        [gd(2012, 3, 15), 99],
-        [gd(2012, 4, 1), 35],
-        [gd(2012, 4, 15), 37],
-        [gd(2012, 5, 1), 17],
-        [gd(2012, 5, 15), 80],
-        [gd(2012, 6, 1), 90],
-        [gd(2012, 6, 15), 60],
-        [gd(2012, 7, 1), 45],
-        [gd(2012, 7, 15), 57],
-        [gd(2012, 8, 1), 90],
-        [gd(2012, 8, 15), 80],
-        [gd(2012, 9, 1), 83],
-        [gd(2012, 9, 15), 91],
-        [gd(2012, 10, 1), 71],
-        [gd(2012, 10, 15), 76],
-        [gd(2012, 11, 1), 67],
-        [gd(2012, 11, 15), 84],
-        [gd(2012, 12, 1), 51],
-        [gd(2012, 12, 15), 50]        
-    ];
-
-    var data2 = [
-        [gd(2012, 1, 1), 100],
-        [gd(2012, 1, 15), 140],
-        [gd(2012, 2, 1), 90],
-        [gd(2012, 2, 15), 77],
-        [gd(2012, 3, 1), 100],
-        [gd(2012, 3, 15), 145],
-        [gd(2012, 4, 1), 89],
-        [gd(2012, 4, 15), 88],
-        [gd(2012, 5, 1), 69],
-        [gd(2012, 5, 15), 87],
-        [gd(2012, 6, 1), 99],
-        [gd(2012, 6, 15), 140],
-        [gd(2012, 7, 1), 150],
-        [gd(2012, 7, 15), 147],
-        [gd(2012, 8, 1), 88],
-        [gd(2012, 8, 15), 78],
-        [gd(2012, 9, 1), 130],
-        [gd(2012, 9, 15), 88],
-        [gd(2012, 10, 1), 137],
-        [gd(2012, 10, 15), 148],
-        [gd(2012, 11, 1), 98],
-        [gd(2012, 11, 15), 40],
-        [gd(2012, 12, 1), 99],
-        [gd(2012, 12, 15), 56]       
-    ];
-
-
-    var dataset = [
-        {
-            label: "Number of completed User Tasks",
-            grow:{stepMode:"linear"},
-            data: data2,
-            color: "#1ab394",
-            bars: {
-                show: true,
-                align: "center",
-                barWidth: 24 * 60 * 60 * 6600,
-                lineWidth: 0
-            }
-
-        },
-        {
-            label: "Percentage Of Compliance",
-            grow:{stepMode:"linear"},
-            data: data1,
-            yaxis: 2,
-            color: "#1C84C6",
-            lines: {
-                lineWidth: 1,
-                show: true,
-                fill: true,
-                fillColor: {
-                    colors: [
-                        {
-                            opacity: 0.3
-                        },
-                        {
-                            opacity: 0.3
-                        }
-                    ]
-                }
-            }
-        }
-    ];
-
-
-    var options = {
-        grid: {
-            hoverable: true,
-            clickable: true,
-            tickColor: "#d5d5d5",
-            borderWidth: 0,
-            color: '#d5d5d5'
-        },
-        colors: ["#1ab394", "#464f88"],
-        tooltip: true,
-        xaxis: {
-            mode: "time",
-            tickSize: [15, "day"],
-            tickLength: 0,
-            axisLabel: "Date",
-            axisLabelUseCanvas: true,
-            axisLabelFontSizePixels: 12,
-            axisLabelFontFamily: 'Arial',
-            axisLabelPadding: 10,
-            color: "#d5d5d5"
-        },
-        yaxes: [
-            {
-                position: "left",
-                max: 150,
-                color: "#d5d5d5",
-                axisLabelUseCanvas: true,
-                axisLabelFontSizePixels: 12,
-                axisLabelFontFamily: 'Arial',
-                axisLabelPadding: 3
-            },
-            {
-                position: "right",
-                max: 100,
-                color: "#d5d5d5",
-                axisLabelUseCanvas: true,
-                axisLabelFontSizePixels: 12,
-                axisLabelFontFamily: ' Arial',
-                axisLabelPadding: 67
-            }
-        ],
-        legend: {
-            noColumns: 1,
-            labelBoxBorderColor: "#d5d5d5",
-            position: "nw"
-        }
-
-    };
-
-    function gd(year, month, day) {
-        return new Date(year, month - 1, day).getTime();
-    }
-
-    /**
-     * Definition of variables
-     * Flot chart
-     */
-    this.flotData = dataset;
-    this.flotOptions = options;
-}
 
 /**
  * dashboardFlotFive - simple controller for data
@@ -1308,7 +1216,7 @@ function chartJsCtrl() {
      * Data for Radar chart
      */
     this.radarData = {
-        labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+        labels: ["On Time", "OverDue", "InProgress", "UnAssigned"],
         datasets: [
             {
                 label: "My First dataset",
@@ -1318,7 +1226,7 @@ function chartJsCtrl() {
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [65, 59, 90, 81, 56, 55, 40]
+                data: [65, 59, 90, 81]
             },
             {
                 label: "My Second dataset",
@@ -1328,7 +1236,7 @@ function chartJsCtrl() {
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(151,187,205,1)",
-                data: [28, 48, 40, 19, 96, 27, 100]
+                data: [28, 48, 40, 19]
             }
         ]
     };
@@ -1357,13 +1265,13 @@ function chartJsCtrl() {
     };
 
 
-};
+}
 
 /**
  * userProfile - Controller for User Profile
  */
 function userProfile($scope,authenticationService,USER_ROLES,Config,userService) {
-    var userData = null;
+    var userData = null, isAuthorizedUser = false, userProfile = null;
     if (sessionStorage.userData != null) {
         userData = JSON.parse(sessionStorage.userData);    
         if (userData != null) {
@@ -1377,22 +1285,59 @@ function userProfile($scope,authenticationService,USER_ROLES,Config,userService)
             userData = authenticationService.getUserData();
             sessionStorage.userData = JSON.stringify(userData);
     }
+    
     $scope.userName = userData.username; 
-    $scope.userRoles = USER_ROLES;
-    $scope.userRole = userData.userRole;
-    $scope.currentUser = userService.getUserData(userData.bearerToken,userData.username);
-//    alert($scope.currentUser.userRole);
-//    alert(sessionStorage.userData);
+    $scope.userRoles = USER_ROLES;    
+    $scope.currentUser = userService.getUserProfile(userData.bearerToken);
+    $scope.currentUser.then (function (response) {
+        $scope.userProfile = response.data;
+        // alert($scope.userProfile);
+        console.log($scope.userProfile);
+        sessionStorage.userProfile = JSON.stringify($scope.userProfile);
+        $scope.currentUserRoles = $scope.userProfile.roles.join();
+    });
+ if(sessionStorage.userProfile != null) {
+     $scope.currentUserProfile = JSON.parse(sessionStorage.userProfile);
+     if($scope.currentUserProfile != null)
+         {
+             if($scope.currentUserProfile.roles != null)
+                 $scope.currentUserRoles = $scope.currentUserProfile.roles.join();
+         }
+     
+ }
+    else
+        {
+            $scope.currentUserRoles = 'none';
+        } 
     $scope.isAuthorized = function (authorizedRoles) {
+       // alert(authorizedRoles);
+        isAuthorizedUser = false;
                 if (!angular.isArray(authorizedRoles)) {
                   authorizedRoles = [authorizedRoles];
                 }
 //        alert(userData.userRole);
 //        var val = userData.isAuthenticated && authorizedRoles.indexOf(userData.userRole) !== -1 ;
 //        alert(val);
-                return(userData.isAuthenticated && authorizedRoles.indexOf($scope.currentUser.userRole) !== -1)
-              };
-     $scope.oldMagpieBaseLink = Config.oldMagpieBaseURL + $scope.userName + "&id=B1AB60A1-BB56-4CC3-B4A2-85833C278C08";
+  //      alert(authorizedRoles);
+        if(userData.isAuthenticated) {
+            if(sessionStorage.userProfile != null)
+                {
+           var userProfile = JSON.parse(sessionStorage.userProfile); 
+                    if(userProfile != null)
+                        {
+            angular.forEach(userProfile.roles, function (item) {
+                if(authorizedRoles.indexOf(item) !== -1) {
+                    isAuthorizedUser = true;
+                }
+            });
+                        }
+                }
+        }
+        //alert(isAuthorizedUser);
+        return(isAuthorizedUser)
+    };
+    $scope.oldMagpieBaseLink = Config.oldTroutBaseURL + $scope.userName + "&id=B1AB60A1-BB56-4CC3-B4A2-85833C278C08";
+    console.log($scope.oldMagpieBaseLink);
 }
 
 /**
@@ -1423,22 +1368,14 @@ function oldMagpieApp($scope,Config) {
 /**
  * sideBarAgileBoard - Controller for sidebar-agile Board
  */
-function sideBar($scope, $http,$uibModal,$stateParams,filterService,$filter,tasksService,filterWebAPIService,dataService,plotterSrv,$timeout) { 
-    
-//    $scope.revenues = [];
-//    $scope.$watch('revenues', function () {
-//    plotterSrv.drawPlot($scope.revenues);
-//        }, true);
-//    plotterSrv.getData().then(function(promise) {
-//    $scope.revenues = promise.data;
-//  });
+function sideBar($scope, $http,$uibModal,$stateParams,filterService,$filter,tasksService,filterWebAPIService,dataService,$timeout) {
     $scope.initializing = true;
-    $scope.FiltersList1 = filterService.getFilters();    
-    $timeout(function () { $scope.Count = filterService.getCount(); });
+    $scope.filtersList1 = filterService.getFilters();
+    $timeout(function () { $scope.count = filterService.getCount(); });
 //    alert($scope.Count);
     if(filterService.getCount >= 1)
         {
-//            alert(filterService.getCount);
+            //            alert(filterService.getCount);
      $timeout(function () { $scope.initializing = false; });
         }
 //    alert($scope.FiltersList1);
@@ -1455,28 +1392,27 @@ function sideBar($scope, $http,$uibModal,$stateParams,filterService,$filter,task
     $scope.FiltersList = filterWebAPIService.getData();
     $scope.FiltersList.then (function (response) {
         $scope.Filters  = response.data;
-        // $timeout(function () { $scope.initializing = false; });
         console.log($scope.Filters);
         console.log($stateParams.filterText);
-        $scope.Count = filterService.getCount();
+        $scope.count = filterService.getCount();
         //alert($scope.Count);
         $scope.numberOfTasksByFilterName = function (filter) {
             var count = 0;
 //           alert($stateParams.bcp);
-            angular.forEach(filter.TaskFilterResultCounts, function (item) {
-                        if (item.WorkingSetId == $stateParams.bcp) {
-                            count = item.Count;
+            angular.forEach(filter.taskFilterResultCounts, function (item) {
+                        if (item.workingSetId == $stateParams.bcp) {
+                            count = item.count;
 //                            alert(count);
                         }
             });
-//             alert(count);
-                return count;
+//                         alert(count);
+            return count;
         };
-            //alert(tasksService.getTasksByCategory('NewUserTasks').Tasks);
-            $scope.navClass = function (filter) {
-                var found = $filter('findFilterById')($scope.Filters, $stateParams.filterText);
-                return filter.FilterId == found.FilterId ? 'active' : '';
-            };
+        //alert(tasksService.getTasksByCategory('NewUserTasks').Tasks);
+        $scope.navClass = function (filter) {
+            var found = $filter('findFilterById')($scope.Filters, $stateParams.filterText);
+            return filter.filterId == found.FilterId ? 'active' : '';
+        };
     });
 }
 
@@ -1484,13 +1420,13 @@ function sideBar($scope, $http,$uibModal,$stateParams,filterService,$filter,task
  * businessControlProfile  - Controller for Business Control Profiles-agile Board
  */
 function businessControlProfile($scope, $http,$uibModal,$stateParams,filterService,workingSetWebAPIService) {
-    $scope.WorkingSetList = workingSetWebAPIService.getData();
-    $scope.WorkingSetList.then (function (response) {
-        $scope.BusinessControlProfileList  = response.data;
+    $scope.workingSetList = workingSetWebAPIService.getData();
+    $scope.workingSetList.then (function (response) {
+        $scope.businessControlProfileList  = response.data;
        // alert($scope.BusinessControlProfileList);
-        console.log($scope.BusinessControlProfileList);
+        console.log($scope.businessControlProfileList);
         $scope.navClass = function (bcp) {
-        return bcp.WorkingSetId ==  $stateParams.bcp ? 'active' : '';
+        return bcp.workingSetId ==  $stateParams.bcp ? 'active' : '';
     };
     });
 }
@@ -1615,64 +1551,80 @@ function raciTeam($scope, $http,$uibModal,$stateParams,filterService,$filter,tas
 /**
  * agileBoard - Controller for agile Board view
  */
-function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter,filterWebAPIService,plotterSrv,$interpolate,responsibleUserService,baseURL, Config) {
+function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter,filterWebAPIService,$interpolate,responsibleUserService,Config,$stateParams) {
+
     $scope.onSelected = function (selectedItem) {
-        $scope.SelectedUser = selectedItem;
-        $scope.Id = selectedItem.Id;
-        $scope.FirstName = selectedItem.FirstName;
+        $scope.selectedUser = selectedItem;
+        $scope.id = selectedItem.id;
+        $scope.firstName = selectedItem.firstName;
     }
     $scope.update = function (item) {
-        $scope.SelectedStateId = item;
+        $scope.selectedStateId = item;
     }
     $scope.ok = function() {
-        //alert($scope.DialogTask.Id);
-        var exp = $interpolate(Config.baseURL + 'Tasks/{{Id}}', false, null, true),
-            url = exp({Id: $scope.DialogTask.Id});
-        if(angular.isUndefined($scope.DialogTask.RaciTeam.ResponsibleUser) || $scope.DialogTask.RaciTeam.ResponsibleUser == null) {
-            if ($scope.Id != 0) {
-                $scope.DialogTask.RaciTeam.ResponsibleUser = {
-                    Id : $scope.Id
+        //alert($scope.dialogTask.Id);
+        var exp = $interpolate(Config.baseURL + 'Tasks/{{id}}', false, null, true),
+            url = exp({id: $scope.dialogTask.id});
+        if(angular.isUndefined($scope.dialogTask.raciTeam.responsibleUser) || $scope.dialogTask.raciTeam.responsibleUser == null) {
+            if ($scope.id != 0) {
+                $scope.dialogTask.raciTeam.responsibleUser = {
+                    id : $scope.id
                 };
             }
-        } else { $scope.DialogTask.RaciTeam.ResponsibleUser.Id = $scope.Id;
+        } else { $scope.dialogTask.raciTeam.responsibleUser.id = $scope.id;
                }
-        if($scope.SelectedStateId == 2) {
-            $scope.DialogTask.TaskState.Id = 2;
+        if($scope.selectedStateId == 2) {
+            $scope.dialogTask.taskState.id = 2;
         }
-        else if($scope.SelectedStateId == 1) {
-            $scope.DialogTask.TaskState.Id = 1;
+        else if($scope.selectedStateId == 1) {
+            $scope.dialogTask.taskState.id = 1;
         }
-        else if($scope.SelectedStateId == 3) {
-            $scope.DialogTask.TaskState.Id = 3;
+        else if($scope.selectedStateId == 3) {
+            $scope.dialogTask.taskState.id = 3;
         }
-        var res = $http.put(url,$scope.DialogTask);
-        console.log('result...',res);
+        $scope.dialogTask.Title = $scope.taskTitle;
+        var res;
+//        alert($scope.dialogTask.id);
+          if(angular.isUndefined($scope.dialogTask.id) || $scope.dialogTask.id == null){
+              alert('post');
+              res = $http.post(Config.baseURL + 'Tasks/',$scope.dialogTask);
+          }
+          else{
+              res = $http.put(url,$scope.dialogTask);
+          }
         res.then(function(data) {
+        //    $scope.dialogTask.id = data.data.id;
+            if(angular.isUndefined($scope.dialogTask.id) || $scope.dialogTask.id == null){
+                //add new task
+                
+                $scope.todoList.push($scope.dialogTask);
+            }
             console.log('data...',data.data);
             //alert(data.data);
+            //Client side update
             angular.forEach($scope.todoList, function (item) {
-                if (item.Id == $scope.DialogTask.Id) {
-                    item.Title = $scope.DialogTask.Title;
-                    if(angular.isUndefined(item.ResponsibleUser) || item.ResponsibleUser == null)
-                        if ($scope.Id != 0) {
-                            item.ResponsibleUser = {
-                                Id : $scope.DialogTask.RaciTeam.ResponsibleUser.Id
+                if (item.id == $scope.dialogTask.id) {
+                    item.title = $scope.dialogTask.title;
+                    if(angular.isUndefined(item.responsibleUser) || item.responsibleUser == null)
+                        if ($scope.id != 0) {
+                            item.responsibleUser = {
+                                id : $scope.dialogTask.raciTeam.responsibleUser.id
                             };
-                            item.ResponsibleUser.FirstName = $scope.FirstName;
-                            item.ResponsibleUser = $scope.SelectedUser;
+                            item.responsibleUser.firstName = $scope.firstName;
+                            item.responsibleUser = $scope.selectedUser;
                         } else {
-                            item.ResponsibleUser.Id = $scope.DialogTask.RaciTeam.ResponsibleUser.Id;
+                            item.responsibleUser.id = $scope.dialogTask.raciTeam.responsibleUser.id;
                         }
-                    //item.ResponsibleUser.Id = $scope.DialogTask.RaciTeam.ResponsibleUser.Id;                    
-                    //alert(item.ResponsibleUser.FirstName); //alert($scope.DialogTask.RaciTeam.ResponsibleUser.FirstName); //alert($scope.DialogTask.RaciTeam.ResponsibleUser.Id);                    
-                    item.TaskState.Id = $scope.DialogTask.TaskState.Id;
-                    if(item.TaskState.Id == 2) {
+                    //item.ResponsibleUser.Id = $scope.dialogTask.RaciTeam.ResponsibleUser.Id;                    
+                    //alert(item.ResponsibleUser.FirstName); //alert($scope.dialogTask.RaciTeam.ResponsibleUser.FirstName); //alert($scope.dialogTask.RaciTeam.ResponsibleUser.Id);                    
+                    item.taskState.id = $scope.dialogTask.taskState.id;
+                    if(item.taskState.id == 2) {
                         $scope.inProgressList.push(item);
                         //alert(item.TaskState.Id);
                         var index = $scope.todoList.indexOf(item);
                         $scope.todoList.splice(index, 1);
                     }
-                    if(item.TaskState.Id == 3) {
+                    if(item.taskState.id == 3) {
                         $scope.completedList.push(item);
                         //alert(item.TaskState.Id);
                         var index = $scope.todoList.indexOf(item);
@@ -1681,29 +1633,29 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
                 }
             });
              angular.forEach($scope.inProgressList, function (item) {
-                 if (item.Id == $scope.DialogTask.Id) {
-                     item.Title = $scope.DialogTask.Title;
-                   //  item.ResponsibleUser.Id = $scope.DialogTask.RaciTeam.ResponsibleUser.Id;
-                     if(angular.isUndefined(item.ResponsibleUser) || item.ResponsibleUser == null)
-                        if ($scope.Id != 0) { 
-                            item.ResponsibleUser = {
-                                Id : $scope.DialogTask.RaciTeam.ResponsibleUser.Id
+                 if (item.id == $scope.dialogTask.id) {
+                     item.title = $scope.dialogTask.title;
+                   //  item.ResponsibleUser.Id = $scope.dialogTask.RaciTeam.ResponsibleUser.Id;
+                     if(angular.isUndefined(item.responsibleUser) || item.responsibleUser == null)
+                        if ($scope.id != 0) { 
+                            item.responsibleUser = {
+                                id : $scope.dialogTask.raciTeam.responsibleUser.id
                             };
-                            item.ResponsibleUser.FirstName = $scope.FirstName;
-                            item.ResponsibleUser = $scope.SelectedUser;
+                            item.responsibleUser.firstName = $scope.firstName;
+                            item.responsibleUser = $scope.selectedUser;
                         } else {
-                            item.ResponsibleUser.Id = $scope.DialogTask.RaciTeam.ResponsibleUser.Id;
+                            item.responsibleUser.id = $scope.dialogTask.raciTeam.responsibleUser.id;
                         }
-                     item.ResponsibleUser.FirstName = $scope.FirstName;
-                     item.ResponsibleUser = $scope.SelectedUser;
-                     item.TaskState.Id = $scope.DialogTask.TaskState.Id;
-                     if(item.TaskState.Id == 1) {
+                     item.responsibleUser.firstName = $scope.firstName;
+                     item.responsibleUser = $scope.selectedUser;
+                     item.taskState.id = $scope.dialogTask.taskState.id;
+                     if(item.taskState.id == 1) {
                          $scope.todoList.push(item);
                          //alert(item.TaskState.Id);
                          var index = $scope.inProgressList.indexOf(item);
                          $scope.inProgressList.splice(index, 1);
                      }
-                     if(item.TaskState.Id == 3) {
+                     if(item.taskState.id == 3) {
                          $scope.completedList.push(item);
                          //alert(item.TaskState.Id);
                          var index = $scope.inProgressList.indexOf(item);
@@ -1712,29 +1664,29 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
                  }
              });
              angular.forEach($scope.completedList, function (item) {
-                 if (item.Id == $scope.DialogTask.Id) {
-                     item.Title = $scope.DialogTask.Title;
-                     if(angular.isUndefined(item.ResponsibleUser) || item.ResponsibleUser == null)
-                        if ($scope.Id != 0) { 
-                            item.ResponsibleUser = {
-                                Id : $scope.DialogTask.RaciTeam.ResponsibleUser.Id
+                 if (item.id == $scope.dialogTask.id) {
+                     item.title = $scope.dialogTask.title;
+                     if(angular.isUndefined(item.responsibleUser) || item.responsibleUser == null)
+                        if ($scope.id != 0) { 
+                            item.responsibleUser = {
+                                id : $scope.dialogTask.raciTeam.responsibleUser.id
                             };
-                            item.ResponsibleUser.FirstName = $scope.FirstName;
-                            item.ResponsibleUser = $scope.SelectedUser;
+                            item.responsibleUser.firstName = $scope.firstName;
+                            item.responsibleUser = $scope.selectedUser;
                         } else {
-                            item.ResponsibleUser.Id = $scope.DialogTask.RaciTeam.ResponsibleUser.Id;
+                            item.responsibleUser.id = $scope.dialogTask.raciTeam.responsibleUser.id;
                         }
-                   //  item.ResponsibleUser.Id = $scope.DialogTask.RaciTeam.ResponsibleUser.Id;
-                     item.ResponsibleUser.FirstName = $scope.FirstName;
-                     item.ResponsibleUser = $scope.SelectedUser;
-                     item.TaskState.Id = $scope.DialogTask.TaskState.Id;
-                     if(item.TaskState.Id == 2) {
+                   //  item.ResponsibleUser.Id = $scope.dialogTask.RaciTeam.ResponsibleUser.Id;
+                     item.responsibleUser.firstName = $scope.firstName;
+                     item.responsibleUser = $scope.selectedUser;
+                     item.taskState.id = $scope.dialogTask.taskState.id;
+                     if(item.taskState.id == 2) {
                          $scope.inProgressList.push(item);
                          //alert(item.TaskState.Id);
                          var index = $scope.completedList.indexOf(item);
                          $scope.completedList.splice(index, 1);
                      }
-                     if(item.TaskState.Id == 1) {
+                     if(item.taskState.id == 1) {
                          $scope.todoList.push(item);
                          //alert(item.TaskState.Id);
                          var index = $scope.completedList.indexOf(item);
@@ -1743,6 +1695,7 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
                  }
              });
         });
+        
         res.catch(function(data, status, headers, config) {
 			console.log('failure message:',JSON.stringify({data: data}));
 		});
@@ -1787,31 +1740,34 @@ function ModalInstanceCtrl ($scope,$http,$uibModalInstance,filterService,$filter
 /**
  * taskBoard - Controller for task_board view
  */
-function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filter, tasksService, dataService, workingSetWebAPIService, $interpolate, responsibleUserService,baseURL, Config) {
+function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filter, tasksService, dataService, workingSetWebAPIService, $interpolate, responsibleUserService, Config) {
     
     this.daterange = { startDate : null, endDate : null };
     $scope.Filters=filterService.getFilters();
     $scope.showdetails = function(filterName) {
         var found = $filter('findFilterByName')($scope.Filters, filterName);
     }
+    
     var found = $filter('findFilterByName')($scope.Filters, $stateParams.filterText);
     $scope.filterText=found.Params;
     //alert($scope.filterText); //$scope.state = $state.current //$scope.params = $stateParams;
-    $scope.WorkingSetList = workingSetWebAPIService.getData();
-    $scope.WorkingSetList.then (function (response) {
-        $scope.BusinessControlProfileList  = response.data;
-        console.log($scope.BusinessControlProfileList);
-        $scope.BusinessControlProfile = workingSetWebAPIService.getWorkingsetNamebyId($stateParams.bcp,$scope.BusinessControlProfileList);  
-        $scope.ControlCatalogueList = workingSetWebAPIService.getControlCatalgueByWorkingSetId($stateParams.bcp,$scope.BusinessControlProfileList);
-        var obj = {Id : 0,
-                  Title : 'Catalogues'};
-        $scope.ControlCatalogueList.push(obj);
-//        $scope.ControlCatalogue = "Control Catalogue";
-//        alert($scope.ControlCatalogueList);
+    $scope.workingSetList = workingSetWebAPIService.getData();
+    $scope.workingSetList.then (function (response) {
+        $scope.businessControlProfileList  = response.data;
+        console.log($scope.businessControlProfileList);
+        $scope.businessControlProfile = workingSetWebAPIService.getWorkingsetNamebyId($stateParams.bcp,$scope.businessControlProfileList);  
+        $scope.controlCatalogueList = workingSetWebAPIService.getControlCatalgueByWorkingSetId($stateParams.bcp,$scope.businessControlProfileList);
+        
+        var obj = {
+            id : 0,
+            title : 'Catalogues' };
+        $scope.controlCatalogueList.push(obj);
+        //$scope.ControlCatalogue = "Control Catalogue";
+        //alert($scope.ControlCatalogueList);
     });
     
     $scope.taskDueStatusClass = function(task) {
-        switch(task.DueStatus.Status)
+        switch(task.dueStatus.status)
         {
             case 'Overdue' :
                 return 'danger-element';
@@ -1825,10 +1781,18 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
         }
     };
     
+    $scope.enableStatus = function() {
+        return $scope.dialogTask == undefined || $scope.dialogTask.id == 0;
+    };
+    
     $scope.taskDueStatus = function(task) {
-        switch(task.DueStatus.Status)
-        {
-            case 'Overdue' :
+        if(angular.isUndefined(task) || task === null)
+            {
+                return {'border-left': '10px solid #ed5565'};
+            } else {
+                switch(task.dueStatus.status)
+                {
+                    case 'Overdue' :
                 return {'border-left': '10px solid #ed5565'};
                 break;
             case 'On Time' :
@@ -1838,6 +1802,7 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
                 return {'border-left': '10px solid #f8ac59'};
                 break;
         }
+            }
     };
     
     $scope.open=function(val)
@@ -1846,54 +1811,90 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
     }
     
     $scope.openTaskDetailsDialog = function (task) {
-        
-        var exp = $interpolate(Config.baseURL + 'Tasks/{{Id}}', false, null, true),
-            url = exp({Id: task.Id});
-        $http.get(url).then (function(response) {
-            $scope.DialogTask = response.data;
-//            alert($scope.DialogTask.RaciTeam.ResponsibleUser);
-//            alert($scope.DialogTask.TaskState.Id);
-           // console.log('dialogTask',$scope.DialogTask.RaciTeam.ResponsibleUser.FirstName);
-            $scope.Filters = filterService.getFilters();
-            console.log($scope.Filters);
-            $scope.TaskStates = {};
-            $scope.TaskStates.Value = $scope.DialogTask.TaskState.Id;
-            $scope.TaskStates.Values = [
-                {
-                    Name : 'In Progress',
-                    Value : 2
-                },
-                {
-                    Name : 'New',
-                    Value : 1
-                },
-                {
-                    Name : 'Completed',
-                    Value : 3
-                }];
-            $scope.ResponsibleUserListDialog = [];
-            responsibleUserService.getUsers().$promise.then(function (data) {
-                console.log('data...', data.length);
-                angular.forEach(data, function (item) {
-                    $scope.ResponsibleUserListDialog.push(item);
-                });
-            });
-            var defaultUser = {
-                Id : 0,
-                Email : ' ',
-                FirstName : 'Responsible User',
-                LastName : ' ',
-                UserName : ' '
+        var defaultUser = {
+                id : 0,
+                email : ' ',
+                firstName : 'Responsible User',
+                lastName : ' ',
+                userName : ' '
             };
-            $scope.ResponsibleUserListDialog.push(defaultUser);
-             if(angular.isUndefined($scope.DialogTask.RaciTeam.ResponsibleUser) || $scope.DialogTask.RaciTeam.ResponsibleUser == null)
-                 $scope.ResponsibleUserListDialog.selected = defaultUser;
-            else
-                {
-            console.log($scope.DialogTask.RaciTeam.ResponsibleUser);
-            $scope.ResponsibleUserListDialog.selected = $scope.DialogTask.RaciTeam.ResponsibleUser;
+        $scope.responsibleUserListDialog = [];
+        responsibleUserService.getUsers().$promise.then(function (data) {
+            console.log('data...', data.length);
+            angular.forEach(data, function (item) {
+                $scope.responsibleUserListDialog.push(item);
+            });
+            });            
+        $scope.responsibleUserListDialog.push(defaultUser);
+        $scope.taskStates = {};
+        $scope.taskStates.Values = [
+                { Name : 'In Progress', Value : 2 },
+                { Name : 'New', Value : 1 },
+                { Name : 'Completed', Value : 3 }];
+           
+        if(angular.isUndefined(task) || task === null )
+            {
+                $scope.taskTitle = '';
+                $scope.dialogTask = { 
+                    id : 0,
+                    code : 'TBD',
+                    title : '',
+                    controlSet : null,
+                    controlSetTitle:'TBD',
+                    controlCode:'TBD',
+                    controlId: 13,
+                    controlSetId: 7,
+                    workingSetId: $stateParams.bcp,
+                    //taskDefinitionId:61,
+                    dueStatus : {
+                        id : 1,
+                        status : 'On Time'
+                    },
+                    workingSet:{
+                        name:'Default',
+                        workingSetId:1
+                    },
+                    
+                    "code": '',
+                    control:{
+                        id:13,
+                        code:'TBD',
+                        definitionSource:{
+                            source:'Custom'
+                        }
+                    },
+                    raciTeam:{},
+                    taskState:{
+                        id:1
+                    },
+                    createdByUserId: 'FDB29009-3B60-4520-9F56-B1D071E97543',
+                    descripion:'',
+                    due:'',
+                    completed:null,
+                    link:null,
                 }
-        });
+                $scope.responsibleUserListDialog.selected = defaultUser;
+                $scope.taskStates.Value = 1;
+            }
+        else {
+            var exp = $interpolate(Config.baseURL + 'Tasks/{{id}}', false, null, true),
+            url = exp({id: task.id});
+            
+            $http.get(url).then (function(response) {
+                $scope.dialogTask = response.data;
+                //alert($scope.dialogTask.RaciTeam.ResponsibleUser);
+                //alert($scope.dialogTask.TaskState.Id);
+                // console.log('dialogTask',$scope.dialogTask.RaciTeam.ResponsibleUser.FirstName);
+                $scope.taskStates.Value = $scope.dialogTask.taskState.id;
+                if(angular.isUndefined($scope.dialogTask.raciTeam.responsibleUser) 
+                   || $scope.dialogTask.raciTeam.responsibleUser == null)
+                    $scope.responsibleUserListDialog.selected = defaultUser;
+                else {
+                    console.log($scope.dialogTask.raciTeam.responsibleUser);
+                    $scope.responsibleUserListDialog.selected = $scope.dialogTask.raciTeam.responsibleUser;
+                }
+            });
+        }
         var modalInstance = $uibModal.open( {
             templateUrl : 'views/taskDetailAndEdit.html',
             size : 'lg',
@@ -1955,54 +1956,46 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
     };
     
     //DueStatus
-    $scope.DueStatusList = [ 
-        {
-            Name : 'On Time',
-            Value : 2
-        },
-        {
-            Name : 'In Jeopardy',
-            Value : 1
-        },
-        {
-            Name : 'Overdue',
-            Value : 3
-        },
-        {
-            Name : '  Due Status  ',
-            Value : ''
-        }
-    ];
+    $scope.dueStatusList = [ 
+        { Name : 'On Time', Value : 2 },
+        { Name : 'In Jeopardy', Value : 1 },
+        { Name : 'Overdue', Value : 3 },
+        { Name : '  Due Status  ', Value : '' }];
     
     //Responsible Users
-    $scope.ResponsibleUserList = [];
+    $scope.responsibleUserList = [];
     responsibleUserService.getUsers().$promise.then(function (data) {
         console.log('data...', data.length);
         angular.forEach(data, function (item) {
-            $scope.ResponsibleUserList.push(item);
+            $scope.responsibleUserList.push(item);
         });
-        console.log('data...', $scope.ResponsibleUserList);
+        console.log('data...', $scope.responsibleUserList);
     });
     var defaultUser = {
-        Id : 0,
-        Email : ' ',
-        FirstName : 'Responsible User',
-        LastName : ' ',
-        UserName : ' '
+        id : 0,
+        email : ' ',
+        firstName : 'Responsible User',
+        lastName : ' ',
+        userName : ' '
     };
-    $scope.ResponsibleUserList.push(defaultUser);
+    $scope.responsibleUserList.push(defaultUser);
     
     //TaskList
-    $scope.TaskList = dataService.getData($stateParams.bcp,$stateParams.filterText);
-    $scope.TaskList.then(function(response) {
-        // alert('hi'); //alert(JSON.stringify(response.data)); //  alert('hello');
-        $scope.TasksList  = response.data;
-        console.log($scope.TaskList);
+    $scope.taskList = dataService.getData($stateParams.bcp,$stateParams.filterText);
+    $scope.taskList.then(function(response) {
+        // alert(JSON.stringify(response.data));
+        $scope.tasksList  = response.data;
+        
+        console.log($scope.taskList);
         //alert(tasksService.getTasksByCategory('NewUserTasks').Tasks);
-        $scope.todoList=tasksService.getTasksByTaskState(1,$scope.TasksList.TaskInfos);
-        $scope.inProgressList= tasksService.getTasksByTaskState(2,$scope.TasksList.TaskInfos);
+        
+        $scope.todoList=tasksService.getTasksByTaskState(1,$scope.tasksList.taskInfos);
+        $scope.inProgressList= tasksService.getTasksByTaskState(2,$scope.tasksList.taskInfos);
+        
         //alert($scope.inProgressList);
-        $scope.completedList =tasksService.getTasksByTaskState(3,$scope.TasksList.TaskInfos);
+        
+        $scope.completedList =tasksService.getTasksByTaskState(3,$scope.tasksList.taskInfos);
+        
         $scope.sortableOptions = {
             connectWith: ".connectList",
             update: function( event, ui ) {
@@ -2013,41 +2006,38 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
                 var fromIndex = ui.item.sortable.index,
                     toIndex = ui.item.sortable.dropindex,
                     temdata = {},
-                    destinationList = $('[ui-sortable="sortableOptions"]').attr('ng-model');
-                if(destinationList === 'todoList')
-                {
+                    destinationList = ui.item.sortable.droptarget.attr('ng-model');
+                if(destinationList === 'todoList') {
                     itemdata = $scope.todoList[toIndex];
                     //alert(itemdata.Id);
                 }
-                if(destinationList === 'inProgressList')
-                {
+                if(destinationList === 'inProgressList') {
                     itemdata = $scope.inProgressList[toIndex];
                     //alert(itemdata.Id);
                 }
-                if(destinationList === 'completedList')
-                {
+                if(destinationList === 'completedList') {
                     itemdata = $scope.completedList[toIndex];
                     //alert(itemdata.Id);
                 }
-                var exp = $interpolate(Config.baseURL + 'Tasks/{{Id}}', false, null, true),
-                    url = exp({Id: itemdata.Id});
+                
+                var exp = $interpolate(Config.baseURL + 'Tasks/{{id}}', false, null, true),
+                    url = exp({id: itemdata.id});
                 $http.get(url).then (function(response) {
                     itemdata = response.data;
                     //alert('hi'+ itemdata);
                     if(destinationList === 'todoList') {
-                        itemdata.TaskState.Id = 1;
-                        itemdata.TaskState.Name = 'New';
+                        itemdata.taskState.id = 1;
+                        itemdata.taskState.name = 'New';
                         $http.put(url,itemdata);
                     }
                     if(destinationList === 'inProgressList') {
-                        itemdata.TaskState.Id = 2;
-                        itemdata.TaskState.Name = 'In Progress';
+                        itemdata.taskState.id = 2;
+                        itemdata.taskState.name = 'In Progress';
                         $http.put(url,itemdata);
                     }
-                    if(destinationList === 'completedList')
-                    {
-                        itemdata.TaskState.Id = 3;
-                        itemdata.TaskState.Name = 'Completed';
+                    if(destinationList === 'completedList') {
+                        itemdata.taskState.id = 3;
+                        itemdata.taskState.name = 'Completed';
                         $http.put(url,itemdata);
                     }
                 });
@@ -2057,7 +2047,7 @@ function taskBoard($scope, $http, $uibModal, $stateParams, filterService, $filte
 }
 
 /* login Controller */
-function loginCtrl($scope, $http, $state, authenticationService) {
+function loginCtrl($scope, $http, $state, authenticationService, Authorization) {
     $scope.username = '';
     $scope.password = '';
     $scope.persist = true;
@@ -2074,6 +2064,7 @@ function loginCtrl($scope, $http, $state, authenticationService) {
     if ($state.$current.url.source == "/logout")
     {
         sessionStorage.userData = null;
+        sessionStorage.userProfile = null;
         authenticationService.removeAuthentication();        
     }        
     
@@ -2088,11 +2079,14 @@ function loginCtrl($scope, $http, $state, authenticationService) {
         
     $scope.logout = function() {
         sessionStorage.userData = null;
+        sessionStorage.userProfile = null;
         authenticationService.removeAuthentication();
+        Authorization.clear();
     }
         
     function goToMain() {
-        $state.go('dashboards.dashboard_1');
+        Authorization.go('dashboards.Home');
+//        $state.go('dashboards.Home');
     }
     
     function loginError(errorMsg) {     
@@ -2123,6 +2117,9 @@ function loginCtrl($scope, $http, $state, authenticationService) {
 angular
     .module('inspinia')
     .controller('MainCtrl', MainCtrl)
+    .controller('homeController', homeController)
+    .controller('dashBoardController',dashBoardController)
+    .controller('chartJsCtrl',chartJsCtrl)
     .controller('dashboardFlotOne', dashboardFlotOne)
     .controller('dashboardFlotTwo', dashboardFlotTwo)
     .controller('dashboardFive', dashboardFive)

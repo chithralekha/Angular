@@ -3,6 +3,7 @@
  *
  */
 (function () {
+    "use strict";
     angular.module('inspinia', [
         'ui.router',                    // Routing
         'oc.lazyLoad',                  // ocLazyLoad
@@ -13,20 +14,38 @@
         'ngResource'
     ])
         .constant('Config', {
-            baseURL : 'http://52.39.50.39/MagpieAPI/api/',
-            authURL : 'http://development.pyinagztvy.us-west-2.elasticbeanstalk.com/oauth/token',
-            oldMagpieBaseURL : 'http://magpie-sandbox.azurewebsites.net/Landing/index?n='
+            baseURL : 'http://localhost:3706/api/',
+            authURL : 'http://localhost:50443/',
+            oldTroutBaseURL : 'http://ec2-35-164-78-65.us-west-2.compute.amazonaws.com/OldTrout/Landing/index?n='
         })
         .constant('USER_ROLES', {
             all : '*',
-            admin : 'admin',
-            editor : 'editor',
-            guest : 'guest',
-            QlikDashboardUser : 'QlikDashboardUser',
-            OldTroutUser : 'OldTroutUser'
+            System : 'System',
+            NotificationService : 'NotificationService',
+            Debugger : 'Debugger',
+            Administrator : 'Administrator',
+            AccountManager : 'AccountManager',
+            UserManager : 'UserManager',
+            RaciTeamManager : 'RaciTeamManager',
+            BusinessProcessManager : 'BusinessProcessManager',
+            QlikUser : 'QlikUser',
+            TaskBoardUser : 'TaskBoardUser',
+            TaskBoardUserReadOnly : 'TaskBoardUserReadOnly',
+            ProgramDesigner : 'ProgramDesigner',
+            LogViewer : 'LogViewer',
+            DocumentRepositoryUser : 'DocumentRepositoryUser',
+            DocumentRepositoryUserReadOnly : 'DocumentRepositoryUserReadOnly',
+            IncidentResponseUser : 'IncidentResponseUser'
         })
-        .constant("baseURL", "http://localhost:3706/api/")
-        .service('filterService', ['$resource', 'baseURL', 'Config', function ($resource, baseURL, Config) {
+        .constant('AUTH_EVENTS', {
+            loginSuccess : 'auth-login-success',
+            loginFailed : 'auth-login-failed',
+            logoutSuccess : 'auth-logout-success',
+            sessionTimeout : 'auth-session-timeout',
+            notAuthenticated : 'auth-not-authenticated',
+            notAuthorized : 'auth-not-authorized'
+        })
+        .service('filterService', ['$resource', 'Config', function ($resource, Config) {
             var filterList = $resource(Config.baseURL + 'Filters').query(),
                 count = 0,
                 addFilter = function (newObj) {
@@ -50,6 +69,7 @@
 //                    alert(count);
                     return count;
                 },
+                
                 setCount = function (val) {
                     count = val;
                 },
@@ -71,31 +91,7 @@
             };
 
         }])
-        .service('userService', ['$resource', 'baseURL', 'Config', '$interpolate', function ($resource, baseURL, Config, $interpolate) {
-            this.getUserData = function (bearerToken, userId) {
-                var exp = $interpolate(Config.baseURL + 'CurrentUser/{{BearerToken}}}', false, null, true),
-                    url = exp({ BearerToken: bearerToken}),
-                    promise,
-                //  promise = $http.get(url);
-                //  return promise.then(function (data) {
-                //  //  alert(data);
-                //  return data;
-                //   });
-                    userRole;
-                if (userId === 'Rob') {
-                    userRole = 'QlikDashboardUser';
-                } else if (userId === 'Ed') {
-                    userRole = 'OldTroutUser';
-                } else {
-                    userRole = 'admin';
-                }
-                var userData = {
-                    userRole : userRole
-                }
-                return userData;
-            };
-        }])
-        .service('responsibleUserService', ['$resource', 'baseURL', 'Config', function ($resource, baseURL, Config) {
+        .service('responsibleUserService', ['$resource', 'Config', function ($resource, Config) {
             var userList = $resource(Config.baseURL + 'Users', null, {
                 query: {
                     method: 'GET',
@@ -131,49 +127,8 @@
                 };
             return myService;
         }])
-        .service('plotterSrv', ['$http', function ($http) {
-            return {
-                getData: function () {
-            // 1)
-            // Asyncronous request to get the data.
-
-            // ?
-            // How could I update the revenues array?
-                    var promise = $http({method : 'GET', url : 'http://magpie-sandbox-api.us-west-2.elasticbeanstalk.com/api/Filters'})
-                                .success(function (data, status, headers, config) {
-                                return data;
-                            })
-                            .error(function (data, status, headers, config) {
-                                return {"status": false};
-                            });
-
-                    return promise;
-                },
-                drawPlot: function (d) {
-            // 1)
-            // plot the data.
-                    var dataObj = {
-                        "FilterId": 6,
-                        "FilterName": "Filter ABCDEF",
-                        "FilterOwnerUserId": "B981D6E6-FC59-4C02-A1D4-7E1038FC5E95",
-                        "FilterTypeId": 1,
-                        "FilterType": "System",
-                        "AssignedStatusId": null,
-                        "ControlId": null,
-                        "ControlSetId": null,
-                        "DueStatusId": 2,
-                        "IncludeRelations": null,
-                        "ResponsibleUserId": null,
-                        "TaskStateId": null,
-                        "UserTaskCode": null,
-                        "UserTaskId": null,
-                        "WorkingSetId": null
-                    };
-                    d.push(dataObj);
-                }
-            };
-        }])
-        .service('dataService', ['$http', '$interpolate', 'baseURL', 'Config', function ($http, $interpolate, baseURL, Config) {
+    
+        .service('dataService', ['$http', '$interpolate', 'Config', function ($http, $interpolate, Config) {
             this.getData = function (workingSetId, filterId) {
                 var exp = $interpolate(Config.baseURL + 'WorkingSets/{{WorkingSetId}}/Tasks?filterId={{FilterId}}', false, null, true),
                     url = exp({ WorkingSetId: workingSetId, FilterId : filterId}),
@@ -186,7 +141,7 @@
             };
         }])
         
-        .service('filterWebAPIService', ['$http', 'baseURL', 'Config', function ($http, baseURL, Config) {
+        .service('filterWebAPIService', ['$http', 'Config', function ($http, Config) {
             this.getData = function () {
                 var  promise;
                 promise = $http.get(Config.baseURL + 'Filters');
@@ -199,7 +154,7 @@
             
         }])
         
-        .service('workingSetWebAPIService', ['$http', '$interpolate', 'baseURL', 'Config', function ($http, $interpolate, baseURL, Config) {
+        .service('workingSetWebAPIService', ['$http', '$interpolate', 'Config', function ($http, $interpolate, Config) {
             this.getData = function () {
                 var  promise;
                 promise = $http.get(Config.baseURL + 'WorkingSets');
@@ -211,8 +166,8 @@
             this.getWorkingsetNamebyId = function (id, workingSet) {
                 var data = '';
                 angular.forEach(workingSet, function (item) {
-                    if (item.WorkingSetId == id) {
-                        data = item.Name;
+                    if (item.workingSetId == id) {
+                        data = item.name;
                     }
                 });
                 return data;
@@ -220,8 +175,8 @@
             this.getControlCatalgueByWorkingSetId = function (id, workingSet) {
                 var catalogue = [];
                 angular.forEach(workingSet, function (item) {
-                    if (item.WorkingSetId == id) {
-                        angular.forEach(item.WorkingSetTemplate.ControlSets, function (controlSet) {
+                    if (item.workingSetId == id) {
+                        angular.forEach(item.workingSetTemplate.controlSets, function (controlSet) {
                             catalogue.push(controlSet);
 //                           alert(catalogue);
                         });
@@ -231,8 +186,19 @@
             };
             
         }])
-    
-        .service('tasksService', ['$resource', 'baseURL', 'Config', function ($resource, baseURL, Config) {
+        .service('workingSetHistoryService', ['$http', '$interpolate', 'Config', function ($http, $interpolate, Config) {
+            this.getData = function (workingSetId) {
+                var exp = $interpolate(Config.baseURL + 'WorkingSetHistory/{{WorkingSetId}}', false, null, true),
+                    url = exp({ WorkingSetId: workingSetId}),
+                    promise;
+                promise = $http.get(url);
+                return promise.then(function (data) {
+                    //  alert(data);
+                    return data;
+                });
+            };
+        }])
+        .service('tasksService', ['$resource', 'Config', function ($resource, Config) {
             var tasksList = [{
                 TaskCategory: 'CompletedUserTasks',
                 Tasks : [
@@ -442,7 +408,7 @@
                 getTasksByTaskState = function (category, taskList1) {
                     var data = [];
                     angular.forEach(taskList1, function (item) {
-                        if (item.TaskState.Id == category) {
+                        if (item.taskState.id == category) {
                             data.push(item);
                         }
                     });
@@ -466,7 +432,7 @@
                     from_date = $filter('date')(new Date(fromDate), 'yyyy-MM-dd');
                     to_date = $filter('date')(new Date(toDate), 'yyyy-MM-dd');
                     angular.forEach(items, function (item) {
-                        if (item.Due > from_date && item.Due < to_date) {
+                        if (item.due > from_date && item.due < to_date) {
                             filtered.push(item);
                         }
                     });
@@ -482,7 +448,7 @@
                 } else {
                     searchVal = searchControlOrCode.toLowerCase();
                     angular.forEach(items, function (item) {
-                        var control = item.ControlTitle.toLowerCase(), code = item.ControlCode.toLowerCase();
+                        var control = item.controlTitle.toLowerCase(), code = item.controlCode.toLowerCase();
                         if (control.indexOf(searchVal) >= 0 || code.indexOf(searchVal) >= 0) {
                             filtered.push(item);
                         }
@@ -499,7 +465,7 @@
                 } else {
                     searchVal = searchTitleOrCode.toLowerCase();
                     angular.forEach(items, function (item) {
-                        var title = item.Title.toLowerCase(), code = item.Code.toLowerCase();
+                        var title = item.title.toLowerCase(), code = item.code.toLowerCase();
                         if (title.indexOf(searchVal) >= 0 || code.indexOf(searchVal) >= 0) {
                             filtered.push(item);
                         }
@@ -514,11 +480,11 @@
                 if (angular.isUndefined(searchValue) || searchValue === null) {
                     filtered = items;
                 } else {
-                    searchVal = searchValue.toLowerCase();
+                    searchVal = searchValue.toLocaleLowerCase();
                     angular.forEach(items, function (item) {
-                        var taskCode = item.Code.toLowerCase(),
-                            controlTitle = item.ControlTitle.toLowerCase(),
-                            controlCode = item.ControlCode.toLocaleLowerCase();
+                        var taskCode = item.code.toLocaleLowerCase(),
+                            controlTitle = item.controlTitle.toLocaleLowerCase(),
+                            controlCode = item.controlCode.toLocaleLowerCase();
                         if (taskCode.indexOf(searchVal) >= 0 || controlTitle.indexOf(searchVal) >= 0 || controlCode.indexOf(searchVal) >= 0) {
                             filtered.push(item);
                         }
@@ -531,13 +497,13 @@
             return function (items, responsibleUser) {
                // alert(responsibleUser);
                 var filtered = [], user;
-                if (angular.isUndefined(responsibleUser) || responsibleUser === null || responsibleUser.UserName  === ' ') {
+                if (angular.isUndefined(responsibleUser) || responsibleUser === null || responsibleUser.userName  === ' ') {
                     filtered = items;
                 } else {
-                    user = responsibleUser.UserName.toLowerCase();
+                    user = responsibleUser.userName.toLowerCase();
                     angular.forEach(items, function (item) {
-                        if (item.ResponsibleUser != null) {
-                            var respUser = item.ResponsibleUser.UserName.toLowerCase();
+                        if (item.responsibleUser != null) {
+                            var respUser = item.responsibleUser.userName.toLowerCase();
                             if (!(angular.isUndefined(respUser)) && !(respUser === null)) {
                                 if (respUser  === user) {
                                     filtered.push(item);
@@ -556,7 +522,7 @@
                     filtered = items;
                 } else {
                     angular.forEach(items, function (item) {
-                        if (item.ControlSetId == controlCatalogueId) {
+                        if (item.controlSetId == controlCatalogueId) {
                             filtered.push(item);
                         }
                     });
@@ -637,18 +603,30 @@
                 return value + (tail || ' …');
             };
         })
-        .service('authenticationService', ['$http', 'Config',function ($http, Config) {
-  
+        .service('userService', ['$resource', 'Config', '$interpolate', '$http', function ($resource, Config, $interpolate, $http) {
+            this.getUserProfile = function (bearerToken) {
+                var promise = $http.get(Config.authURL + 'user/profile', {
+                        headers: {
+                            'Authorization' : 'Bearer ' + bearerToken,
+                            'Content-Type' : 'application/json'
+                        }
+                    });
+                return promise.then(function (data) {
+                    //  alert(data.data.userName);
+                    return data;
+                });
+            };
+            
+        }])
+        .service('authenticationService', ['$http', 'Config', function ($http, Config) {
             function NoAuthenticationException(message) {
                 this.name = 'AuthenticationRequired';
                 this.message = message;
             }
-
-//            function NextStateUndefinedException(message) {
-//                this.name = 'NextStateUndefined';
-//                this.message = message;
-//            }
-
+            //function NextStateUndefinedException(message) {
+            //this.name = 'NextStateUndefined';
+            //this.message = message;
+            //}
             function AuthenticationExpiredException(message) {
                 this.name = 'AuthenticationExpired';
                 this.message = message;
@@ -703,25 +681,29 @@
                     userData = savedData;
                     setHttpAuthHeader();
                 }
-            }       
-            isAuthorized = function (authorizedRoles) {
+            }
+            var isAuthorized = function (authorizedRoles) {
                 if (!angular.isArray(authorizedRoles)) {
-                  authorizedRoles = [authorizedRoles];
+                    authorizedRoles = [authorizedRoles];
                 }
                 
                 return true;
-              };
-            isAuthenticated = function () {
-                if (userData.isAuthenticated && !isAuthenticationExpired(userData.expirationDate)) {
-                    return true;
-                }
-                try {
-                    retrieveSavedData();
-                } catch (e) {
-                    throw new NoAuthenticationException('Authentication not found');
-                }
-                return true;            
-            };
+            },
+                isAuthenticated = function () {
+//                    alert(userData.isAuthenticated);
+//                    alert(isAuthenticationExpired(userData.expirationDate));
+                    if (userData.isAuthenticated && isAuthenticationExpired(userData.expirationDate)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+//                try {
+//                    retrieveSavedData();
+//                } catch (e) {
+//                    throw new NoAuthenticationException('Authentication not found');
+//                }
+//                return true;            
+                };
  
             function clearUserData() {
                 userData.isAuthenticated = false;
@@ -758,58 +740,80 @@
                         'grant_type' : 'password',
                         'username': username,
                         'password': password
-                    });
-                    var config = {
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        }
-                    };         
-  
-                // http://localhost:50443
-                $http.post(Config.authURL, data, config)
-                    .then(function(data) {
-                        if (data != null) {
-                            userReturnData = data.data;              
-                            userData.isAuthenticated = true;
-                            userData.username = username; //userReturnData.userName;
-                            userData.bearerToken = userReturnData.access_token;
-                            userData.expirationDate = new Date(userReturnData['.expires']);
-                           if(username === 'Rob')
-                                userData.userRole = 'QlikDashboardUser';
-                            else if (username === 'Ed')
-                                userData.userRole = 'OldTroutUser';
-                            else
-                                userData.userRole = 'admin';
-                            if (persistData === true) {
-                                saveData();
+                    }),
+                        config = {
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded'
                             }
-                            if (typeof successCallback === 'function') {
-                                successCallback();
-                            }
-                        }
-                        else {
-                            errorCallback('Unable to contact server; please, try again later.');
-                        }
-                    })
-                    .catch(function(data) {
-                        if (typeof errorCallback === 'function') {
-                            var errorDescription = 'Unable to contact server; please, try again later.';
-                            if (data == null) {
-                                errorDescription = $.param({'error_description' : 'Unable to contact server; please, try again later.' });        
-                            } else {
-                                if (data.data.error_description) {
-                                    errorDescription = data.data.error_description;
+                        };
+                    // http://localhost:50443
+                    $http.post(Config.authURL + 'oauth/token', data, config)
+                        .then(function (data) {
+                            if (data != null) {
+                                var userReturnData = data.data;
+                                userData.isAuthenticated = true;
+                                userData.username = username; //userReturnData.userName;
+                                userData.bearerToken = userReturnData.access_token;
+                                userData.expirationDate = new Date(userReturnData['.expires']);
+                                if (username === 'Rob') {
+                                    userData.userRole = 'QlikDashboardUser';
+                                } else if (username === 'Ed') {
+                                    userData.userRole = 'OldTroutUser';
+                                } else {
+                                    userData.userRole = 'admin';
                                 }
+                                if (persistData === true) {
+                                    saveData();
+                                }
+                                if (typeof successCallback === 'function') {
+                                    successCallback();
+                                }
+                            } else {
+                                errorCallback('Unable to contact server; please, try again later.');
                             }
-                            errorCallback(errorDescription);
-                        }
-                    });
+                        })
+                        .catch(function (data) {
+                            if (typeof errorCallback === 'function') {
+                                var errorDescription = 'Unable to contact server; please, try again later.';
+                                if (data == null) {
+                                    errorDescription = $.param({'error_description' : 'Unable to contact server; please, try again later.' });
+                                } else {
+                                    if (data.data.error_description) {
+                                        errorDescription = data.data.error_description;
+                                    }
+                                }
+                                errorCallback(errorDescription);
+                            }
+                        });
                 },
                 removeAuthentication : function () {
                     removeData();
                     clearUserData();
                    // $http.defaults.headers.common.Authorization = null;
-                }
+                },
+                isAuthenticated : isAuthenticated
+            };
+        }])
+        .service('Authorization', ['$state', function ($state) {
+            this.authorized = false;
+            this.memorizedState = null;
+            this.params = null;
+            var clear = function () {
+                this.authorized = false;
+                this.memorizedState = null;
+                this.params = null;
+            },
+                go = function (fallback) {
+                    this.authorized = true;
+                    var targetState = this.memorizedState ? this.memorizedState : fallback;
+//                    alert('targetState===' + targetState);
+                    $state.go(targetState, this.params);
+                };
+            return {
+                authorized : this.authorized,
+                memorizedState : this.memorizedState,
+                clear : clear,
+                go : go
             };
         }]);
 })();

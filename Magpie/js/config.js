@@ -15,7 +15,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
     IdleProvider.idle(5); // in seconds
     IdleProvider.timeout(120); // in seconds
 
-    $urlRouterProvider.otherwise("/dashboards/dashboard_1");
+    $urlRouterProvider.otherwise("/login");
 
     $ocLazyLoadProvider.config({
         // Set to true if you want to see what and when is dynamically loaded
@@ -27,13 +27,17 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
         .state('dashboards', {
             abstract: true,
             url: "/dashboards",
-            templateUrl: "views/common/content.html",
-            authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
+            templateUrl: "views/common/content.html"
         })
-        .state('dashboards.dashboard_1', {
-            url: "/dashboard_1",
-            templateUrl: "views/dashboard_1.html",
-            data: { pageTitle: 'RACI Performance' },
+        .state('dashboards.Home', {
+            url: "/Home",
+            templateUrl: "views/Home.html",
+            data: { pageTitle: 'Home',
+                   authorization : false,
+                   redirectTo : 'login',
+                   memory : true 
+                  },
+            authenticate : false,
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -61,16 +65,65 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                         {                                  
                             name: 'oitozero.ngSweetAlert',
                             files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                        },
+                        {
+                            serie: true,
+                            files: ['css/plugins/c3/c3.min.css', 'js/plugins/d3/d3.min.js', 'js/plugins/c3/c3.min.js']
+                        },
+                        {
+                            serie: true,
+                            name: 'gridshore.c3js.chart',
+                            files: ['js/plugins/c3/c3-angular.min.js']
                         }
                     ]);
                 }
-            },
-        authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]
+            }
         })
-        .state('dashboards.dashboard_2', {
-            url: "/dashboard_2",
-            templateUrl: "views/dashboard_2.html",
-            data: { pageTitle: 'Compliance Trend' },
+        .state('dashboards.dashboardSingleWorkingSet', {
+            url: "/dashboardSingleWorkingSet",
+            templateUrl: "views/dashboardSingleWorkingSet.html",
+            data: { pageTitle: 'Profile' },
+        authenticate : false,
+            params: {
+                obj: null
+            },
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+
+                            serie: true,
+                            name: ['angular-flot','angular-chartist'],
+                            files: [ 'js/plugins/flot/jquery.flot.js', 'js/plugins/flot/jquery.flot.time.js', 'js/plugins/flot/jquery.flot.tooltip.min.js', 'js/plugins/flot/jquery.flot.spline.js', 'js/plugins/flot/jquery.flot.resize.js', 'js/plugins/flot/jquery.flot.pie.js', 'js/plugins/flot/curvedLines.js', 'js/plugins/flot/angular-flot.js','js/plugins/chartist/chartist.min.js', 'css/plugins/chartist/chartist.min.css', 'js/plugins/chartist/angular-chartist.min.js' ]                            
+                        },
+                        {
+                            name: 'angles',
+                            files: ['js/plugins/chartJs/angles.js', 'js/plugins/chartJs/Chart.min.js']
+                        },
+                        {
+                            name: 'angular-peity',
+                            files: ['js/plugins/peity/jquery.peity.min.js', 'js/plugins/peity/angular-peity.js']
+                        },
+                        {
+                            name: 'ui.checkbox',
+                            files: ['js/bootstrap/angular-bootstrap-checkbox.js']
+                        },
+                        {
+                            files: ['js/plugins/sweetalert/sweetalert.min.js', 'css/plugins/sweetalert/sweetalert.css']
+                        },
+                        {                                  
+                            name: 'oitozero.ngSweetAlert',
+                            files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                        }
+                    ]);
+                }
+            }
+        })
+        .state('dashboards.dashboard2QlikHome', {
+            url: "/dashboard2QlikHome",
+            templateUrl: "views/dashboard2QlikHome.html",
+            data: { pageTitle: 'Home',
+                  authorizedRoles: [USER_ROLES.admin, USER_ROLES.editor]},
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -97,14 +150,18 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                         {
                             name: 'oitozero.ngSweetAlert',
                             files: ['js/plugins/sweetalert/angular-sweetalert.min.js']
+                        },
+                        {
+                            name: 'angular-chartist',
+                            files: ['js/plugins/chartist/chartist.min.js', 'css/plugins/chartist/chartist.min.css', 'js/plugins/chartist/angular-chartist.min.js']
                         }
                     ]);
                 }
             }
         })
-        .state('dashboards.dashboard_3', {
-            url: "/dashboard_3",
-            templateUrl: "views/dashboard_3.html",
+        .state('dashboards.dashboard3QlikDueDate', {
+            url: "/dashboard3QlikDueDate",
+            templateUrl: "views/dashboard3QlikDueDate.html",
             data: { pageTitle: 'Workload Balancing' },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
@@ -132,62 +189,62 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
                 }
             }
         })
+        .state('dashboards.dashboard4QlikRACI', {
+            url: "/dashboard4QlikRACI",
+            templateUrl: "views/dashboard4QlikRACI.html",
+            data: { pageTitle: 'RACI' },
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            name: 'angles',
+                            files: ['js/plugins/chartJs/angles.js', 'js/plugins/chartJs/Chart.min.js']
+                        },
+                        {
+                            name: 'angular-peity',
+                            files: ['js/plugins/peity/jquery.peity.min.js', 'js/plugins/peity/angular-peity.js']
+                        },
+                        {
+                            serie: true,
+                            name: 'angular-flot',
+                            files: [ 'js/plugins/flot/jquery.flot.js', 'js/plugins/flot/jquery.flot.time.js', 'js/plugins/flot/jquery.flot.tooltip.min.js', 'js/plugins/flot/jquery.flot.spline.js', 'js/plugins/flot/jquery.flot.resize.js', 'js/plugins/flot/jquery.flot.pie.js', 'js/plugins/flot/curvedLines.js', 'js/plugins/flot/angular-flot.js', ]
+                        }
+                    ]);
+                }
+            }
+        })
+        .state('dashboards.dashboard5QlikPerformance', {
+            url: "/dashboard5QlikPerformance",
+            templateUrl: "views/dashboard5QlikPerformance.html",
+            data: { pageTitle: 'Cyber Security Performance' },
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            name: 'angles',
+                            files: ['js/plugins/chartJs/angles.js', 'js/plugins/chartJs/Chart.min.js']
+                        },
+                        {
+                            name: 'angular-peity',
+                            files: ['js/plugins/peity/jquery.peity.min.js', 'js/plugins/peity/angular-peity.js']
+                        },
+                        {
+                            serie: true,
+                            name: 'angular-flot',
+                            files: [ 'js/plugins/flot/jquery.flot.js', 'js/plugins/flot/jquery.flot.time.js', 'js/plugins/flot/jquery.flot.tooltip.min.js', 'js/plugins/flot/jquery.flot.spline.js', 'js/plugins/flot/jquery.flot.resize.js', 'js/plugins/flot/jquery.flot.pie.js', 'js/plugins/flot/curvedLines.js', 'js/plugins/flot/angular-flot.js', ]
+                        }
+                    ]);
+                }
+            }
+        })
         .state('dashboards_top', {
             abstract: true,
             url: "/dashboards_top",
             templateUrl: "views/common/content_top_navigation.html",
         })
-        .state('dashboards.dashboard_4', {
-            url: "/dashboard_4",
-            templateUrl: "views/dashboard_4.html",
-            data: { pageTitle: 'Cyber Security Performance' },
-            resolve: {
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        {
-                            name: 'angles',
-                            files: ['js/plugins/chartJs/angles.js', 'js/plugins/chartJs/Chart.min.js']
-                        },
-                        {
-                            name: 'angular-peity',
-                            files: ['js/plugins/peity/jquery.peity.min.js', 'js/plugins/peity/angular-peity.js']
-                        },
-                        {
-                            serie: true,
-                            name: 'angular-flot',
-                            files: [ 'js/plugins/flot/jquery.flot.js', 'js/plugins/flot/jquery.flot.time.js', 'js/plugins/flot/jquery.flot.tooltip.min.js', 'js/plugins/flot/jquery.flot.spline.js', 'js/plugins/flot/jquery.flot.resize.js', 'js/plugins/flot/jquery.flot.pie.js', 'js/plugins/flot/curvedLines.js', 'js/plugins/flot/angular-flot.js', ]
-                        }
-                    ]);
-                }
-            }
-        })
-        .state('dashboards.dashboard_4_1', {
-            url: "/dashboard_4_1",
-            templateUrl: "views/dashboard_4_1.html",
-            data: { pageTitle: 'Cyber Security Performance' },
-            resolve: {
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        {
-                            name: 'angles',
-                            files: ['js/plugins/chartJs/angles.js', 'js/plugins/chartJs/Chart.min.js']
-                        },
-                        {
-                            name: 'angular-peity',
-                            files: ['js/plugins/peity/jquery.peity.min.js', 'js/plugins/peity/angular-peity.js']
-                        },
-                        {
-                            serie: true,
-                            name: 'angular-flot',
-                            files: [ 'js/plugins/flot/jquery.flot.js', 'js/plugins/flot/jquery.flot.time.js', 'js/plugins/flot/jquery.flot.tooltip.min.js', 'js/plugins/flot/jquery.flot.spline.js', 'js/plugins/flot/jquery.flot.resize.js', 'js/plugins/flot/jquery.flot.pie.js', 'js/plugins/flot/curvedLines.js', 'js/plugins/flot/angular-flot.js', ]
-                        }
-                    ]);
-                }
-            }
-        })
-        .state('dashboards.dashboard_5', {
-            url: "/dashboard_5",
-            templateUrl: "views/dashboard_5.html",
+        .state('dashboards.dashboard_5_1', {
+            url: "/dashboard_5_1",
+            templateUrl: "views/dashboard_5_1.html",
             data: { pageTitle: 'Operations' },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
@@ -289,8 +346,13 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
         })
         .state('miscellaneous.task_board', {
             url: "/task_board/:filterText?bcp",
-            templateUrl: "views/task_board.html",            
-            data: { pageTitle: 'Task board' },
+            templateUrl: "views/task_board.html",
+            authenticate : true,
+            data: { pageTitle: 'Task board',
+                   authorization : false,
+                   redirectTo : 'login',
+                   memory : true 
+                  },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -373,6 +435,34 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
 angular
     .module('inspinia')
     .config(config)
-    .run(function($rootScope, $state) {
+    .run(function($rootScope, $state, authenticationService, Authorization, AUTH_EVENTS) {
+//     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
+////         alert(toState.authenticate);
+////         alert(authenticationService.isAuthenticated());
+//      if (toState.authenticate && !authenticationService.isAuthenticated()){
+//        // User isn’t authenticated
+//        $state.transitionTo("login");
+//        event.preventDefault(); 
+//      }
+//    });
+    $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+//        alert(Authorization.authorized);
+//        alert(Authorization.memorizedState);
+//        alert(toParams["bcp"]);
+    if (!Authorization.authorized) {
+      if (Authorization.memorizedState && ((fromState.data.redirectTo == null) || toState.name !== fromState.data.redirectTo)) {
+        Authorization.clear();
+      }
+      if ((toState.data.authorization) && (toState.data.redirectTo != null)) {
+        if ((toState.data.memory)) {
+          Authorization.memorizedState = toState.name;
+            Authorization.params = toParams;
+        }
+        $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
+        $state.go(toState.data.redirectTo);
+      }
+    }
+
+  });
         $rootScope.$state = $state;
     });

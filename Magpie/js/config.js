@@ -433,7 +433,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, IdlePro
 
 }
 angular
-    .module('inspinia')
+    .module('magpie')
     .config(config)
     .run(function($rootScope, $state, authenticationService, Authorization, AUTH_EVENTS) {
 //     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
